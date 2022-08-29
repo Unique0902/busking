@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  display: flex;
+}
+.menu {
+  display: flex;
+}

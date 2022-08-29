@@ -1,0 +1,10 @@
+@value makerWhite from  '../../common/colors.css';
+@value makerBlack from  '../../common/colors.css';
+
+.appDescription {
+  margin: 5em 10em;
+  color: makerBlack;
+  border-radius: 40px;
+  padding: 1em 1.5em;
+  background-color: makerWhite;
+}

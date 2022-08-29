@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './login.module.css';
 import Login_nav from '../components/login_header/login_nav';
-import App_description from '../components/app_description/app_description';
 
 const Login = (props) => {
   return (
@@ -16,17 +15,15 @@ const Login = (props) => {
           <h2 className={styles.mainDescription}>
             당신만의 노래 리스트를 생성하여 신청곡을 받으세요.
           </h2>
-          <ul className={styles.loginBtns}>
-            <li>
-              <button className={styles.loginBtn}>구글로 로그인</button>
-            </li>
-            <li>
-              <button className={styles.loginBtn}>네이버로 로그인</button>
-            </li>
-          </ul>
+          <button className={styles.loginBtn}>구글로 로그인</button>
+          <button className={styles.loginBtn}>네이버로 로그인</button>
         </main>
       </section>
-      <App_description />
+      <section>
+        <h2>노래책은 이런게 가능하답니다</h2>
+        <p>당신만의 노래리스트 생성하세요.</p>
+      </section>
+      <section>하단태그 인스타 유튜브 링크등 제품 소개</section>
     </section>
   );
 };

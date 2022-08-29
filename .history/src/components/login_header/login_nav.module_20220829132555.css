@@ -1,0 +1,18 @@
+@value makerWhite from  '../../common/colors.css';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  color: makerWhite;
+}
+.logo {
+  display: flex;
+}
+.menu {
+  display: flex;
+}
+.button {
+  background: none;
+  border: none;
+  color: makerWhite;
+}

@@ -1,0 +1,29 @@
+@value makerWhite from  '../../common/colors.css';
+@value fontBig from  '../../common/size.css';
+@value fontMedium from  '../../common/size.css';
+
+.navbar {
+  display: flex;
+  align-items: center;
+  color: makerWhite;
+  padding: 1em 1.5em;
+}
+.logo {
+  display: flex;
+  flex-basis: 30%;
+  font-size: fontBig;
+}
+.menu {
+  display: flex;
+  flex-basis: 70%;
+}
+.button {
+  background: none;
+  border: none;
+  color: makerWhite;
+  cursor: pointer;
+  font-size: fontMedium;
+}
+.button:hover {
+  transform: scale(1.2);
+}

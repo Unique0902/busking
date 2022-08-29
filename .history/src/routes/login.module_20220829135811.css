@@ -12,36 +12,14 @@
   );
   padding: 1em 1.5em;
   color: makerWhite;
-  height: 100vh;
 }
 
 .loginMain {
-  padding: 3em 0;
+  padding: 10em 0;
 }
 
 .mainTitle {
   font-size: fontBig;
   width: 60%;
   margin: auto;
-  text-align: center;
-}
-
-.mainDescription {
-  padding-top: 1em;
-  font-size: fontBigg;
-  width: 50%;
-  margin: auto;
-  text-align: center;
-}
-.loginBtns {
-  margin-top: 2.5em;
-  display: flex;
-  justify-content: center;
-}
-.loginBtn {
-  background-color: makerWhite;
-  width: 10em;
-  border-radius: 20px;
-  height: 3em;
-  margin: 0 2em;
 }
