@@ -11,7 +11,7 @@ const Sidebar = (props) => {
         </div>
         <ul className={styles.list}>
           <li>
-            <button className={styles.listBtn}>Home</button>
+            <button className={styles.listBtn}>home</button>
           </li>
           <li>
             <p className={styles.category}>기능 카테고리</p>
