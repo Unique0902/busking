@@ -1,0 +1,7 @@
+.sideBar {
+  flex-basis: 15%;
+}
+
+.list button {
+  border: none;
+}

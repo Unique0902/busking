@@ -1,0 +1,9 @@
+.sideBar {
+  flex-basis: 15%;
+  padding: 2em;
+}
+
+.listBtn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+}
