@@ -11,9 +11,9 @@
   color: makerWhite;
   height: 100vh;
   display: flex;
+  padding: 2em;
 }
 
 .main {
   flex-basis: 85%;
-  padding: 2em;
 }
