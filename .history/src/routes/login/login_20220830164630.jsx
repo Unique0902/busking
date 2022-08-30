@@ -5,13 +5,14 @@ import App_description from '../../components/app_description/app_description';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ authService }) => {
+const Login = ({ authService, navigate }) => {
   let navigate = useNavigate();
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
-        navigate('/app/home');
+        console.log('hi');
       } else {
+        navigate('/');
       }
     });
   });

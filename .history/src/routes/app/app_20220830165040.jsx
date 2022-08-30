@@ -23,7 +23,7 @@ function App({ authService }) {
     <section className={styles.app}>
       <Sidebar />
       <main className={styles.main}>
-        <App_header logout={logout} />
+        <App_header authService={authService} />
         <Outlet />
       </main>
     </section>

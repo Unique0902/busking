@@ -3,18 +3,9 @@ import styles from './login.module.css';
 import Login_nav from '../../components/login_header/login_nav';
 import App_description from '../../components/app_description/app_description';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const Login = ({ authService }) => {
-  let navigate = useNavigate();
-  useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (user) {
-        navigate('/app/home');
-      } else {
-      }
-    });
-  });
+const Login = ({ authService, navigate }) => {
+  useEffect(() => {});
   return (
     <section className={styles.login}>
       <section className={styles.background}>

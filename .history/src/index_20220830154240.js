@@ -27,7 +27,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login authService={authService} />} />
-        <Route path='app' element={<App authService={authService} />}>
+        <Route path='app' element={<App />}>
           <Route path='home' element={<App_home />} />
           <Route path='add' element={<App_add lastfm={lastfm} />} />
           <Route path='busking' element={<App_busking />} />

@@ -13,6 +13,7 @@ import App_setting from './routes/app/app_setting/app_setting';
 import axios from 'axios';
 import Lastfm from './service/lastfm';
 import AuthService from './service/auth_service';
+import { useNavigate } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const httpClient = axios.create({
@@ -21,13 +22,20 @@ const httpClient = axios.create({
 });
 const lastfm = new Lastfm(httpClient);
 const authService = new AuthService();
+let navigate = useNavigate();
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login authService={authService} />} />
-        <Route path='app' element={<App authService={authService} />}>
+        <Route
+          path='/'
+          element={<Login authService={authService} navigate={navigate} />}
+        />
+        <Route
+          path='app'
+          element={<App authService={authService} navigate={navigate} />}
+        >
           <Route path='home' element={<App_home />} />
           <Route path='add' element={<App_add lastfm={lastfm} />} />
           <Route path='busking' element={<App_busking />} />

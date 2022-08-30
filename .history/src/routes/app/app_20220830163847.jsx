@@ -8,12 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 function App({ authService }) {
   let navigate = useNavigate();
-  const logout = () => {
-    authService.logout();
-  };
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
+        console.log('hi');
       } else {
         navigate('/');
       }
@@ -23,7 +21,7 @@ function App({ authService }) {
     <section className={styles.app}>
       <Sidebar />
       <main className={styles.main}>
-        <App_header logout={logout} />
+        <App_header />
         <Outlet />
       </main>
     </section>

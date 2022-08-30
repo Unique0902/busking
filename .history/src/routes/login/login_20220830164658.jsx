@@ -10,7 +10,7 @@ const Login = ({ authService }) => {
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
-        navigate('/app/home');
+        navigate('/app');
       } else {
       }
     });
