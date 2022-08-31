@@ -64,13 +64,7 @@ const App_playlist = (props) => {
         <h1 className={styles.pageTitleText}>Playlist</h1>
       </section>
       <header>
-        <button
-          onClick={() => {
-            setIsShowSearchBar(true);
-          }}
-        >
-          검색
-        </button>
+        <button>검색</button>
         <button>정렬</button>
       </header>
       {isShowSearchBar && (
@@ -94,13 +88,6 @@ const App_playlist = (props) => {
               search();
             }}
           />
-          <button
-            onClick={() => {
-              setIsShowSearchBar(!isShowSearchBar);
-            }}
-          >
-            X
-          </button>
         </section>
       )}
 

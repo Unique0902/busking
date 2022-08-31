@@ -66,7 +66,7 @@ const App_playlist = (props) => {
       <header>
         <button
           onClick={() => {
-            setIsShowSearchBar(true);
+            setIsShowSearchBar(!isShowSearchBar);
           }}
         >
           검색

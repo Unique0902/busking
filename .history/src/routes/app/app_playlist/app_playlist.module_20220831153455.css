@@ -1,13 +1,10 @@
 @value makerWhite from  '../../../common/colors.css';
-@value fontBig from  '../../../common/size.css';
 
 .results {
   height: 30em;
 }
 .searchBar {
   margin-bottom: 2em;
-  display: flex;
-  justify-content: center;
 }
 .description {
   display: flex;
@@ -31,5 +28,4 @@
 .pageTitle {
 }
 .pageTitleText {
-  font-size: fontBig;
 }

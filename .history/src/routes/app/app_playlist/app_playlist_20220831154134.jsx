@@ -9,7 +9,6 @@ const App_playlist = (props) => {
   const [results, setResults] = useState([]);
   const [nowPageResults, setNowPageResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
-  const [isShowSearchBar, setIsShowSearchBar] = useState(false);
   const [pageNum, setPageNum] = useState(1);
   const searchRef = useRef();
   const selectRef = useRef();
@@ -63,47 +62,27 @@ const App_playlist = (props) => {
       <section className={styles.pageTitle}>
         <h1 className={styles.pageTitleText}>Playlist</h1>
       </section>
-      <header>
-        <button
-          onClick={() => {
-            setIsShowSearchBar(true);
+      <header className={styles.searchBar}>
+        <select
+          ref={selectRef}
+          onChange={() => {
+            setPageNum(1);
+            search();
           }}
         >
-          검색
-        </button>
-        <button>정렬</button>
+          <option value='제목'>제목</option>
+          <option value='가수'>가수</option>
+        </select>
+        <input
+          type='search'
+          placeholder='search..'
+          ref={searchRef}
+          onChange={() => {
+            setPageNum(1);
+            search();
+          }}
+        />
       </header>
-      {isShowSearchBar && (
-        <section className={styles.searchBar}>
-          <select
-            ref={selectRef}
-            onChange={() => {
-              setPageNum(1);
-              search();
-            }}
-          >
-            <option value='제목'>제목</option>
-            <option value='가수'>가수</option>
-          </select>
-          <input
-            type='search'
-            placeholder='search..'
-            ref={searchRef}
-            onChange={() => {
-              setPageNum(1);
-              search();
-            }}
-          />
-          <button
-            onClick={() => {
-              setIsShowSearchBar(!isShowSearchBar);
-            }}
-          >
-            X
-          </button>
-        </section>
-      )}
-
       <section className={styles.results}>
         <ul>
           <li className={styles.description}>

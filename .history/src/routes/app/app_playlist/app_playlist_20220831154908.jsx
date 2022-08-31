@@ -94,13 +94,6 @@ const App_playlist = (props) => {
               search();
             }}
           />
-          <button
-            onClick={() => {
-              setIsShowSearchBar(!isShowSearchBar);
-            }}
-          >
-            X
-          </button>
         </section>
       )}
 
