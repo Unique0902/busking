@@ -12,9 +12,9 @@ const Login = ({ authService, userRepository }) => {
       if (user) {
         userRepository.checkUser(user.uid, (userData) => {
           if (userData) {
-            navigate('/busking/app/home');
+            navigate('/app/home');
           } else {
-            navigate('/busking/makeUser');
+            navigate('/makeUser');
           }
         });
       } else {

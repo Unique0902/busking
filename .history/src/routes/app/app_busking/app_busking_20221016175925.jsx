@@ -50,7 +50,7 @@ const App_busking = ({ buskingRepository }) => {
   }, [isBusking]);
   useEffect(() => {
     if (userId) {
-      setUrl(`https://unique0902.github.io/busking/apply/${userId}`);
+      setUrl(`https://unique0902.github.io/app/apply/${userId}`);
     }
   }, [userId]);
   const plusPage = () => {
@@ -229,7 +229,7 @@ const App_busking = ({ buskingRepository }) => {
         className={styles.cancelBtn}
         onClick={() => {
           buskingRepository.removeBusking(userId, () => {
-            navigate('/busking/app/home');
+            navigate('/app/home');
           });
         }}
       >

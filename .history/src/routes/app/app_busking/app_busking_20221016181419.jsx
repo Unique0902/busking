@@ -229,7 +229,7 @@ const App_busking = ({ buskingRepository }) => {
         className={styles.cancelBtn}
         onClick={() => {
           buskingRepository.removeBusking(userId, () => {
-            navigate('/busking/app/home');
+            navigate('/app/home');
           });
         }}
       >

@@ -66,7 +66,7 @@ function App({
     }
     userRepository.checkUser(userId, (isUserData) => {
       if (!isUserData) {
-        navigate('/busking/makeUser');
+        navigate('/makeUser');
         return;
       }
     });
@@ -88,7 +88,7 @@ function App({
           setUserName(user.displayName);
           setUserId(user.uid);
         } else {
-          navigate('/busking/');
+          navigate('busking/');
         }
       },
       [authService, userId]

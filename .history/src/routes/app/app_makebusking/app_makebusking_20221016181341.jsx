@@ -76,7 +76,7 @@ const App_makebusking = ({ buskingRepository }) => {
           const name = nameRef.current.value;
           if (playlistId && num && name) {
             buskingRepository.makeBusking(userId, playlistId, num, name, () => {
-              navigate('/busking/app/busking');
+              navigate('/app/busking');
             });
           } else {
             if (!playlistId) {

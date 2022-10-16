@@ -14,7 +14,7 @@ const Login = ({ authService, userRepository }) => {
           if (userData) {
             navigate('/busking/app/home');
           } else {
-            navigate('/busking/makeUser');
+            navigate('/makeUser');
           }
         });
       } else {

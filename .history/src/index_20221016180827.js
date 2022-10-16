@@ -37,7 +37,7 @@ root.render(
       <Routes>
         <Route path='busking'>
           <Route
-            path=''
+            path='/'
             element={
               <Login
                 authService={authService}
@@ -54,7 +54,7 @@ root.render(
               />
             }
           />
-          <Route path='apply'>
+          <Route path='busking/apply'>
             <Route
               path=':userId'
               element={

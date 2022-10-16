@@ -35,82 +35,75 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='busking'>
-          <Route
-            path=''
-            element={
-              <Login
-                authService={authService}
-                userRepository={userRepository}
-              />
-            }
-          />
-          <Route
-            path='makeUser'
-            element={
-              <MakeUser
-                authService={authService}
-                userRepository={userRepository}
-              />
-            }
-          />
-          <Route path='apply'>
-            <Route
-              path=':userId'
-              element={
-                <Apply
-                  buskingRepository={buskingRepository}
-                  userRepository={userRepository}
-                  playlistRepository={playlistRepository}
-                  ipService={ipService}
-                />
-              }
+        <Route
+          path='busking'
+          element={
+            <Login authService={authService} userRepository={userRepository} />
+          }
+        />
+        <Route
+          path='makeUser'
+          element={
+            <MakeUser
+              authService={authService}
+              userRepository={userRepository}
             />
-          </Route>
+          }
+        />
+        <Route path='busking/apply'>
           <Route
-            path='app'
+            path=':userId'
             element={
-              <App
+              <Apply
+                buskingRepository={buskingRepository}
+                userRepository={userRepository}
+                playlistRepository={playlistRepository}
+                ipService={ipService}
+              />
+            }
+          />
+        </Route>
+        <Route
+          path='app'
+          element={
+            <App
+              authService={authService}
+              userRepository={userRepository}
+              playlistRepository={playlistRepository}
+              buskingRepository={buskingRepository}
+            />
+          }
+        >
+          <Route path='home' element={<App_home />} />
+          <Route
+            path='add'
+            element={
+              <App_add
+                playlistRepository={playlistRepository}
+                lastfm={lastfm}
+              />
+            }
+          />
+          <Route
+            path='makebusking'
+            element={<App_makebusking buskingRepository={buskingRepository} />}
+          />
+          <Route
+            path='inform'
+            element={
+              <App_inform
                 authService={authService}
                 userRepository={userRepository}
                 playlistRepository={playlistRepository}
                 buskingRepository={buskingRepository}
               />
             }
-          >
-            <Route path='home' element={<App_home />} />
-            <Route
-              path='add'
-              element={
-                <App_add
-                  playlistRepository={playlistRepository}
-                  lastfm={lastfm}
-                />
-              }
-            />
-            <Route
-              path='makebusking'
-              element={
-                <App_makebusking buskingRepository={buskingRepository} />
-              }
-            />
-            <Route
-              path='inform'
-              element={
-                <App_inform
-                  authService={authService}
-                  userRepository={userRepository}
-                  playlistRepository={playlistRepository}
-                  buskingRepository={buskingRepository}
-                />
-              }
-            />
-            <Route path='playlist' element={<App_playlist />} />
-            <Route
-              path='busking'
-              element={<App_busking buskingRepository={buskingRepository} />}
-            />{' '}
-          </Route>
+          />
+          <Route path='playlist' element={<App_playlist />} />
+          <Route
+            path='busking'
+            element={<App_busking buskingRepository={buskingRepository} />}
+          />{' '}
         </Route>
       </Routes>
     </BrowserRouter>

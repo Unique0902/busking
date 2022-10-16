@@ -54,7 +54,7 @@ root.render(
               />
             }
           />
-          <Route path='apply'>
+          <Route path='busking/apply'>
             <Route
               path=':userId'
               element={
