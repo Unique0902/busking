@@ -1,0 +1,19 @@
+@value makerWhite from  '../../common/colors.css';
+
+body {
+  background: rgb(127, 2, 204);
+  background: linear-gradient(
+    180deg,
+    rgba(127, 2, 204, 1) 41%,
+    rgba(21, 46, 144, 1) 78%,
+    rgba(19, 31, 106, 1) 95%
+  );
+  color: makerWhite;
+  height: 100vh;
+  display: flex;
+}
+
+.main {
+  flex-basis: 85%;
+  padding: 2em;
+}

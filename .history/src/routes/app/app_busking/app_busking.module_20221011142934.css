@@ -1,0 +1,33 @@
+@value makerWhite from  '../../../common/colors.css';
+
+.mainTitle {
+  font-size: 2rem;
+}
+
+.option {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 20px;
+  background-color: makerWhite;
+  color: black;
+  margin: 1em 0;
+}
+.title {
+  font-size: 1.2rem;
+}
+.select {
+  width: 15em;
+  border-radius: 10px;
+}
+.num {
+  width: 15em;
+}
+.text {
+  width: 15em;
+}
+.btn {
+  width: 3em;
+  height: 3em;
+}

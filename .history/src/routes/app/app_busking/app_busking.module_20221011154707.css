@@ -1,0 +1,11 @@
+.shareSec {
+  display: flex;
+}
+.qr {
+  width: 3em;
+  height: 3em;
+  background-color: aqua;
+}
+.url {
+  font-size: 2rem;
+}

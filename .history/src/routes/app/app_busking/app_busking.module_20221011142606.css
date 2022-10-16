@@ -1,0 +1,12 @@
+@value makerWhite from  '../../../common/colors.css';
+
+.mainTitle {
+  font-size: 2rem;
+}
+
+.option {
+  display: flex;
+  border: 2px solid gray;
+  border-radius: 20px;
+  margin: 1em 0;
+}

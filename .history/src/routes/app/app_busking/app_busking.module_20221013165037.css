@@ -1,0 +1,56 @@
+.shareSec {
+  display: flex;
+}
+.qr {
+  width: 3em;
+  height: 3em;
+  background-color: aqua;
+  margin-bottom: 3em;
+  width: 50%;
+}
+.url {
+  font-size: 2rem;
+  width: 50%;
+}
+.list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn {
+  background-color: bisque;
+  border: 1px white solid;
+  border-radius: 5px;
+}
+.description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0.6em 1em;
+}
+.index {
+  flex-basis: 10%;
+}
+.name {
+  flex-basis: 45%;
+}
+.appliance {
+  flex-basis: 10%;
+}
+.artist {
+  flex-basis: 25%;
+}
+.btnSec {
+  flex-basis: 10%;
+}
+.searchBtns {
+  display: flex;
+  justify-content: end;
+}
+.pageTitle {
+  display: flex;
+}
+.pageTitleText {
+  font-size: fontBig;
+}
