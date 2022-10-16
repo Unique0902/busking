@@ -88,7 +88,7 @@ function App({
           setUserName(user.displayName);
           setUserId(user.uid);
         } else {
-          navigate('/busking');
+          navigate('busking/');
         }
       },
       [authService, userId]
