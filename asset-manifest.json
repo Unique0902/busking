@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/busking/static/css/main.ce3763d9.css",
+    "main.js": "/busking/static/js/main.5685c584.js",
+    "index.html": "/busking/index.html",
+    "main.ce3763d9.css.map": "/busking/static/css/main.ce3763d9.css.map",
+    "main.5685c584.js.map": "/busking/static/js/main.5685c584.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce3763d9.css",
+    "static/js/main.5685c584.js"
+  ]
+}
