@@ -21,9 +21,7 @@ const App_playlist = (props) => {
   ] = useOutletContext();
   useEffect(() => {
     if (nowPlaylist) {
-      nowPlaylist.songs
-        ? setResults(Object.values(nowPlaylist.songs))
-        : setResults([]);
+      nowPlaylist.songs && setResults(Object.values(nowPlaylist.songs));
     } else {
       setResults([]);
     }
@@ -31,15 +29,6 @@ const App_playlist = (props) => {
   useEffect(() => {
     setResultNum(results.length);
   }, [results.length]);
-
-  useEffect(() => {
-    if ((pageNum - 1) * 6 + 1 > resultNum) {
-      if (resultNum == 0) {
-        return;
-      }
-      setPageNum(pageNum - 1);
-    }
-  }, [resultNum]);
 
   const search = () => {
     if (searchRef.current.value) {

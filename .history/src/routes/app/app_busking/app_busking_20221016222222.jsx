@@ -31,7 +31,7 @@ const App_busking = ({ buskingRepository }) => {
   const [isSinging, setIsSinging] = useState(false);
   useEffect(() => {
     if (userId && !isBusking) {
-      buskingRepository.syncBuskingData(userId, (data) => {
+      buskingRepository.checkBusking(userId, (data) => {
         if (data) {
           setIsBusking(true);
         }
@@ -75,14 +75,6 @@ const App_busking = ({ buskingRepository }) => {
       setResults([]);
     }
   }, [appliance, appliance && Object.values(appliance).length]);
-  useEffect(() => {
-    if ((pageNum - 1) * 6 + 1 > resultNum) {
-      if (resultNum == 0) {
-        return;
-      }
-      setPageNum(pageNum - 1);
-    }
-  }, [resultNum]);
   return (
     <>
       <section className={styles.shareSec}>

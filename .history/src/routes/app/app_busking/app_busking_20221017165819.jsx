@@ -29,16 +29,17 @@ const App_busking = ({ buskingRepository }) => {
   const [beforeSong, setBeforeSong] = useState(null);
   const [nowSong, setNowSong] = useState(null);
   const [isSinging, setIsSinging] = useState(false);
+  if (userId && !isBusking) {
+    buskingRepository.syncBuskingData(userId, (data) => {
+      console.log('hi');
+      if (data) {
+        setIsBusking(true);
+      }
+    });
+  }
+  useEffect(() => {}, [userId]);
   useEffect(() => {
-    if (userId && !isBusking) {
-      buskingRepository.syncBuskingData(userId, (data) => {
-        if (data) {
-          setIsBusking(true);
-        }
-      });
-    }
-  }, [userId]);
-  useEffect(() => {
+    console.log('hi');
     if (isBusking) {
       buskingRepository.syncBuskingData(userId, (data) => {
         if (data) {
@@ -49,6 +50,7 @@ const App_busking = ({ buskingRepository }) => {
     }
   }, [isBusking]);
   useEffect(() => {
+    console.log('hi');
     if (userId) {
       setUrl(`https://unique0902.github.io/BuskingApply?uid=${userId}`);
     }
@@ -68,6 +70,7 @@ const App_busking = ({ buskingRepository }) => {
   useEffect(() => {
     // console.log('hi');
     // console.log(appliance);
+    console.log('hi');
     if (appliance) {
       setResults(Object.values(appliance));
       setResultNum(Object.values(appliance).length);
@@ -76,6 +79,7 @@ const App_busking = ({ buskingRepository }) => {
     }
   }, [appliance, appliance && Object.values(appliance).length]);
   useEffect(() => {
+    console.log('hi');
     if ((pageNum - 1) * 6 + 1 > resultNum) {
       if (resultNum == 0) {
         return;

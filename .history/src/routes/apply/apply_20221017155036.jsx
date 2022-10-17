@@ -101,7 +101,7 @@ const Apply = ({
   useEffect(() => {
     if (userId && !isBusking) {
       //   console.log('중복좀');
-      buskingRepository.syncBuskingData(userId, (data) => {
+      buskingRepository.checkBusking(userId, (data) => {
         if (data) {
           setIsBusking(true);
         } else {

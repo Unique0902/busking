@@ -25,7 +25,7 @@ function App({
     if (!nowPlaylist) {
       return;
     }
-    const songArr = nowPlaylist.songs ? Object.values(nowPlaylist.songs) : [];
+    const songArr = Object.values(nowPlaylist.songs);
     const sameSong = songArr.find(
       (song) => song.title == title && song.artist == artist
     );

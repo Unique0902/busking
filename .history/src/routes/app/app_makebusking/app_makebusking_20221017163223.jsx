@@ -23,14 +23,13 @@ const App_makebusking = ({ buskingRepository }) => {
   useEffect(() => {
     if (playlists) {
       setPlaylistArr(Object.values(playlists));
-      console.log('hi');
     }
   }, [playlists]);
   useEffect(() => {
-    buskingRepository.syncBuskingData(userId, (buskingData) => {
-      console.log('hi');
+    buskingRepository.checkBusking(userId, (buskingData) => {
       if (buskingData) {
-        navigate('/busking/app/busking');
+        console.log('hi');
+        // navigate('/busking/app/busking');
       }
     });
   }, []);
@@ -78,7 +77,7 @@ const App_makebusking = ({ buskingRepository }) => {
           const name = nameRef.current.value;
           if (playlistId && num && name) {
             buskingRepository.makeBusking(userId, playlistId, num, name, () => {
-              console.log('safh');
+              // navigate('/busking/app/busking');
             });
           } else {
             if (!playlistId) {

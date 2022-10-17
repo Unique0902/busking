@@ -9,12 +9,21 @@ class BuskingRepository {
       value && onUpdate(value);
     });
   }
-
-  makeBusking(userId, playlistId, num, name, onUpdate) {
-    const listRef = ref(database, `buskings/${userId}/`);
-    const buskingData = { id: Date.now(), playlistId, maxNum: num, name };
-    set(listRef, buskingData);
-    onUpdate();
+  checkBusking(userId, onUpdate) {
+    const listRef = ref(database, `buskings/${userId}`);
+    onValue(listRef, (snapshot) => {
+      const value = snapshot.val();
+      onUpdate(!!value);
+    });
+  }
+  makeBusking(userId, playlistId, num, name) {
+    this.checkBusking(userId, (buskingData) => {
+      if (true || !buskingData) {
+        const listRef = ref(database, `buskings/${userId}/`);
+        const buskingData = { id: Date.now(), playlistId, maxNum: num, name };
+        set(listRef, buskingData);
+      }
+    });
   }
   removeBusking(userId, onUpdate) {
     const listRef = ref(database, `buskings/${userId}/`);

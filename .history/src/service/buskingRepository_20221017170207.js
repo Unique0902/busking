@@ -11,10 +11,16 @@ class BuskingRepository {
   }
 
   makeBusking(userId, playlistId, num, name, onUpdate) {
-    const listRef = ref(database, `buskings/${userId}/`);
-    const buskingData = { id: Date.now(), playlistId, maxNum: num, name };
-    set(listRef, buskingData);
-    onUpdate();
+    this.syncBuskingData(userId, (buskingData) => {
+      if (!buskingData) {
+        const listRef = ref(database, `buskings/${userId}/`);
+        const buskingData = { id: Date.now(), playlistId, maxNum: num, name };
+        set(listRef, buskingData);
+        onUpdate();
+      } else {
+        alert('이미 버스킹중입니다!');
+      }
+    });
   }
   removeBusking(userId, onUpdate) {
     const listRef = ref(database, `buskings/${userId}/`);

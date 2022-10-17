@@ -31,13 +31,16 @@ const App_busking = ({ buskingRepository }) => {
   const [isSinging, setIsSinging] = useState(false);
   useEffect(() => {
     if (userId && !isBusking) {
-      buskingRepository.syncBuskingData(userId, (data) => {
+      buskingRepository.checkBusking(userId, (data) => {
         if (data) {
           setIsBusking(true);
         }
       });
     }
   }, [userId]);
+  useEffect(() => {
+    navigate('/busking/app/busking');
+  }, []);
   useEffect(() => {
     if (isBusking) {
       buskingRepository.syncBuskingData(userId, (data) => {

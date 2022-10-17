@@ -77,6 +77,7 @@ const App_makebusking = ({ buskingRepository }) => {
           const num = numRef.current.value;
           const name = nameRef.current.value;
           if (playlistId && num && name) {
+            console.log('hi');
             buskingRepository.makeBusking(userId, playlistId, num, name, () => {
               console.log('safh');
             });

@@ -9,13 +9,12 @@ class PlaylistRepository {
       value && onUpdate(value);
     });
   }
-  saveSong(userId, playlist, song, onUpdate) {
+  saveSong(userId, playlist, song) {
     const listRef = ref(
       database,
       `playlists/${userId}/${playlist.id}/songs/${song.id}`
     );
     set(listRef, song);
-    onUpdate();
   }
   makePlaylist(userId, playlist) {
     const listRef = ref(database, `playlists/${userId}/${playlist.id}/`);

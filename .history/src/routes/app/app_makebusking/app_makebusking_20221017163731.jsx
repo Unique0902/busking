@@ -26,14 +26,14 @@ const App_makebusking = ({ buskingRepository }) => {
       console.log('hi');
     }
   }, [playlists]);
-  useEffect(() => {
-    buskingRepository.syncBuskingData(userId, (buskingData) => {
-      console.log('hi');
-      if (buskingData) {
-        navigate('/busking/app/busking');
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   buskingRepository.checkBusking(userId, (buskingData) => {
+  //     if (buskingData) {
+  //       console.log('hi');
+  //       navigate('/busking/app/busking');
+  //     }
+  //   });
+  // }, []);
   return (
     <>
       <h1 className={styles.mainTitle}>버스킹하기</h1>
@@ -78,7 +78,7 @@ const App_makebusking = ({ buskingRepository }) => {
           const name = nameRef.current.value;
           if (playlistId && num && name) {
             buskingRepository.makeBusking(userId, playlistId, num, name, () => {
-              console.log('safh');
+              navigate('/busking/app/busking');
             });
           } else {
             if (!playlistId) {

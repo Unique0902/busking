@@ -32,15 +32,6 @@ const App_playlist = (props) => {
     setResultNum(results.length);
   }, [results.length]);
 
-  useEffect(() => {
-    if ((pageNum - 1) * 6 + 1 > resultNum) {
-      if (resultNum == 0) {
-        return;
-      }
-      setPageNum(pageNum - 1);
-    }
-  }, [resultNum]);
-
   const search = () => {
     if (searchRef.current.value) {
       if (selectRef.current.value === '제목') {

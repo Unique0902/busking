@@ -25,22 +25,12 @@ function App({
     if (!nowPlaylist) {
       return;
     }
-    const songArr = nowPlaylist.songs ? Object.values(nowPlaylist.songs) : [];
-    const sameSong = songArr.find(
-      (song) => song.title == title && song.artist == artist
-    );
-    if (sameSong) {
-      alert('이미 추가된 노래입니다!');
-    } else {
-      const song = {
-        id: Date.now(),
-        title: title,
-        artist: artist,
-      };
-      playlistRepository.saveSong(userId, nowPlaylist, song, () => {
-        alert(`${artist}의 ${title}가 추가되었습니다.`);
-      });
-    }
+    const song = {
+      id: Date.now(),
+      title: title,
+      artist: artist,
+    };
+    playlistRepository.saveSong(userId, nowPlaylist, song);
   };
   const removeNowPlaylist = () => {
     playlistRepository.removePlaylist(userId, nowPlaylist);

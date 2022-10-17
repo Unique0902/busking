@@ -27,19 +27,16 @@ const App_playlist = (props) => {
     } else {
       setResults([]);
     }
-  }, [nowPlaylist]);
-  useEffect(() => {
-    setResultNum(results.length);
-  }, [results.length]);
-
-  useEffect(() => {
     if ((pageNum - 1) * 6 + 1 > resultNum) {
       if (resultNum == 0) {
         return;
       }
       setPageNum(pageNum - 1);
     }
-  }, [resultNum]);
+  }, [nowPlaylist]);
+  useEffect(() => {
+    setResultNum(results.length);
+  }, [results.length]);
 
   const search = () => {
     if (searchRef.current.value) {
