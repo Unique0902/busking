@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './app_add.module.css';
 import { useOutletContext } from 'react-router-dom';
 import SearchResult from '../../../components/searchResult/searchResult';
@@ -11,20 +10,20 @@ const App_add = ({ lastfm }) => {
   const [pageNum, setPageNum] = useState(1);
   const searchRef = useRef();
   const selectRef = useRef();
-  const addSongToPlaylist = useOutletContext();
-  console.log(addSongToPlaylist);
-  const search = () => {
+  const [addSongToPlaylist, removeSongInPlaylist, nowPlaylist] =
+    useOutletContext();
+  const search = (pageNum2) => {
     if (searchRef.current.value) {
       if (selectRef.current.value === '제목') {
         lastfm
-          .searchSongByName(searchRef.current.value, pageNum)
+          .searchSongByName(searchRef.current.value, pageNum2)
           .then((result) => {
             setSearchResults(result.trackmatches.track);
             setResultNum(parseInt(result['opensearch:totalResults']));
           });
       } else if (selectRef.current.value === '가수') {
         lastfm
-          .searchSongByArtist(searchRef.current.value, pageNum)
+          .searchSongByArtist(searchRef.current.value, pageNum2)
           .then((result) => {
             setSearchResults(result.trackmatches.track);
             setResultNum(parseInt(result['opensearch:totalResults']));
@@ -33,23 +32,26 @@ const App_add = ({ lastfm }) => {
     }
   };
   const plusPage = () => {
+    search(pageNum + 1);
     setPageNum(pageNum + 1);
-    search();
   };
   const minusPage = () => {
     if (pageNum !== 1) {
+      search(pageNum - 1);
       setPageNum(pageNum - 1);
-      search();
     }
   };
   return (
     <>
-      <header className={styles.searchBar}>
+      <section className={styles.pageTitle}>
+        <h1 className={styles.pageTitleText}>노래추가</h1>
+      </section>
+      <section className={styles.searchBar}>
         <select
           ref={selectRef}
           onChange={() => {
             setPageNum(1);
-            search();
+            search(1);
           }}
         >
           <option value='제목'>제목</option>
@@ -61,13 +63,14 @@ const App_add = ({ lastfm }) => {
           ref={searchRef}
           onChange={() => {
             setPageNum(1);
-            search();
+            search(1);
           }}
         />
-        <button type='submit'>
-          <img src='/images/search.png' alt='search' />
-        </button>
-      </header>
+        <p className={styles.alertDescription}>
+          api특성상 제목, 가수명을 영어로 <br />
+          입력하시면 더 잘나옵니다.
+        </p>
+      </section>
       <section className={styles.results}>
         <ul>
           <li className={styles.description}>

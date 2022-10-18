@@ -12,18 +12,18 @@ const App_add = ({ lastfm }) => {
   const selectRef = useRef();
   const [addSongToPlaylist, removeSongInPlaylist, nowPlaylist] =
     useOutletContext();
-  const search = () => {
+  const search = (pageNum2) => {
     if (searchRef.current.value) {
       if (selectRef.current.value === '제목') {
         lastfm
-          .searchSongByName(searchRef.current.value, pageNum)
+          .searchSongByName(searchRef.current.value, pageNum2)
           .then((result) => {
             setSearchResults(result.trackmatches.track);
             setResultNum(parseInt(result['opensearch:totalResults']));
           });
       } else if (selectRef.current.value === '가수') {
         lastfm
-          .searchSongByArtist(searchRef.current.value, pageNum)
+          .searchSongByArtist(searchRef.current.value, pageNum2)
           .then((result) => {
             setSearchResults(result.trackmatches.track);
             setResultNum(parseInt(result['opensearch:totalResults']));
@@ -32,13 +32,13 @@ const App_add = ({ lastfm }) => {
     }
   };
   const plusPage = () => {
+    search(pageNum + 1);
     setPageNum(pageNum + 1);
-    search();
   };
   const minusPage = () => {
     if (pageNum !== 1) {
+      search(pageNum - 1);
       setPageNum(pageNum - 1);
-      search();
     }
   };
   return (
@@ -51,7 +51,7 @@ const App_add = ({ lastfm }) => {
           ref={selectRef}
           onChange={() => {
             setPageNum(1);
-            search();
+            search(1);
           }}
         >
           <option value='제목'>제목</option>
@@ -63,7 +63,7 @@ const App_add = ({ lastfm }) => {
           ref={searchRef}
           onChange={() => {
             setPageNum(1);
-            search();
+            search(1);
           }}
         />
         <p className={styles.alertDescription}>
