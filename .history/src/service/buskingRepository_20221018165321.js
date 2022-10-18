@@ -6,7 +6,7 @@ class BuskingRepository {
     const listRef = ref(database, `buskings/${userId}/`);
     onValue(listRef, (snapshot) => {
       const value = snapshot.val();
-      onUpdate(value);
+      value && onUpdate(value);
     });
   }
 
