@@ -15,15 +15,14 @@ function App({
   const [userName, setUserName] = useState('');
   const [playlists, setPlaylists] = useState(null);
   const [userId, setUserId] = useState('');
-  const [nowPlaylist, setNowPlaylist] = useState([]);
+  const [nowPlaylist, setNowPlaylist] = useState(null);
   const [userData, setUserData] = useState(null);
   let navigate = useNavigate();
   const logout = () => {
     authService.logout();
   };
   const addSongToPlaylist = (title, artist) => {
-    if (nowPlaylist.length == 0) {
-      alert('플레이리스트가 존재하지않습니다! 추가해주세요!');
+    if (!nowPlaylist) {
       return;
     }
     const songArr = nowPlaylist.songs ? Object.values(nowPlaylist.songs) : [];
@@ -46,15 +45,6 @@ function App({
   const removeNowPlaylist = () => {
     playlistRepository.removePlaylist(userId, nowPlaylist, () => {
       alert('제거되었습니다.');
-      playlistRepository.syncPlaylist(userId, (playlists) => {
-        if (playlists) {
-          setPlaylists(playlists);
-          setNowPlaylist(Object.values(playlists)[0]);
-        } else {
-          setPlaylists(null);
-          setNowPlaylist([]);
-        }
-      });
     });
     if (playlists) {
       setNowPlaylist(Object.values(playlists)[0]);

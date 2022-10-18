@@ -46,7 +46,7 @@ const App_header = ({
                 addBasicPlaylist();
               }}
             >
-              플레이리스트 추가
+              플레이 리스트추가
             </button>
           </div>
         )}

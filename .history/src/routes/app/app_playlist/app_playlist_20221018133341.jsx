@@ -132,7 +132,7 @@ const App_playlist = (props) => {
           </button>
         </section>
       )}
-      {nowPlaylist.length != 0 ? (
+      {nowPlaylist.length != 0 && (
         <>
           <h2>플레이리스트 노래 수 {results.length}</h2>
           <section className={styles.results}>
@@ -202,10 +202,6 @@ const App_playlist = (props) => {
           >
             시간순 정렬
           </button>
-        </>
-      ) : (
-        <>
-          <h1>플레이리스트가 존재하지않습니다. 추가해주세요</h1>
         </>
       )}
     </>

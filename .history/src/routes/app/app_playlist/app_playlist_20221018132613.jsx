@@ -76,7 +76,7 @@ const App_playlist = (props) => {
   };
   return (
     <>
-      {nowPlaylist.length != 0 && (
+      {nowPlaylist && (
         <section className={styles.pageTitle}>
           <h1 className={styles.pageTitleText}>
             {nowPlaylist && nowPlaylist.name}
@@ -91,17 +91,15 @@ const App_playlist = (props) => {
           </button>
         </section>
       )}
-      {nowPlaylist.length != 0 && (
-        <section className={styles.searchBtns}>
-          <button
-            onClick={() => {
-              setIsShowSearchBar(true);
-            }}
-          >
-            검색
-          </button>
-        </section>
-      )}
+      <section className={styles.searchBtns}>
+        <button
+          onClick={() => {
+            setIsShowSearchBar(true);
+          }}
+        >
+          검색
+        </button>
+      </section>
       {isShowSearchBar && (
         <section className={styles.searchBar}>
           <select
@@ -132,82 +130,72 @@ const App_playlist = (props) => {
           </button>
         </section>
       )}
-      {nowPlaylist.length != 0 ? (
-        <>
-          <h2>플레이리스트 노래 수 {results.length}</h2>
-          <section className={styles.results}>
-            <ul>
-              <li className={styles.description}>
-                <div className={styles.index}>index</div>
-                <div className={styles.name}>이름</div>
-                <div className={styles.artist}>아티스트</div>
-                <div className={styles.btn}></div>
-              </li>
-              {results &&
-                results
-                  .slice((pageNum - 1) * 6, pageNum * 6)
-                  .map((result) => (
-                    <SearchResult
-                      key={results.indexOf(result)}
-                      index={results.indexOf(result) + 1}
-                      result={result}
-                      btnText='제거'
-                      onSongClick={removeSongInPlaylist}
-                    />
-                  ))}
-            </ul>
-            <Page_num_screen
-              resultNum={resultNum}
-              pageNum={pageNum}
-              onPagePlus={plusPage}
-              onPageMinus={minusPage}
-            />
-          </section>
-          <button
-            className={styles.btn}
-            onClick={() => {
-              results.sort(function (a, b) {
-                if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
-                else if (a.title.toLowerCase() < b.title.toLowerCase())
-                  return -1;
-                else return 0;
-              });
-              setResults([...results]);
-            }}
-          >
-            제목 문자순 정렬
-          </button>
-          <button
-            className={styles.btn}
-            onClick={() => {
-              results.sort(function (a, b) {
-                if (a.artist.toLowerCase() > b.artist.toLowerCase()) return 1;
-                else if (a.artist.toLowerCase() < b.artist.toLowerCase())
-                  return -1;
-                else return 0;
-              });
-              setResults([...results]);
-            }}
-          >
-            가수 문자순 정렬
-          </button>
-          <button
-            className={styles.btn}
-            onClick={() => {
-              results.sort(function (a, b) {
-                return a.id - b.id;
-              });
-              setResults([...results]);
-            }}
-          >
-            시간순 정렬
-          </button>
-        </>
-      ) : (
-        <>
-          <h1>플레이리스트가 존재하지않습니다. 추가해주세요</h1>
-        </>
-      )}
+      <h2>플레이리스트 노래 수 {results.length}</h2>
+      <section className={styles.results}>
+        <ul>
+          <li className={styles.description}>
+            <div className={styles.index}>index</div>
+            <div className={styles.name}>이름</div>
+            <div className={styles.artist}>아티스트</div>
+            <div className={styles.btn}></div>
+          </li>
+          {results &&
+            results
+              .slice((pageNum - 1) * 6, pageNum * 6)
+              .map((result) => (
+                <SearchResult
+                  key={results.indexOf(result)}
+                  index={results.indexOf(result) + 1}
+                  result={result}
+                  btnText='제거'
+                  onSongClick={removeSongInPlaylist}
+                />
+              ))}
+        </ul>
+        <Page_num_screen
+          resultNum={resultNum}
+          pageNum={pageNum}
+          onPagePlus={plusPage}
+          onPageMinus={minusPage}
+        />
+      </section>
+      <button
+        className={styles.btn}
+        onClick={() => {
+          results.sort(function (a, b) {
+            if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+            else if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+            else return 0;
+          });
+          setResults([...results]);
+        }}
+      >
+        제목 문자순 정렬
+      </button>
+      <button
+        className={styles.btn}
+        onClick={() => {
+          results.sort(function (a, b) {
+            if (a.artist.toLowerCase() > b.artist.toLowerCase()) return 1;
+            else if (a.artist.toLowerCase() < b.artist.toLowerCase()) return -1;
+            else return 0;
+          });
+          setResults([...results]);
+        }}
+      >
+        가수 문자순 정렬
+      </button>
+      <button
+        className={styles.btn}
+        onClick={() => {
+          results.sort(function (a, b) {
+            return a.id - b.id;
+          });
+          setResults([...results]);
+        }}
+      >
+        시간순 정렬
+      </button>
     </>
   );
 };

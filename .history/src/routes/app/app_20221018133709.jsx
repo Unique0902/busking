@@ -22,8 +22,7 @@ function App({
     authService.logout();
   };
   const addSongToPlaylist = (title, artist) => {
-    if (nowPlaylist.length == 0) {
-      alert('플레이리스트가 존재하지않습니다! 추가해주세요!');
+    if (!nowPlaylist) {
       return;
     }
     const songArr = nowPlaylist.songs ? Object.values(nowPlaylist.songs) : [];
