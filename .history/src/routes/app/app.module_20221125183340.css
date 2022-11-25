@@ -1,0 +1,13 @@
+@value makerWhite from  '../../common/colors.css';
+@value makerBlack from  '../../common/colors.css';
+
+.app {
+  color: makerBlack;
+  height: 100vh;
+  display: flex;
+  width: 100%;
+}
+
+.main {
+  padding: 2em;
+}
