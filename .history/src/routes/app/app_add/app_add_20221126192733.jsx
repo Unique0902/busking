@@ -43,8 +43,8 @@ const App_add = ({ lastfm }) => {
   };
   return (
     <>
-      <section className='border-gray-600 border-b pb-4'>
-        <h1 className='font-sans text-white text-3xl font-semibold'>
+      <section className=''>
+        <h1 className='font-sans text-white text-3xl font-semibold border-black border-b'>
           노래추가
         </h1>
       </section>
@@ -63,8 +63,8 @@ const App_add = ({ lastfm }) => {
           </select>
           <input
             type='search'
-            className='border-black border-2 p-2 rounded-xl w-2/5 font-sans text-lg'
-            placeholder='검색어를 입력하세요..'
+            className='border-black border-2 p-2 rounded-xl w-72'
+            placeholder='search..'
             ref={searchRef}
             onChange={() => {
               setPageNum(1);

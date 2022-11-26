@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './app_home.module.css';
 import { useOutletContext } from 'react-router-dom';
 
 const App_home = (props) => {
@@ -13,11 +14,12 @@ const App_home = (props) => {
   ] = useOutletContext();
   return (
     <>
-      <section className='mx-16 px-5 py-5 pb-8 rounded-xl bg-white flex-grow '>
+      <section className='mx-16 px-5 py-5 rounded-xl bg-white flex-grow '>
         <div className=''>
           <h1 className='text-black text-3xl font-sans font-bold'>
             어서오세요! {userData && userData.name} 님!
           </h1>
+          {/* <button className={styles.addBtn}>playlist 추가</button> */}
         </div>
         {/* <section className={styles.section}>
           <h2>이 플레이리스트는 지금까지 12명에게 노래를 받았어요!</h2>

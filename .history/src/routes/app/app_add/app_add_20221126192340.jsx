@@ -43,12 +43,12 @@ const App_add = ({ lastfm }) => {
   };
   return (
     <>
-      <section className='border-gray-600 border-b pb-4'>
+      <section className=''>
         <h1 className='font-sans text-white text-3xl font-semibold'>
           노래추가
         </h1>
       </section>
-      <section className='bg-white rounded-2xl m-auto w-3/4 mt-8 p-6 relative'>
+      <section className='bg-white rounded-2xl m-8 p-6 relative'>
         <section className='relative flex justify-center items-center mb-6'>
           <select
             ref={selectRef}
@@ -63,15 +63,15 @@ const App_add = ({ lastfm }) => {
           </select>
           <input
             type='search'
-            className='border-black border-2 p-2 rounded-xl w-2/5 font-sans text-lg'
-            placeholder='검색어를 입력하세요..'
+            className='border-black border-2 p-2 rounded-xl w-72'
+            placeholder='search..'
             ref={searchRef}
             onChange={() => {
               setPageNum(1);
               search(1);
             }}
           />
-          <p className='absolute right-8 font-sans text-xs text-gray-600'>
+          <p className='absolute right-8 font-sans text-xs text-gray-300'>
             Api 특성상 제목, 가수명을 영어로 <br />
             입력하시면 더 잘나옵니다.
           </p>

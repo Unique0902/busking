@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './app_home.module.css';
 import { useOutletContext } from 'react-router-dom';
 
 const App_home = (props) => {

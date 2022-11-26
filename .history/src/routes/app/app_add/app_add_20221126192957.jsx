@@ -43,7 +43,7 @@ const App_add = ({ lastfm }) => {
   };
   return (
     <>
-      <section className='border-gray-600 border-b pb-4'>
+      <section className='border-black border-b pb-4'>
         <h1 className='font-sans text-white text-3xl font-semibold'>
           노래추가
         </h1>

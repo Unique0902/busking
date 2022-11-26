@@ -26,7 +26,7 @@ const PlaylistMenu = ({
   return (
     <div
       ref={wrapperRef}
-      className=' w-80 border-gray-600 border bg-white text-black absolute rounded-xl'
+      className=' w-80 border-gray-600 border-2 bg-white text-black absolute rounded-xl'
     >
       <section className=' border-b border-gray-600 border-solid flex flex-col pt-2 pb-2'>
         {nowPlaylist ? (
