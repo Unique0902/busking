@@ -1,12 +1,24 @@
 import React from 'react';
 import styles from './app_home.module.css';
+import { useOutletContext } from 'react-router-dom';
 
 const App_home = (props) => {
+  const [
+    addSongToPlaylist,
+    removeNowPlaylist,
+    removeSongInPlaylist,
+    nowPlaylist,
+    userData,
+    playlists,
+    userId,
+  ] = useOutletContext();
   return (
     <>
-      <section className={styles.home}>
+      <section className='mx-16 px-5 py-5 rounded-xl bg-white flex-grow h-1/2'>
         <div className={styles.title}>
-          <h1 className={styles.titleText}>어서오세요!</h1>
+          <h1 className='text-black text-3xl font-sans font-bold'>
+            어서오세요! {userData && userData.name} 님!
+          </h1>
           {/* <button className={styles.addBtn}>playlist 추가</button> */}
         </div>
         {/* <section className={styles.section}>

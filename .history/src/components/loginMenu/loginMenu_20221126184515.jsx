@@ -22,9 +22,9 @@ const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
       className=' w-80  bg-white text-black absolute rounded-xl right-5'
     >
       <section className=' border-b border-gray-400 border-solid flex flex-col pt-2 pb-2'>
-        <p className=' text-center text-blue-600 font-sans text-xl py-3 px-4'>
+        <button className=' text-center text-blue-600 font-sans text-xl py-1 hover:bg-gray-200 px-4'>
           {userData && userData.name}
-        </p>
+        </button>
         <button className={btnStyle}>회원정보</button>
         <button
           className={btnStyle}
@@ -35,7 +35,7 @@ const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
           로그아웃
         </button>
       </section>
-      <section className='flex flex-row justify-around py-4 px-4'>
+      <section className='flex flex-row justify-around py-2 px-4'>
         <button className='text-gray-500 font-sans text-sm'>
           개인정보 처리 방침
         </button>
