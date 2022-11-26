@@ -136,7 +136,6 @@ function App({
           addBasicPlaylist={addBasicPlaylist}
           setNowPlaylist={setNowPlaylist}
           nowPlaylist={nowPlaylist}
-          removeNowPlaylist={removeNowPlaylist}
         />
         <Outlet
           context={[

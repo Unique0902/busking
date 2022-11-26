@@ -52,7 +52,7 @@ function App({
           setNowPlaylist(Object.values(playlists)[0]);
         } else {
           setPlaylists(null);
-          setNowPlaylist(null);
+          setNowPlaylist([]);
         }
       });
     });
@@ -109,7 +109,7 @@ function App({
   }, [userId, playlistRepository]);
   useEffect(() => {
     if (!playlists) {
-      setNowPlaylist(null);
+      setNowPlaylist([]);
     }
   }, [playlists]);
   useEffect(() => {
@@ -136,7 +136,6 @@ function App({
           addBasicPlaylist={addBasicPlaylist}
           setNowPlaylist={setNowPlaylist}
           nowPlaylist={nowPlaylist}
-          removeNowPlaylist={removeNowPlaylist}
         />
         <Outlet
           context={[

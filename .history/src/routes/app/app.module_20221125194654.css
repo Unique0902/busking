@@ -1,5 +1,3 @@
-@value makerBlack from  '../../common/colors.css';
-
 .app {
   background: rgb(127, 2, 204);
   background: linear-gradient(
@@ -8,7 +6,6 @@
     rgba(21, 46, 144, 1) 78%,
     rgba(19, 31, 106, 1) 95%
   );
-  color: makerBlack;
   height: 100vh;
   display: flex;
 }

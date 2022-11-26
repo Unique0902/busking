@@ -15,7 +15,7 @@ function App({
   const [userName, setUserName] = useState('');
   const [playlists, setPlaylists] = useState(null);
   const [userId, setUserId] = useState('');
-  const [nowPlaylist, setNowPlaylist] = useState(null);
+  const [nowPlaylist, setNowPlaylist] = useState([]);
   const [userData, setUserData] = useState(null);
   let navigate = useNavigate();
   const logout = () => {
@@ -52,7 +52,7 @@ function App({
           setNowPlaylist(Object.values(playlists)[0]);
         } else {
           setPlaylists(null);
-          setNowPlaylist(null);
+          setNowPlaylist([]);
         }
       });
     });
@@ -109,7 +109,7 @@ function App({
   }, [userId, playlistRepository]);
   useEffect(() => {
     if (!playlists) {
-      setNowPlaylist(null);
+      setNowPlaylist([]);
     }
   }, [playlists]);
   useEffect(() => {
@@ -126,9 +126,9 @@ function App({
     );
   });
   return (
-    <section className='flex h-screen text-black bg-gradient-to-b from-blue-600 to-blue-900'>
+    <section className='flex h-screen text-black bg-gradient-to-r from-cyan-500 to-blue-500'>
       <Sidebar />
-      <main className='grow py-6 px-8'>
+      <main className='grow p-6'>
         <App_header
           logout={logout}
           userData={userData}
@@ -136,7 +136,6 @@ function App({
           addBasicPlaylist={addBasicPlaylist}
           setNowPlaylist={setNowPlaylist}
           nowPlaylist={nowPlaylist}
-          removeNowPlaylist={removeNowPlaylist}
         />
         <Outlet
           context={[

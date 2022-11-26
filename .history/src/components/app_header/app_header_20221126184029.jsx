@@ -50,12 +50,7 @@ const App_header = ({
           {nowPlaylist ? nowPlaylist.name : 'No Playlist..'}
           <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
         </button>
-        <button
-          className='font-sans text-white text-xl'
-          onClick={() => {
-            setIsShowLoginMenu(true);
-          }}
-        >
+        <button className='font-sans text-white text-xl' onClick={}>
           {userData && userData.name}
         </button>
         {isShowLoginMenu && (

@@ -6,7 +6,6 @@ import styles from './app_header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import PlaylistMenu from '../playlistMenu/playlistMenu';
-import LoginMenu from '../loginMenu/loginMenu';
 
 const App_header = ({
   logout,
@@ -20,7 +19,6 @@ const App_header = ({
   const valueRef = useRef();
   const [isShowAdditionalMenu, setIsShowAdditionalMenu] = useState(false);
   const [isShowPlaylistMenu, setIsShowPlaylistMenu] = useState(false);
-  const [isShowLoginMenu, setIsShowLoginMenu] = useState(false);
   const changeNowPlaylist = (id) => {
     if (playlists[id]) {
       setNowPlaylist(playlists[id]);
@@ -50,20 +48,11 @@ const App_header = ({
           {nowPlaylist ? nowPlaylist.name : 'No Playlist..'}
           <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
         </button>
-        <button
-          className='font-sans text-white text-xl'
-          onClick={() => {
-            setIsShowLoginMenu(true);
-          }}
-        >
+        <button className='font-sans text-white text-xl'>
           {userData && userData.name}
         </button>
-        {isShowLoginMenu && (
-          <LoginMenu
-            userData={userData}
-            logout={logout}
-            setIsShowLoginMenu={setIsShowLoginMenu}
-          />
+        {isShowAdditionalMenu && (
+          <AdditionalMenu userData={userData} logout={logout} />
         )}
         {/* <button
           onClick={() => {
