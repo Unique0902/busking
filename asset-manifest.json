@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/busking/static/css/main.ce3763d9.css",
-    "main.js": "/busking/static/js/main.be651a25.js",
+    "main.css": "/busking/static/css/main.c12cd383.css",
+    "main.js": "/busking/static/js/main.8ca86640.js",
+    "static/media/bookLogo.png": "/busking/static/media/bookLogo.c5c70bda1865f90539c2.png",
     "index.html": "/busking/index.html",
-    "main.ce3763d9.css.map": "/busking/static/css/main.ce3763d9.css.map",
-    "main.be651a25.js.map": "/busking/static/js/main.be651a25.js.map"
+    "main.c12cd383.css.map": "/busking/static/css/main.c12cd383.css.map",
+    "main.8ca86640.js.map": "/busking/static/js/main.8ca86640.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce3763d9.css",
-    "static/js/main.be651a25.js"
+    "static/css/main.c12cd383.css",
+    "static/js/main.8ca86640.js"
   ]
 }
