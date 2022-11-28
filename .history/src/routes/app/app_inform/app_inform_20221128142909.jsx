@@ -33,23 +33,18 @@ const App_inform = ({
           <p>{userData && userData.name}</p>
           <FontAwesomeIcon
             icon={faChevronRight}
-            className='absolute right-5 text-xl'
+            className='absolute right-2 text-xl'
           />
         </div>
-        <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>
+        <div className='flex flex-row items-center py-3 border-gray-300 border-b'>
           <h2 className='font-sans text-2xl font-normal text-gray-500 w-36'>
             가입일자
           </h2>
           <p>{`${time.getFullYear()}년 ${
             time.getMonth() + 1
           }월 ${time.getDate()}일`}</p>
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className='absolute right-5 text-xl'
-          />
         </div>
         <button
-          className='font-sans text-2xl font-normal text-red-500 flex flex-row w-full items-center py-3 border-gray-300 border-b relative'
           onClick={() => {
             userRepository.removeUser(userId, () => {
               if (window.confirm('정말 탈퇴하시겠습니까?')) {
@@ -61,10 +56,6 @@ const App_inform = ({
           }}
         >
           회원 탈퇴
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            className='absolute right-5 text-xl'
-          />
         </button>
       </section>
     </>

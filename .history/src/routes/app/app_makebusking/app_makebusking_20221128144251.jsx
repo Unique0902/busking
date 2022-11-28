@@ -63,7 +63,8 @@ const App_makebusking = ({ buskingRepository }) => {
           <input
             type='number'
             ref={numRef}
-            value={10}
+            name=''
+            id=''
             className='border-black border-2 p-2 rounded-xl w-1/12 font-sans text-lg'
           />
         </div>

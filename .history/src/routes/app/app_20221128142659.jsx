@@ -1,4 +1,5 @@
 import Sidebar from '../../components/sidebar/sidebar';
+import './app.module.css';
 import { Outlet } from 'react-router-dom';
 import App_header from '../../components/app_header/app_header';
 import { useEffect, useState } from 'react';

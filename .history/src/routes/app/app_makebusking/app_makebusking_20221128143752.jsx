@@ -44,7 +44,7 @@ const App_makebusking = ({ buskingRepository }) => {
       </section>
       <section className='bg-white rounded-2xl m-auto w-full mt-8 p-10 relative'>
         <div className='flex flex-row items-center pb-3 border-gray-300 border-b relative'>
-          <h2 className='font-sans text-2xl font-normal text-black w-64'>
+          <h2 className='font-sans text-2xl font-normal text-black w-56'>
             플레이리스트 선택
           </h2>
           <select name='playlists' ref={selectRef} className={styles.select}>
@@ -57,18 +57,19 @@ const App_makebusking = ({ buskingRepository }) => {
           </select>
         </div>
         <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>
-          <h2 className='font-sans text-2xl font-normal text-black w-64'>
+          <h2 className='font-sans text-2xl font-normal text-black w-56'>
             최대 곡수 제한
           </h2>
           <input
             type='number'
             ref={numRef}
-            value={10}
-            className='border-black border-2 p-2 rounded-xl w-1/12 font-sans text-lg'
+            name=''
+            id=''
+            className='border-black border-2 p-2 rounded-xl w-2/5 font-sans text-lg'
           />
         </div>
         <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>
-          <h2 className='font-sans text-2xl font-normal text-black w-64'>
+          <h2 className='font-sans text-2xl font-normal text-black w-56'>
             방 제목 설정
           </h2>
           <input
@@ -76,12 +77,9 @@ const App_makebusking = ({ buskingRepository }) => {
             ref={nameRef}
             name=''
             id=''
-            className='border-black border-2 p-2 rounded-xl w-1/3 font-sans text-lg'
+            className='border-black border-2 p-2 rounded-xl w-2/5 font-sans text-lg'
           />
         </div>
-        <button className='  hover:bg-gray-200 text-start w-full font-sans text-2xl font-normal text-blue-500 py-5 border-gray-300 border-b relative'>
-          버스킹 시작하기
-        </button>
       </section>
 
       <button

@@ -49,7 +49,7 @@ const App_inform = ({
           />
         </div>
         <button
-          className='font-sans text-2xl font-normal text-red-500 flex flex-row w-full items-center py-3 border-gray-300 border-b relative'
+          className='font-sans text-2xl font-normal text-gray-500 flex flex-row w-full items-center py-3 border-gray-300 border-b relative'
           onClick={() => {
             userRepository.removeUser(userId, () => {
               if (window.confirm('정말 탈퇴하시겠습니까?')) {
