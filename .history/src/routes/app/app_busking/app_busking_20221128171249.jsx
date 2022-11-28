@@ -93,10 +93,10 @@ const App_busking = ({ buskingRepository }) => {
       setPageNum(pageNum - 1);
     }
   }, [resultNum]);
-  const playBtnStyle = 'mx-3 text-4xl text-black hover:scale-110';
+  const playBtnStyle = 'mx-3 text-4xl text-black';
   return (
     <>
-      <section className='border-gray-600 border-b items-center pt-2 pb-5 flex flex-row'>
+      <section className='border-gray-600 border-b items-center pb-4 flex flex-row'>
         <h1 className='font-sans text-white text-3xl font-semibold w-96'>
           {userData && `${userData.name}님의 버스킹`}
         </h1>

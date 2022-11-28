@@ -25,7 +25,7 @@ const MakeUser = ({ authService, userRepository }) => {
         onChange={(e) => {
           setName(e.target.value);
         }}
-        className='mt-36 px-5 py-4 border border-black rounded-2xl font-normal font-sans text-3xl text-black'
+        className='mt-36 px-5 py-4 border border-black rounded-2xl font-semibold font-sans text-3xl text-black'
       />
       {!isCanApply && (
         <p className='font-sans text-lg text-red-500 font-normal mt-4'>

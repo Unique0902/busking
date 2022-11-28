@@ -93,15 +93,15 @@ const App_busking = ({ buskingRepository }) => {
       setPageNum(pageNum - 1);
     }
   }, [resultNum]);
-  const playBtnStyle = 'mx-3 text-4xl text-black hover:scale-110';
+  const playBtnStyle = 'mx-3 text-4xl text-black';
   return (
     <>
-      <section className='border-gray-600 border-b items-center pt-2 pb-5 flex flex-row'>
+      <section className='border-gray-600 border-b items-center pb-4 flex flex-row'>
         <h1 className='font-sans text-white text-3xl font-semibold w-96'>
           {userData && `${userData.name}님의 버스킹`}
         </h1>
-        <div className='flex flex-row items-center border-l border-gray-400 grow justify-center'>
-          <h2 className='font-sans text-gray-300 text-xl font-bold'>
+        <div className='flex flex-row items-center border-l border-gray-400'>
+          <h2 className='font-sans ml-10 text-gray-300 text-xl font-bold'>
             곡 신청하기
           </h2>
           {isShowQr && (
@@ -112,7 +112,7 @@ const App_busking = ({ buskingRepository }) => {
           )}
           {isShowQr && (
             <button
-              className='relative font-sans text-lg text-black hover:scale-110 bg-white rounded-lg px-4 py-2 mr-3'
+              className='relative font-sans text-lg text-black bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {
                 setIsShowQr(false);
               }}
@@ -122,7 +122,7 @@ const App_busking = ({ buskingRepository }) => {
           )}
           {!isShowQr && (
             <button
-              className='relative font-sans text-lg ml-6 hover:scale-110 text-black bg-white rounded-lg px-4 py-2 mr-3'
+              className='relative font-sans text-lg ml-6 text-black bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {
                 setIsShowQr(true);
               }}
@@ -221,7 +221,7 @@ const App_busking = ({ buskingRepository }) => {
           </h2>
           <div className='relative'>
             <button
-              className='ml-4 bg-gray-500 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'
+              className='ml-4 bg-gray-500 py-2 px-3 text-lg rounded-lg text-white hover:scale-125'
               onClick={() => {
                 setIsShowArrangeMenu(true);
               }}
@@ -266,21 +266,17 @@ const App_busking = ({ buskingRepository }) => {
             onPageMinus={minusPage}
           />
         </section>
-        <section className='flex flex-row pt-4 justify-end'>
-          <button
-            className='ml-4 bg-red-600 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'
-            onClick={() => {
-              if (window.confirm('버스킹을 종료하시겠습니까?')) {
-                buskingRepository.removeBusking(userId, () => {
-                  navigate('/busking/app/makebusking');
-                });
-              }
-            }}
-          >
-            버스킹 종료
-          </button>
-        </section>
       </section>
+      <button
+        className='ml-4 bg-gray-500 py-2 px-3 text-lg rounded-lg text-white hover:scale-125'
+        onClick={() => {
+          buskingRepository.removeBusking(userId, () => {
+            navigate('/busking/app/makebusking');
+          });
+        }}
+      >
+        버스킹 종료
+      </button>
     </>
   );
 };

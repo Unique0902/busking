@@ -96,7 +96,7 @@ const App_busking = ({ buskingRepository }) => {
   const playBtnStyle = 'mx-3 text-4xl text-black hover:scale-110';
   return (
     <>
-      <section className='border-gray-600 border-b items-center pt-2 pb-5 flex flex-row'>
+      <section className='border-gray-600 border-b items-center pb-4 flex flex-row'>
         <h1 className='font-sans text-white text-3xl font-semibold w-96'>
           {userData && `${userData.name}님의 버스킹`}
         </h1>
@@ -122,7 +122,7 @@ const App_busking = ({ buskingRepository }) => {
           )}
           {!isShowQr && (
             <button
-              className='relative font-sans text-lg ml-6 hover:scale-110 text-black bg-white rounded-lg px-4 py-2 mr-3'
+              className='relative font-sans text-lg ml-6 hover:scale-110 text-black my-2 bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {
                 setIsShowQr(true);
               }}

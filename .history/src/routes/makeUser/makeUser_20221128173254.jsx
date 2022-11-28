@@ -19,25 +19,22 @@ const MakeUser = ({ authService, userRepository }) => {
       <h2 className=' font-sans text-3xl font-semibold'>
         노래책에서 사용할 닉네임을 정해주세요.
       </h2>
-      <input
-        ref={nameRef}
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-        className='mt-36 px-5 py-4 border border-black rounded-2xl font-normal font-sans text-3xl text-black'
-      />
-      {!isCanApply && (
-        <p className='font-sans text-lg text-red-500 font-normal mt-4'>
-          2자 이상, 8자 이하의 닉네임을 입력해주세요!
-        </p>
-      )}
+      <div className='mt-40'>
+        <input
+          ref={nameRef}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className='px-5 py-4 border border-black rounded-2xl font-sans text-3xl text-black'
+        />
+      </div>
       <button
         className={`w-1/4 ${
           isCanApply
             ? 'bg-black hover:bg-gray-400'
             : 'bg-none border border-gray-300'
-        } py-4 rounded-xl mt-24`}
+        } py-4 rounded-xl mt-16`}
         onClick={() => {
           if (isCanApply) {
             const name = nameRef.current.value;

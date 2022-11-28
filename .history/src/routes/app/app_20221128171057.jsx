@@ -131,7 +131,7 @@ function App({
     );
   });
   return (
-    <section className='flex h-screen text-black bg-gradient-to-b from-blue-500 to-blue-900'>
+    <section className='flex h-screen text-black bg-gradient-to-b from-blue-600 to-black'>
       <Sidebar />
       <main className=' grow py-6 px-8 overflow-y-auto'>
         {url != '/busking/app/busking' && (
