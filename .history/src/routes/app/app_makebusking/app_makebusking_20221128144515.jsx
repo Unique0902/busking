@@ -60,16 +60,12 @@ const App_makebusking = ({ buskingRepository }) => {
           버스킹하기
         </h1>
       </section>
-      <section className='bg-white rounded-2xl m-auto w-3/4 mt-8 p-10 relative'>
+      <section className='bg-white rounded-2xl m-auto w-full mt-8 p-10 relative'>
         <div className='flex flex-row items-center pb-3 border-gray-300 border-b relative'>
           <h2 className='font-sans text-2xl font-normal text-black w-64'>
             플레이리스트 선택
           </h2>
-          <select
-            name='playlists'
-            ref={selectRef}
-            className='border border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
-          >
+          <select name='playlists' ref={selectRef} className={styles.select}>
             {playlistArr &&
               playlistArr.map((playlist) => (
                 <option key={playlist.id} value={playlist.id}>
@@ -96,19 +92,24 @@ const App_makebusking = ({ buskingRepository }) => {
           <input
             type='text'
             ref={nameRef}
-            value={userData ? `${userData.name}님의 버스킹` : ''}
+            name=''
+            id=''
             className='border-black border-2 p-2 rounded-xl w-1/3 font-sans text-lg'
           />
         </div>
-        <button
-          onClick={() => {
-            startBusking();
-          }}
-          className='  hover:bg-gray-200 text-start w-full font-sans text-2xl font-normal text-blue-500 py-5 border-gray-300 border-b relative'
-        >
+        <button className='  hover:bg-gray-200 text-start w-full font-sans text-2xl font-normal text-blue-500 py-5 border-gray-300 border-b relative'>
           버스킹 시작하기
         </button>
       </section>
+
+      <button
+        className={styles.btn}
+        onClick={() => {
+          startBusking();
+        }}
+      >
+        시작
+      </button>
     </>
   );
 };

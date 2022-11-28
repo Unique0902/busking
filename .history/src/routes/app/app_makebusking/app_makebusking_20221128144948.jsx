@@ -97,7 +97,7 @@ const App_makebusking = ({ buskingRepository }) => {
             type='text'
             ref={nameRef}
             value={userData ? `${userData.name}님의 버스킹` : ''}
-            className='border-black border-2 p-2 rounded-xl w-1/3 font-sans text-lg'
+            className='border-black overflow-auto border-2 p-2 rounded-xl w-1/3 font-sans text-lg'
           />
         </div>
         <button

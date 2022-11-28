@@ -60,7 +60,7 @@ const App_makebusking = ({ buskingRepository }) => {
           버스킹하기
         </h1>
       </section>
-      <section className='bg-white rounded-2xl m-auto w-3/4 mt-8 p-10 relative'>
+      <section className='bg-white rounded-2xl m-auto w-full mt-8 p-10 relative'>
         <div className='flex flex-row items-center pb-3 border-gray-300 border-b relative'>
           <h2 className='font-sans text-2xl font-normal text-black w-64'>
             플레이리스트 선택
@@ -68,7 +68,7 @@ const App_makebusking = ({ buskingRepository }) => {
           <select
             name='playlists'
             ref={selectRef}
-            className='border border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
+            className='border border-black rounded-lg px-3 font-sans font-normal text-lg py-2'
           >
             {playlistArr &&
               playlistArr.map((playlist) => (
