@@ -1,10 +1,8 @@
 import React from 'react';
 import { useRef, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
   const wrapperRef = useRef();
-  let navigate = useNavigate();
   const btnStyle =
     'font-sans text-black text-lg text-center py-1 px-4 hover:bg-gray-200';
   useEffect(() => {
@@ -30,8 +28,7 @@ const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
         <button
           className={btnStyle}
           onClick={() => {
-            setIsShowLoginMenu(false);
-            navigate('/busking/app/inform');
+            setIsShowPlaylistMenu(false);
           }}
         >
           회원정보

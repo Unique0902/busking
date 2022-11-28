@@ -154,7 +154,6 @@ function App({
             userData,
             playlists,
             userId,
-            addBasicPlaylist,
           ]}
         />
       </main>

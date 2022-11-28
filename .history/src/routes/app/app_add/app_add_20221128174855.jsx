@@ -18,7 +18,6 @@ const App_add = ({ lastfm }) => {
     userData,
     playlists,
     userId,
-    addBasicPlaylist,
   ] = useOutletContext();
   const search = (pageNum2) => {
     if (searchRef.current.value) {
@@ -56,19 +55,11 @@ const App_add = ({ lastfm }) => {
           노래추가
         </h1>
       </section>
-      {!nowPlaylist ? (
-        <section className='bg-white flex flex-col items-center rounded-2xl m-auto w-3/4 mt-8 p-10 relative'>
-          <h3 className='font-sans font-semibold text-xl text-black'>
+      {nowPlaylist ? (
+        <section className='bg-white rounded-2xl m-auto w-3/4 mt-8 p-10 relative'>
+          <h3>
             플레이리스트가 존재하지 않습니다. 플레이 리스트를 추가해주세요.
           </h3>
-          <button
-            onClick={() => {
-              addBasicPlaylist();
-            }}
-            className='mt-4 font-sans text-2xl font-normal border border-black rounded-xl px-5 py-3 hover:bg-gray-200'
-          >
-            추가하기
-          </button>
         </section>
       ) : (
         <section className='bg-white rounded-2xl m-auto w-3/4 mt-8 p-10 relative'>

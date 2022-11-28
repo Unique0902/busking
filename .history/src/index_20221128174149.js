@@ -34,7 +34,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='busking'>
+        <Roue path='busking'>
           <Route
             path=''
             element={
@@ -53,6 +53,7 @@ root.render(
               />
             }
           />
+         
           <Route
             path='app'
             element={

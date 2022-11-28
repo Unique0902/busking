@@ -30,8 +30,7 @@ const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
         <button
           className={btnStyle}
           onClick={() => {
-            setIsShowLoginMenu(false);
-            navigate('/busking/app/inform');
+            navigate('/busking/inform');
           }}
         >
           회원정보

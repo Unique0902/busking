@@ -19,10 +19,6 @@ const App_playlist = (props) => {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
-    playlists,
-    userId,
-    addBasicPlaylist,
   ] = useOutletContext();
   useEffect(() => {
     if (nowPlaylist) {

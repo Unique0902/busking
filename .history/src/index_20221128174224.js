@@ -53,6 +53,8 @@ root.render(
               />
             }
           />
+          </Route>
+          </Route>
           <Route
             path='app'
             element={

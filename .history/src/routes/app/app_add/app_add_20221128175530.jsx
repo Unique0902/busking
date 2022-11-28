@@ -65,7 +65,7 @@ const App_add = ({ lastfm }) => {
             onClick={() => {
               addBasicPlaylist();
             }}
-            className='mt-4 font-sans text-2xl font-normal border border-black rounded-xl px-5 py-3 hover:bg-gray-200'
+            className='mt-2 font-sans text-2xl font-normal border border-black'
           >
             추가하기
           </button>
