@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login_nav = ({ scrollToTutorial }) => {
+const Login_nav = (props) => {
   let navigate = useNavigate();
   return (
     <nav className='flex items-center justify-around'>
@@ -32,12 +32,7 @@ const Login_nav = ({ scrollToTutorial }) => {
           <button className='hover:scale-110'>다운로드</button>
         </li>
       </ul>
-      <button
-        onClick={() => {
-          scrollToTutorial();
-        }}
-        className='text-white hover:scale-110 py-2 px-5 font-light font-sans text-base bg-blue-700 rounded-3xl'
-      >
+      <button className='text-white hover:scale-110 py-2 px-4 font-light font-sans text-base bg-blue-700 rounded-3xl'>
         튜토리얼
       </button>
     </nav>

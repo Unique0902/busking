@@ -23,7 +23,7 @@ const Login = ({ authService, userRepository }) => {
   });
   return (
     <section className='w-screen h-screen'>
-      <section className='p-6 bg-white'>
+      <section className='p-10 bg-white'>
         <Login_nav scrollToTutorial={scrollToTutorial} />
         <main className=' w-2/5 pt-24 pb-24 m-auto'>
           <h1 className='font-sans text-6xl font-semibold text-black text-center'>

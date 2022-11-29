@@ -1,12 +1,10 @@
 import React from 'react';
 import Login_nav from '../../components/login_header/login_nav';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ authService, userRepository }) => {
   let navigate = useNavigate();
-  const tutorialRef = useRef(null);
-  const scrollToTutorial = () => tutorialRef.current.scrollIntoView();
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -23,8 +21,8 @@ const Login = ({ authService, userRepository }) => {
   });
   return (
     <section className='w-screen h-screen'>
-      <section className='p-6 bg-white'>
-        <Login_nav scrollToTutorial={scrollToTutorial} />
+      <section className='p-10 bg-white'>
+        <Login_nav />
         <main className=' w-2/5 pt-24 pb-24 m-auto'>
           <h1 className='font-sans text-6xl font-semibold text-black text-center'>
             당신만의{' '}
@@ -55,10 +53,7 @@ const Login = ({ authService, userRepository }) => {
           </ul>
         </main>
       </section>
-      <section
-        className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'
-        ref={tutorialRef}
-      >
+      <section className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'>
         <img
           src={require('../../img/screenMakePlaylist.png')}
           alt=''
@@ -92,7 +87,7 @@ const Login = ({ authService, userRepository }) => {
       </section>
       <section className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'>
         <img
-          src={require('../../img/screenMakeBusking.png')}
+          src={require('../../img/screenMakePlaylist.png')}
           alt=''
           className='w-1/3 mr-3'
         />
@@ -107,53 +102,8 @@ const Login = ({ authService, userRepository }) => {
           </p>
         </div>
       </section>
-      <section className='bg-blue-400 py-48 flex flex-row justify-center items-center rounded-xl'>
-        <div className='w-1/3 mr-32'>
-          <h2 className='text-black font-sans text-5xl font-semibold mb-6'>
-            관객들로부터 노래리스트에 있는 노래들을 신청받으세요.
-          </h2>
-          <p className='text-black font-sans text-xl font-normal '>
-            버스킹을 시작하면 위에 노래를 신청받을 수 있는 링크와 그 링크로 바로
-            접속할 수 있는 QR코드가 있어요. 이를 이용하여 관객들로부터 노래를
-            신청받으세요. 그러면 아래의 신청 곡 리스트에 신청된 노래들이
-            나타나요.
-          </p>
-        </div>
-        <img
-          src={require('../../img/screenBusking.png')}
-          alt=''
-          className='w-1/3 mr-3'
-        />
-      </section>
-      <section className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'>
-        <img
-          src={require('../../img/screenBuskingApply.png')}
-          alt=''
-          className='w-1/3 mr-3'
-        />
-        <div className='w-1/3 ml-32'>
-          <h2 className='text-black font-sans text-5xl font-semibold mb-6'>
-            버스킹중인 가수의 노래리스트에서 노래를 신청하세요
-          </h2>
-          <p className='text-black font-sans text-xl font-normal '>
-            버스킹에서 선택된 노래리스트에 있는 노래들을 확인할 수 있어요. 검색,
-            정렬 등이 가능해요. 다양한 노래리스트를 확인하고 듣고 싶은 노래를
-            신청해요.
-          </p>
-        </div>
-      </section>
-      <section className='bg-white py-48 flex flex-col justify-center items-center rounded-xl'>
-        <h2 className='text-black font-sans text-5xl font-semibold mb-6'>
-          자 그럼 시작하러 가볼까요?
-        </h2>
-        <button
-          onClick={() => {
-            authService.login('Google');
-          }}
-          className='text-white hover:scale-105 py-4 px-8 font-sans text-xl bg-slate-900 rounded-3xl mt-6'
-        >
-          Google로 시작하기
-        </button>
+      <section>
+        <h2>관객들로부터 노래리스트에 있는 노래들을 신청받으세요.</h2>
       </section>
     </section>
   );

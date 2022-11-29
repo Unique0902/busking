@@ -1,12 +1,10 @@
 import React from 'react';
 import Login_nav from '../../components/login_header/login_nav';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ authService, userRepository }) => {
   let navigate = useNavigate();
-  const tutorialRef = useRef(null);
-  const scrollToTutorial = () => tutorialRef.current.scrollIntoView();
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -23,8 +21,8 @@ const Login = ({ authService, userRepository }) => {
   });
   return (
     <section className='w-screen h-screen'>
-      <section className='p-6 bg-white'>
-        <Login_nav scrollToTutorial={scrollToTutorial} />
+      <section className='p-10 bg-white'>
+        <Login_nav />
         <main className=' w-2/5 pt-24 pb-24 m-auto'>
           <h1 className='font-sans text-6xl font-semibold text-black text-center'>
             당신만의{' '}
@@ -55,10 +53,7 @@ const Login = ({ authService, userRepository }) => {
           </ul>
         </main>
       </section>
-      <section
-        className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'
-        ref={tutorialRef}
-      >
+      <section className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'>
         <img
           src={require('../../img/screenMakePlaylist.png')}
           alt=''
@@ -127,7 +122,7 @@ const Login = ({ authService, userRepository }) => {
       </section>
       <section className='bg-blue-200 py-48 flex flex-row justify-center items-center rounded-xl'>
         <img
-          src={require('../../img/screenBuskingApply.png')}
+          src={require('../../img/screenMakeBusking.png')}
           alt=''
           className='w-1/3 mr-3'
         />
@@ -141,19 +136,6 @@ const Login = ({ authService, userRepository }) => {
             신청해요.
           </p>
         </div>
-      </section>
-      <section className='bg-white py-48 flex flex-col justify-center items-center rounded-xl'>
-        <h2 className='text-black font-sans text-5xl font-semibold mb-6'>
-          자 그럼 시작하러 가볼까요?
-        </h2>
-        <button
-          onClick={() => {
-            authService.login('Google');
-          }}
-          className='text-white hover:scale-105 py-4 px-8 font-sans text-xl bg-slate-900 rounded-3xl mt-6'
-        >
-          Google로 시작하기
-        </button>
       </section>
     </section>
   );
