@@ -1,14 +1,19 @@
 {
   "files": {
-    "main.css": "/busking/static/css/main.c12cd383.css",
-    "main.js": "/busking/static/js/main.8ca86640.js",
+    "main.css": "/busking/static/css/main.a4d89c6d.css",
+    "main.js": "/busking/static/js/main.70d1620c.js",
+    "static/media/screenMakePlaylist.png": "/busking/static/media/screenMakePlaylist.00ad3b3961a0d63fb21e.png",
+    "static/media/screenBuskingApply.png": "/busking/static/media/screenBuskingApply.1e3e5195d2c55a9dc26c.png",
+    "static/media/screenBusking.png": "/busking/static/media/screenBusking.86b0abf591ac360f05be.png",
+    "static/media/screenAddSong.png": "/busking/static/media/screenAddSong.b678d1835a866b3aa602.png",
+    "static/media/screenMakeBusking.png": "/busking/static/media/screenMakeBusking.322bcfe1396cc5bc8d3b.png",
     "static/media/bookLogo.png": "/busking/static/media/bookLogo.c5c70bda1865f90539c2.png",
     "index.html": "/busking/index.html",
-    "main.c12cd383.css.map": "/busking/static/css/main.c12cd383.css.map",
-    "main.8ca86640.js.map": "/busking/static/js/main.8ca86640.js.map"
+    "main.a4d89c6d.css.map": "/busking/static/css/main.a4d89c6d.css.map",
+    "main.70d1620c.js.map": "/busking/static/js/main.70d1620c.js.map"
   },
   "entrypoints": [
-    "static/css/main.c12cd383.css",
-    "static/js/main.8ca86640.js"
+    "static/css/main.a4d89c6d.css",
+    "static/js/main.70d1620c.js"
   ]
 }
