@@ -11,7 +11,6 @@ const PlaylistMenu = ({
   removeNowPlaylist,
   addPlaylist,
   updateNowPlaylistName,
-  setNowPlaylistId,
 }) => {
   const wrapperRef = useRef();
   const inputRef = useRef();
@@ -114,7 +113,6 @@ const PlaylistMenu = ({
                   if (isCanApply) {
                     addPlaylist(playlistName);
                     setIsShowInput(false);
-                    setIsShowPlaylistMenu(false);
                   }
                 }}
               >
@@ -204,7 +202,6 @@ const PlaylistMenu = ({
                 key={playlist.id}
                 onClick={(e) => {
                   changeNowPlaylist(e.currentTarget.dataset.id);
-                  setNowPlaylistId(parseInt(e.currentTarget.dataset.id));
                   setIsShowPlaylistMenu(false);
                 }}
               >

@@ -6,34 +6,41 @@ class PlaylistRepository {
     const listRef = ref(database, `playlists/${userId}`);
     onValue(listRef, (snapshot) => {
       const value = snapshot.val();
-      value && onUpdate(value);
+      onUpdate(value);
     });
   }
-  saveSong(userId, playlist, song) {
+  saveSong(userId, playlist, song, onUpdate) {
     const listRef = ref(
       database,
       `playlists/${userId}/${playlist.id}/songs/${song.id}`
     );
     set(listRef, song);
+    onUpdate();
   }
   makePlaylist(userId, playlist) {
     const listRef = ref(database, `playlists/${userId}/${playlist.id}/`);
     set(listRef, playlist);
   }
+  updatePlaylistName(userId, playlist, name) {
+    const listRef = ref(database, `playlists/${userId}/${playlist.id}/name`);
+    set(listRef, name);
+  }
   removeUserPlaylists(userId) {
     const listRef = ref(database, `playlists/${userId}/`);
     remove(listRef);
   }
-  removePlaylist(userId, playlist) {
+  removePlaylist(userId, playlist, onUpdate) {
     const listRef = ref(database, `playlists/${userId}/${playlist.id}/`);
     remove(listRef, playlist);
+    onUpdate();
   }
-  removeSong(userId, playlist, song) {
+  removeSong(userId, playlist, song, onUpdate) {
     const listRef = ref(
       database,
       `playlists/${userId}/${playlist.id}/songs/${song.id}`
     );
     remove(listRef, playlist);
+    onUpdate();
   }
   updateSong() {}
 }

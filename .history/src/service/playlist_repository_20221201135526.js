@@ -6,7 +6,7 @@ class PlaylistRepository {
     const listRef = ref(database, `playlists/${userId}`);
     onValue(listRef, (snapshot) => {
       const value = snapshot.val();
-      value && onUpdate(value);
+      onUpdate(value);
     });
   }
   saveSong(userId, playlist, song, onUpdate) {
@@ -17,7 +17,7 @@ class PlaylistRepository {
     set(listRef, song);
     onUpdate();
   }
-  makePlaylist(userId, playlist) {
+  makePlaylist(userId, playlist, onAdd) {
     const listRef = ref(database, `playlists/${userId}/${playlist.id}/`);
     set(listRef, playlist);
   }

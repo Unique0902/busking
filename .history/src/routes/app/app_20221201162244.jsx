@@ -63,7 +63,6 @@ function App({
         (song) => song.id === sid
       );
       if (song) {
-        setNowPlaylistId(null);
         playlistRepository.removeSong(userId, nowPlaylist, song, () => {
           window.alert('제거되었습니다.');
         });

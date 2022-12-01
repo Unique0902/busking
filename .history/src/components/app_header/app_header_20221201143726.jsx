@@ -42,7 +42,6 @@ const App_header = ({
             removeNowPlaylist={removeNowPlaylist}
             addPlaylist={addPlaylist}
             updateNowPlaylistName={updateNowPlaylistName}
-            setNowPlaylistId={setNowPlaylistId}
           />
         )}
         <button

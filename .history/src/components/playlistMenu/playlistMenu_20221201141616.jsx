@@ -11,11 +11,9 @@ const PlaylistMenu = ({
   removeNowPlaylist,
   addPlaylist,
   updateNowPlaylistName,
-  setNowPlaylistId,
 }) => {
   const wrapperRef = useRef();
   const inputRef = useRef();
-  const amendInputRef = useRef();
   const [isShowInput, setIsShowInput] = useState(false);
   const [isShowAmendInput, setIsShowAmendInput] = useState(false);
   const [isCanApply, setIsCanApply] = useState(false);
@@ -46,24 +44,12 @@ const PlaylistMenu = ({
     }
   }, [isShowInput, inputRef.current]);
   useEffect(() => {
-    if (isShowAmendInput && amendInputRef.current) {
-      amendInputRef.current.focus();
-    }
-  }, [isShowAmendInput, amendInputRef.current]);
-  useEffect(() => {
     if (playlistName && playlistName.length <= 20) {
       setIsCanApply(true);
     } else {
       setIsCanApply(false);
     }
   }, [playlistName]);
-  useEffect(() => {
-    if (playlistAmendName && playlistAmendName.length <= 20) {
-      setIsCanAmendApply(true);
-    } else {
-      setIsCanAmendApply(false);
-    }
-  }, [playlistAmendName]);
   return (
     <div
       ref={wrapperRef}
@@ -92,7 +78,16 @@ const PlaylistMenu = ({
             플레이리스트 추가
           </button>
         )}
-
+        {!isShowAmendInput && (
+          <button
+            className={btnStyle}
+            onClick={() => {
+              setIsShowAmendInput(true);
+            }}
+          >
+            현재 플레이리스트 수정
+          </button>
+        )}
         {isShowInput && (
           <>
             <input
@@ -114,7 +109,6 @@ const PlaylistMenu = ({
                   if (isCanApply) {
                     addPlaylist(playlistName);
                     setIsShowInput(false);
-                    setIsShowPlaylistMenu(false);
                   }
                 }}
               >
@@ -130,16 +124,6 @@ const PlaylistMenu = ({
               </button>
             </div>
           </>
-        )}
-        {!isShowAmendInput && (
-          <button
-            className={btnStyle}
-            onClick={() => {
-              setIsShowAmendInput(true);
-            }}
-          >
-            현재 플레이리스트 이름 수정
-          </button>
         )}
         {isShowAmendInput && (
           <>
@@ -165,7 +149,7 @@ const PlaylistMenu = ({
                   }
                 }}
               >
-                수정
+                추가
               </button>
               <button
                 className='w-1/2 py-2 hover:bg-gray-200 font-sans text-lg font-medium'
@@ -204,7 +188,6 @@ const PlaylistMenu = ({
                 key={playlist.id}
                 onClick={(e) => {
                   changeNowPlaylist(e.currentTarget.dataset.id);
-                  setNowPlaylistId(parseInt(e.currentTarget.dataset.id));
                   setIsShowPlaylistMenu(false);
                 }}
               >

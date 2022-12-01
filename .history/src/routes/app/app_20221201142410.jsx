@@ -14,7 +14,6 @@ function App({
   const [playlists, setPlaylists] = useState(null);
   const [userId, setUserId] = useState('');
   const [nowPlaylist, setNowPlaylist] = useState(null);
-  const [nowPlaylistId, setNowPlaylistId] = useState(null);
   const [userData, setUserData] = useState(null);
   const [url, setUrl] = useState('');
   let location = useLocation();
@@ -52,7 +51,22 @@ function App({
   const removeNowPlaylist = () => {
     playlistRepository.removePlaylist(userId, nowPlaylist, () => {
       alert('제거되었습니다.');
+      setNowPlaylist(null);
+      // playlistRepository.syncPlaylist(userId, (playlists) => {
+      //   if (playlists) {
+      //     setPlaylists(playlists);
+      //     setNowPlaylist(Object.values(playlists)[0]);
+      //   } else {
+      //     setPlaylists(null);
+      //     setNowPlaylist(null);
+      //   }
+      // });
     });
+    // if (playlists) {
+    //   setNowPlaylist(Object.values(playlists)[0]);
+    // } else {
+    //   setNowPlaylist(null);
+    // }
   };
   const removeSongInPlaylist = (sid) => {
     if (!nowPlaylist) {
@@ -63,7 +77,6 @@ function App({
         (song) => song.id === sid
       );
       if (song) {
-        setNowPlaylistId(null);
         playlistRepository.removeSong(userId, nowPlaylist, song, () => {
           window.alert('제거되었습니다.');
         });
@@ -77,7 +90,6 @@ function App({
       id: Date.now(),
       name: 'playlist',
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   const updateNowPlaylistName = (name) => {
@@ -88,7 +100,6 @@ function App({
       id: Date.now(),
       name,
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   useEffect(() => {
@@ -108,21 +119,19 @@ function App({
     playlistRepository.syncPlaylist(userId, (playlists) => {
       if (playlists) {
         setPlaylists(playlists);
+        if (nowPlaylist) {
+          setNowPlaylist(playlists[nowPlaylist.id]);
+        } else {
+          setNowPlaylist(Object.values(playlists)[0]);
+        }
       }
     });
   }, [userId]);
-
   useEffect(() => {
-    if (playlists) {
-      if (nowPlaylistId && playlists[nowPlaylistId]) {
-        setNowPlaylist(playlists[nowPlaylistId]);
-      } else {
-        setNowPlaylist(Object.values(playlists)[0]);
-        setNowPlaylistId(Object.values(playlists)[0].id);
-      }
+    if (!playlists) {
+      setNowPlaylist(null);
     }
   }, [playlists]);
-
   useEffect(() => {
     authService.onAuthChange(
       (user) => {
@@ -151,7 +160,6 @@ function App({
             removeNowPlaylist={removeNowPlaylist}
             addPlaylist={addPlaylist}
             updateNowPlaylistName={updateNowPlaylistName}
-            setNowPlaylistId={setNowPlaylistId}
           />
         )}
         <Outlet

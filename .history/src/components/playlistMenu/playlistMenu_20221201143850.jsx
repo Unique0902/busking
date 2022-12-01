@@ -204,7 +204,7 @@ const PlaylistMenu = ({
                 key={playlist.id}
                 onClick={(e) => {
                   changeNowPlaylist(e.currentTarget.dataset.id);
-                  setNowPlaylistId(parseInt(e.currentTarget.dataset.id));
+                  setNowPlaylistId(e.currentTarget.dataset.id);
                   setIsShowPlaylistMenu(false);
                 }}
               >

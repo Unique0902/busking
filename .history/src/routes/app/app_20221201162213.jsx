@@ -63,7 +63,6 @@ function App({
         (song) => song.id === sid
       );
       if (song) {
-        setNowPlaylistId(null);
         playlistRepository.removeSong(userId, nowPlaylist, song, () => {
           window.alert('제거되었습니다.');
         });
@@ -77,7 +76,6 @@ function App({
       id: Date.now(),
       name: 'playlist',
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   const updateNowPlaylistName = (name) => {
@@ -88,7 +86,6 @@ function App({
       id: Date.now(),
       name,
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   useEffect(() => {

@@ -17,7 +17,6 @@ const App_header = ({
   removeNowPlaylist,
   addPlaylist,
   updateNowPlaylistName,
-  setNowPlaylistId,
 }) => {
   const valueRef = useRef();
   const [isShowAdditionalMenu, setIsShowAdditionalMenu] = useState(false);
@@ -41,8 +40,6 @@ const App_header = ({
             addBasicPlaylist={addBasicPlaylist}
             removeNowPlaylist={removeNowPlaylist}
             addPlaylist={addPlaylist}
-            updateNowPlaylistName={updateNowPlaylistName}
-            setNowPlaylistId={setNowPlaylistId}
           />
         )}
         <button

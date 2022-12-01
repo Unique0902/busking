@@ -11,7 +11,6 @@ const PlaylistMenu = ({
   removeNowPlaylist,
   addPlaylist,
   updateNowPlaylistName,
-  setNowPlaylistId,
 }) => {
   const wrapperRef = useRef();
   const inputRef = useRef();
@@ -92,7 +91,16 @@ const PlaylistMenu = ({
             플레이리스트 추가
           </button>
         )}
-
+        {!isShowAmendInput && (
+          <button
+            className={btnStyle}
+            onClick={() => {
+              setIsShowAmendInput(true);
+            }}
+          >
+            현재 플레이리스트 이름 수정
+          </button>
+        )}
         {isShowInput && (
           <>
             <input
@@ -114,7 +122,6 @@ const PlaylistMenu = ({
                   if (isCanApply) {
                     addPlaylist(playlistName);
                     setIsShowInput(false);
-                    setIsShowPlaylistMenu(false);
                   }
                 }}
               >
@@ -130,16 +137,6 @@ const PlaylistMenu = ({
               </button>
             </div>
           </>
-        )}
-        {!isShowAmendInput && (
-          <button
-            className={btnStyle}
-            onClick={() => {
-              setIsShowAmendInput(true);
-            }}
-          >
-            현재 플레이리스트 이름 수정
-          </button>
         )}
         {isShowAmendInput && (
           <>
@@ -204,7 +201,6 @@ const PlaylistMenu = ({
                 key={playlist.id}
                 onClick={(e) => {
                   changeNowPlaylist(e.currentTarget.dataset.id);
-                  setNowPlaylistId(parseInt(e.currentTarget.dataset.id));
                   setIsShowPlaylistMenu(false);
                 }}
               >

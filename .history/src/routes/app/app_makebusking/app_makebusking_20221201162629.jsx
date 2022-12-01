@@ -98,7 +98,7 @@ const App_makebusking = ({ buskingRepository }) => {
             </select>
           </div>
           <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>
-            <h2 className='font-sans text-2xl font-normal text-black w-64'>
+            <h2 className='font-sans text-2xl font-normal text-black w-72'>
               최대 곡수 제한
             </h2>
             <input
@@ -108,7 +108,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setMaxNum(e.target.value);
               }}
-              className='border-black border-2 p-2 rounded-xl w-2/12 font-sans text-lg'
+              className='border-black border-2 p-2 rounded-xl w-1/12 font-sans text-lg'
             />
           </div>
           <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>

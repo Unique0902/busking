@@ -30,6 +30,7 @@ const App_makebusking = ({ buskingRepository }) => {
   useEffect(() => {
     if (playlists) {
       setPlaylistArr(Object.values(playlists));
+      console.log('hi');
     }
   }, [playlists]);
   useEffect(() => {
@@ -108,7 +109,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setMaxNum(e.target.value);
               }}
-              className='border-black border-2 p-2 rounded-xl w-2/12 font-sans text-lg'
+              className='border-black border-2 p-2 rounded-xl w-1/12 font-sans text-lg'
             />
           </div>
           <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>

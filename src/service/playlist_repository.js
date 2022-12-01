@@ -21,6 +21,10 @@ class PlaylistRepository {
     const listRef = ref(database, `playlists/${userId}/${playlist.id}/`);
     set(listRef, playlist);
   }
+  updatePlaylistName(userId, playlist, name) {
+    const listRef = ref(database, `playlists/${userId}/${playlist.id}/name`);
+    set(listRef, name);
+  }
   removeUserPlaylists(userId) {
     const listRef = ref(database, `playlists/${userId}/`);
     remove(listRef);

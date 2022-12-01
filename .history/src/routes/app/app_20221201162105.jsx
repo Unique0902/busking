@@ -52,7 +52,21 @@ function App({
   const removeNowPlaylist = () => {
     playlistRepository.removePlaylist(userId, nowPlaylist, () => {
       alert('제거되었습니다.');
+      // playlistRepository.syncPlaylist(userId, (playlists) => {
+      //   if (playlists) {
+      //     setPlaylists(playlists);
+      //     setNowPlaylist(Object.values(playlists)[0]);
+      //   } else {
+      //     setPlaylists(null);
+      //     setNowPlaylist(null);
+      //   }
+      // });
     });
+    // if (playlists) {
+    //   setNowPlaylist(Object.values(playlists)[0]);
+    // } else {
+    //   setNowPlaylist(null);
+    // }
   };
   const removeSongInPlaylist = (sid) => {
     if (!nowPlaylist) {
@@ -63,7 +77,6 @@ function App({
         (song) => song.id === sid
       );
       if (song) {
-        setNowPlaylistId(null);
         playlistRepository.removeSong(userId, nowPlaylist, song, () => {
           window.alert('제거되었습니다.');
         });
@@ -77,7 +90,6 @@ function App({
       id: Date.now(),
       name: 'playlist',
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   const updateNowPlaylistName = (name) => {
@@ -88,7 +100,6 @@ function App({
       id: Date.now(),
       name,
     };
-    setNowPlaylistId(playlist.id);
     playlistRepository.makePlaylist(userId, playlist);
   };
   useEffect(() => {
@@ -111,7 +122,6 @@ function App({
       }
     });
   }, [userId]);
-
   useEffect(() => {
     if (playlists) {
       if (nowPlaylistId && playlists[nowPlaylistId]) {

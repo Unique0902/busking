@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 const App_makebusking = ({ buskingRepository }) => {
   const [playlistArr, setPlaylistArr] = useState([]);
-  const [maxNum, setMaxNum] = useState(10);
   const selectRef = useRef();
   const numRef = useRef();
   const nameRef = useRef();
@@ -21,19 +20,15 @@ const App_makebusking = ({ buskingRepository }) => {
     userId,
     addBasicPlaylist,
   ] = useOutletContext();
-  const [roomTitle, setRoomTitle] = useState('');
-  useEffect(() => {
-    if (userData) {
-      setRoomTitle(`${userData.name}님의 버스킹`);
-    }
-  }, [userData]);
   useEffect(() => {
     if (playlists) {
       setPlaylistArr(Object.values(playlists));
+      console.log('hi');
     }
   }, [playlists]);
   useEffect(() => {
     buskingRepository.syncBuskingData(userId, (buskingData) => {
+      console.log('hi');
       console.log(buskingData);
       if (buskingData) {
         navigate('/busking/app/busking');
@@ -42,15 +37,16 @@ const App_makebusking = ({ buskingRepository }) => {
   }, []);
   const startBusking = () => {
     const playlistId = selectRef.current.value;
+    const num = numRef.current.value;
     const name = nameRef.current.value;
-    if (playlistId && maxNum && name) {
-      buskingRepository.makeBusking(userId, playlistId, maxNum, name, () => {
+    if (playlistId && num && name) {
+      buskingRepository.makeBusking(userId, playlistId, num, name, () => {
         console.log('safh');
       });
     } else {
       if (!playlistId) {
         alert('플레이 리스트를 등록해주세요!');
-      } else if (!maxNum) {
+      } else if (!num) {
         alert('최대 곡수를 등록해주세요!');
       } else if (!name) {
         alert('방이름을 등록해주세요!');
@@ -104,11 +100,8 @@ const App_makebusking = ({ buskingRepository }) => {
             <input
               type='number'
               ref={numRef}
-              value={maxNum}
-              onChange={(e) => {
-                setMaxNum(e.target.value);
-              }}
-              className='border-black border-2 p-2 rounded-xl w-2/12 font-sans text-lg'
+              value={10}
+              className='border-black border-2 p-2 rounded-xl w-1/12 font-sans text-lg'
             />
           </div>
           <div className='flex flex-row items-center py-3 border-gray-300 border-b relative'>
@@ -118,10 +111,7 @@ const App_makebusking = ({ buskingRepository }) => {
             <input
               type='text'
               ref={nameRef}
-              value={roomTitle}
-              onChange={(e) => {
-                setRoomTitle(e.target.value);
-              }}
+              value={userData ? `${userData.name}님의 버스킹` : ''}
               className='border-black border-2 p-2 rounded-xl w-1/3 font-sans text-lg'
             />
           </div>
