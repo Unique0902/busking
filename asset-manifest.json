@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/busking/static/css/main.a4d89c6d.css",
-    "main.js": "/busking/static/js/main.70d1620c.js",
+    "main.css": "/busking/static/css/main.01439afe.css",
+    "main.js": "/busking/static/js/main.782ac7ad.js",
     "static/media/screenMakePlaylist.png": "/busking/static/media/screenMakePlaylist.00ad3b3961a0d63fb21e.png",
     "static/media/screenBuskingApply.png": "/busking/static/media/screenBuskingApply.1e3e5195d2c55a9dc26c.png",
     "static/media/screenBusking.png": "/busking/static/media/screenBusking.86b0abf591ac360f05be.png",
@@ -9,11 +9,11 @@
     "static/media/screenMakeBusking.png": "/busking/static/media/screenMakeBusking.322bcfe1396cc5bc8d3b.png",
     "static/media/bookLogo.png": "/busking/static/media/bookLogo.c5c70bda1865f90539c2.png",
     "index.html": "/busking/index.html",
-    "main.a4d89c6d.css.map": "/busking/static/css/main.a4d89c6d.css.map",
-    "main.70d1620c.js.map": "/busking/static/js/main.70d1620c.js.map"
+    "main.01439afe.css.map": "/busking/static/css/main.01439afe.css.map",
+    "main.782ac7ad.js.map": "/busking/static/js/main.782ac7ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4d89c6d.css",
-    "static/js/main.70d1620c.js"
+    "static/css/main.01439afe.css",
+    "static/js/main.782ac7ad.js"
   ]
 }
