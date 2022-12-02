@@ -12,7 +12,7 @@ const HoverTextBtn = ({ btnText, text }) => {
     >
       {btnText}
       {isHovering && (
-        <div className='absolute flex flex-row items-center right-0 bg-white rounded-lg border border-gray-500 p-3 w-auto'>
+        <div className='absolute flex flex-row items-center right-0 max-lg:left-0 bg-white rounded-lg border border-gray-500 p-3 w-auto'>
           <p className=' font-sans text-lg max-lg:text-sm text-black'>{text}</p>
           <button
             className='text-xl ml-3 text-gray-600'

@@ -110,7 +110,7 @@ const App_playlist = (props) => {
           </button>
         </MainSec>
       ) : (
-        <MainSec>
+        <MainSec isFullSize={false}>
           <SongSearchBar
             searchWord={searchWord}
             setSearchWord={setSearchWord}

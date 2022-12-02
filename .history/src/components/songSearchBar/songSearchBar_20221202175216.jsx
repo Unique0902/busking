@@ -15,10 +15,10 @@ const SongSearchBar = ({
   }, [searchWord, searchCategory]);
 
   return (
-    <form className='relative flex flex-row justify-center items-center mb-6'>
-      <div className='relative flex flex-row justify-center max-lg:flex-col items-center'>
+    <form className='relative flex justify-center items-center mb-6'>
+      <div>
         <select
-          className=' border-black border-2 rounded-xl p-2 font-sans max-lg:w-full max-lg:mr-0 max-lg:mb-2 max-lg:text-base text-lg mr-4'
+          className=' border-black border-2 rounded-xl p-2 font-sans max-lg:text-base text-lg mr-4'
           value={searchCategory}
           onChange={(e) => {
             setSearchCategory(e.target.value);
@@ -29,7 +29,7 @@ const SongSearchBar = ({
         </select>
         <input
           type='search'
-          className='border-black border-2 p-2 rounded-xl w-96 max-lg:text-base max-lg:w-full font-sans text-lg'
+          className='border-black border-2 p-2 rounded-xl w-2/5 max-lg:text-base max-lg:w-3/4 font-sans text-lg'
           placeholder='검색어를 입력하세요..'
           value={searchWord}
           onChange={(e) => {
@@ -37,6 +37,7 @@ const SongSearchBar = ({
           }}
         />
       </div>
+
       {children}
     </form>
   );

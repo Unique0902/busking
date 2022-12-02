@@ -177,7 +177,7 @@ function App({
             setIsShowSideBar={setIsShowSideBar}
           />
         )}
-        {url == '/busking/app/busking' && !isLgMediaQuery && (
+        {url == '/busking/app/busking' && isLgMediaQuery && (
           <App_header
             logout={logout}
             userData={userData}

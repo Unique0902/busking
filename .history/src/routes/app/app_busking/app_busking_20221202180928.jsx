@@ -118,13 +118,13 @@ const App_busking = ({ buskingRepository }) => {
               곡 신청하기
             </h2>
           )}
-          {isShowQr && !isLgMediaQuery && (
+          {isShowQr && (
             <img
               className='ml-8 mr-4'
               src={`https://chart.apis.google.com/chart?cht=qr&chs=100x100&chl=${url}`}
             />
           )}
-          {isShowQr && !isLgMediaQuery && (
+          {isShowQr && (
             <button
               className='relative font-sans text-lg text-black hover:scale-110 bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {

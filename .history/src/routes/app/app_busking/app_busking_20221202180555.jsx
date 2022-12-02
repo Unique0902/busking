@@ -17,7 +17,6 @@ import HoverTextBtn from '../../../components/hoverTextBtn/hoverTextBtn';
 import SearchResults from '../../../components/searchResults/searchResults';
 import SongTableTitles from '../../../components/songTableTitles/songTableTitles';
 import MainSec from '../../../components/mainSec/mainSec';
-import { useMediaQuery } from 'react-responsive';
 
 const App_busking = ({ buskingRepository }) => {
   const [
@@ -43,9 +42,6 @@ const App_busking = ({ buskingRepository }) => {
   const [isShowArrangeMenu, setIsShowArrangeMenu] = useState(false);
   const [isSinging, setIsSinging] = useState(false);
   const [isShowQr, setIsShowQr] = useState(true);
-  const isLgMediaQuery = useMediaQuery({
-    query: '(max-width:1024px)',
-  });
   useEffect(() => {
     if (userId && !isBusking) {
       buskingRepository.syncBuskingData(userId, (data) => {
@@ -85,11 +81,6 @@ const App_busking = ({ buskingRepository }) => {
     }
   };
   useEffect(() => {
-    if (isLgMediaQuery) {
-      setIsShowQr(false);
-    }
-  }, [isLgMediaQuery]);
-  useEffect(() => {
     if (appliance) {
       setResults(Object.values(appliance));
       setResultNum(Object.values(appliance).length);
@@ -113,18 +104,16 @@ const App_busking = ({ buskingRepository }) => {
           {userData && `${userData.name}님의 버스킹`}
         </h1>
         <div className='flex flex-row items-center lg:border-l border-gray-400 grow justify-center'>
-          {!isLgMediaQuery && (
-            <h2 className='font-sans text-gray-300 text-xl font-bold'>
-              곡 신청하기
-            </h2>
-          )}
-          {isShowQr && !isLgMediaQuery && (
+          <h2 className='font-sans text-gray-300 text-xl font-bold'>
+            곡 신청하기
+          </h2>
+          {isShowQr && (
             <img
               className='ml-8 mr-4'
               src={`https://chart.apis.google.com/chart?cht=qr&chs=100x100&chl=${url}`}
             />
           )}
-          {isShowQr && !isLgMediaQuery && (
+          {isShowQr && (
             <button
               className='relative font-sans text-lg text-black hover:scale-110 bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {
@@ -134,7 +123,7 @@ const App_busking = ({ buskingRepository }) => {
               QR코드 숨기기
             </button>
           )}
-          {!isShowQr && !isLgMediaQuery && (
+          {!isShowQr && (
             <button
               className='relative font-sans text-lg ml-6 hover:scale-110 text-black bg-white rounded-lg px-4 py-2 mr-3'
               onClick={() => {
