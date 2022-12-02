@@ -91,7 +91,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setSelectedPlaylist(e.target.value);
               }}
-              className='border-2 border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
+              className='border border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
             >
               {playlistArr &&
                 playlistArr.map((playlist) => (
@@ -108,7 +108,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setMaxNum(e.target.value);
               }}
-              className='border-black border-2 p-2 rounded-xl w-2/12 max-md:w-5/6 font-sans text-lg'
+              className='border-black border-2 p-2 rounded-xl w-2/12 max-sm:w-5/6 font-sans text-lg'
             />
           </MainRow>
           <MainRow title={'방 제목 설정'}>
@@ -118,7 +118,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setRoomTitle(e.target.value);
               }}
-              className='border-black border-2 p-2 rounded-xl w-1/3 max-md:w-5/6 font-sans text-lg'
+              className='border-black border-2 p-2 rounded-xl w-1/3 max-sm:w-5/6 font-sans text-lg'
             />
           </MainRow>
           <button

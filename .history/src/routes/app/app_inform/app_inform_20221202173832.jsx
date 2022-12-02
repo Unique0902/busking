@@ -38,7 +38,7 @@ const App_inform = ({
           </p>
         </InformRow>
         <InformRow title={'가입일자'} titleColor={'gray'} onClick={() => {}}>
-          <p className='font-sans text-lg text-black font-normal'>
+          <p>
             {time &&
               `${time.getFullYear()}년 ${
                 time.getMonth() + 1

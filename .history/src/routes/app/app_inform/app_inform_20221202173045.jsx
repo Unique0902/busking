@@ -33,21 +33,18 @@ const App_inform = ({
       <TitleBar text={'내 정보'} />
       <MainSec isFullSize={true}>
         <InformRow title={'닉네임'} titleColor={'gray'} onClick={() => {}}>
-          <p className='font-sans text-lg text-black font-normal'>
-            {userData && userData.name}
-          </p>
+          <p>{userData && userData.name}</p>
         </InformRow>
         <InformRow title={'가입일자'} titleColor={'gray'} onClick={() => {}}>
-          <p className='font-sans text-lg text-black font-normal'>
+          <p>
             {time &&
               `${time.getFullYear()}년 ${
                 time.getMonth() + 1
               }월 ${time.getDate()}일`}
           </p>
         </InformRow>
-        <InformRow
-          title={'회원 탈퇴'}
-          titleColor={'red'}
+        <button
+          className='font-sans hover:bg-gray-200 text-2xl font-normal text-red-500 flex flex-row w-full items-center py-3 border-gray-300 border-b relative'
           onClick={() => {
             if (window.confirm('정말 탈퇴하시겠습니까?')) {
               userRepository.removeUser(userId, () => {
@@ -57,7 +54,13 @@ const App_inform = ({
               });
             }
           }}
-        ></InformRow>
+        >
+          회원 탈퇴
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className='absolute right-5 text-xl'
+          />
+        </button>
       </MainSec>
     </>
   );

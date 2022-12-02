@@ -33,12 +33,10 @@ const App_inform = ({
       <TitleBar text={'내 정보'} />
       <MainSec isFullSize={true}>
         <InformRow title={'닉네임'} titleColor={'gray'} onClick={() => {}}>
-          <p className='font-sans text-lg text-black font-normal'>
-            {userData && userData.name}
-          </p>
+          <p>{userData && userData.name}</p>
         </InformRow>
         <InformRow title={'가입일자'} titleColor={'gray'} onClick={() => {}}>
-          <p className='font-sans text-lg text-black font-normal'>
+          <p>
             {time &&
               `${time.getFullYear()}년 ${
                 time.getMonth() + 1

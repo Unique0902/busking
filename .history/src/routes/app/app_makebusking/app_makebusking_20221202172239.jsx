@@ -91,7 +91,7 @@ const App_makebusking = ({ buskingRepository }) => {
               onChange={(e) => {
                 setSelectedPlaylist(e.target.value);
               }}
-              className='border-2 border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
+              className='border border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
             >
               {playlistArr &&
                 playlistArr.map((playlist) => (
