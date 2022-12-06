@@ -10,7 +10,6 @@ import SongTableTitles from '../../../components/songTableTitles/songTableTitles
 import MainSec from '../../../components/mainSec/mainSec';
 import SongSearchBar from '../../../components/songSearchBar/songSearchBar';
 import ArrangeMenuBtn from '../../../components/arrangeMenuBtn/arrangeMenuBtn';
-import { useMediaQuery } from 'react-responsive';
 
 const App_playlist = (props) => {
   const [results, setResults] = useState(null);
@@ -41,9 +40,7 @@ const App_playlist = (props) => {
   useEffect(() => {
     results && setResultNum(results.length);
   }, [results]);
-  const isPc = useMediaQuery({
-    query: '(min-width:1024px)',
-  });
+
   useEffect(() => {
     if ((pageNum - 1) * 6 + 1 > resultNum) {
       if (resultNum == 0) {
@@ -129,7 +126,7 @@ const App_playlist = (props) => {
           </h2>
           <section className='w-full'>
             <ul>
-              {isPc && <SongTableTitles isApply={false} />}
+              <SongTableTitles isApply={false} />
               <SearchResults
                 isSearch={false}
                 results={results}

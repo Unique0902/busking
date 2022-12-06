@@ -241,7 +241,7 @@ const App_busking = ({ buskingRepository }) => {
           </h2>
           <div className='relative'>
             <button
-              className='ml-4 bg-gray-500 max-lg:ml-2 max-lg:px-2 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'
+              className='ml-4 bg-gray-500 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'
               onClick={() => {
                 setIsShowArrangeMenu(true);
               }}
