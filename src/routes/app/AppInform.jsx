@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import TitleBar from '../../../components/TitleBar';
-import MainSec from '../../../components/MainSec';
-import InformRow from '../../../components/InformRow';
-const App_inform = ({
+import TitleBar from '../../components/TitleBar';
+import MainSec from '../../components/MainSec';
+import InformRow from '../../components/InformRow';
+export default function AppInform({
   authService,
   userRepository,
   playlistRepository,
   buskingRepository,
-}) => {
+}) {
   const [
     addSongToPlaylist,
     removeNowPlaylist,
@@ -61,6 +61,4 @@ const App_inform = ({
       </MainSec>
     </>
   );
-};
-
-export default App_inform;
+}

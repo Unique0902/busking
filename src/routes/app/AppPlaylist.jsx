@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import PageNumScreen from '../../../components/PageNumScreen';
+import PageNumScreen from '../../components/PageNumScreen';
 import { useEffect } from 'react';
-import TitleBar from '../../../components/TitleBar';
-import SearchResults from '../../../components/SearchResults';
-import SongTableTitles from '../../../components/SongTableTitles';
-import MainSec from '../../../components/MainSec';
-import SongSearchBar from '../../../components/SongSearchBar';
-import ArrangeMenuBtn from '../../../components/ArrangeMenuBtn';
+import TitleBar from '../../components/TitleBar';
+import SearchResults from '../../components/SearchResults';
+import SongTableTitles from '../../components/SongTableTitles';
+import MainSec from '../../components/MainSec';
+import SongSearchBar from '../../components/SongSearchBar';
+import ArrangeMenuBtn from '../../components/ArrangeMenuBtn';
 import { useMediaQuery } from 'react-responsive';
 
-const App_playlist = (props) => {
+export default function AppPlaylist(props) {
   const [results, setResults] = useState(null);
   // const [nowPageResults, setNowPageResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
@@ -147,6 +147,4 @@ const App_playlist = (props) => {
       )}
     </>
   );
-};
-
-export default App_playlist;
+}

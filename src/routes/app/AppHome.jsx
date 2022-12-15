@@ -1,8 +1,8 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
-import MainSec from '../../../components/MainSec';
+import MainSec from '../../components/MainSec';
 
-const App_home = (props) => {
+export default function AppHome(props) {
   const [
     addSongToPlaylist,
     removeNowPlaylist,
@@ -33,6 +33,4 @@ const App_home = (props) => {
       </MainSec>
     </>
   );
-};
-
-export default App_home;
+}

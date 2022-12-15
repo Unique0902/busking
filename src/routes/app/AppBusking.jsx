@@ -10,15 +10,15 @@ import {
   faPause,
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
-import PageNumScreen from '../../../components/PageNumScreen';
-import ArrangeMenu from '../../../components/ArrangeMenu';
-import HoverTextBtn from '../../../components/HoverTextBtn';
-import SearchResults from '../../../components/SearchResults';
-import SongTableTitles from '../../../components/SongTableTitles';
-import MainSec from '../../../components/MainSec';
+import PageNumScreen from '../../components/PageNumScreen';
+import ArrangeMenu from '../../components/ArrangeMenu';
+import HoverTextBtn from '../../components/HoverTextBtn';
+import SearchResults from '../../components/SearchResults';
+import SongTableTitles from '../../components/SongTableTitles';
+import MainSec from '../../components/MainSec';
 import { useMediaQuery } from 'react-responsive';
 
-const App_busking = ({ buskingRepository }) => {
+export default function AppBusking({ buskingRepository }) {
   const [
     addSongToPlaylist,
     removeNowPlaylist,
@@ -294,6 +294,4 @@ const App_busking = ({ buskingRepository }) => {
       </MainSec>
     </>
   );
-};
-
-export default App_busking;
+}

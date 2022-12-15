@@ -4,18 +4,18 @@ import './index.css';
 import App from './routes/app/app';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './routes/login/login';
-import App_home from './routes/app/app_home/app_home';
-import App_add from './routes/app/app_add/app_add';
-import App_makebusking from './routes/app/app_makebusking/app_makebusking';
-import App_inform from './routes/app/app_inform/app_inform';
-import App_playlist from './routes/app/app_playlist/app_playlist';
+import AppHome from './routes/app/AppHome';
+import AppAdd from './routes/app/AppAdd';
+import AppMakeBusking from './routes/app/AppMakeBusking';
+import AppInform from './routes/app/AppInform';
+import AppPlaylist from './routes/app/AppPlaylist';
 import axios from 'axios';
 import Lastfm from './service/lastfm';
 import AuthService from './service/auth_service';
 import PlaylistRepository from './service/playlist_repository';
 import UserRepository from './service/userRepository';
 import MakeUser from './routes/makeUser/makeUser';
-import App_busking from './routes/app/app_busking/app_busking';
+import AppBusking from './routes/app/AppBusking';
 import BuskingRepository from './service/buskingRepository';
 import IpService from './service/ipService';
 
@@ -64,11 +64,11 @@ root.render(
               />
             }
           >
-            <Route path='home' element={<App_home />} />
+            <Route path='home' element={<AppHome />} />
             <Route
               path='add'
               element={
-                <App_add
+                <AppAdd
                   playlistRepository={playlistRepository}
                   lastfm={lastfm}
                 />
@@ -76,14 +76,12 @@ root.render(
             />
             <Route
               path='makebusking'
-              element={
-                <App_makebusking buskingRepository={buskingRepository} />
-              }
+              element={<AppMakeBusking buskingRepository={buskingRepository} />}
             />
             <Route
               path='inform'
               element={
-                <App_inform
+                <AppInform
                   authService={authService}
                   userRepository={userRepository}
                   playlistRepository={playlistRepository}
@@ -91,10 +89,10 @@ root.render(
                 />
               }
             />
-            <Route path='playlist' element={<App_playlist />} />
+            <Route path='playlist' element={<AppPlaylist />} />
             <Route
               path='busking'
-              element={<App_busking buskingRepository={buskingRepository} />}
+              element={<AppBusking buskingRepository={buskingRepository} />}
             />{' '}
           </Route>
         </Route>

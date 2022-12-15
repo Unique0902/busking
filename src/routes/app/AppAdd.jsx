@@ -1,16 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import SearchResult from '../../../components/SearchResult';
-import PageNumScreen from '../../../components/PageNumScreen';
-import InfoBtn from '../../../components/InfoBtn';
-import TitleBar from '../../../components/TitleBar';
-import SearchResults from '../../../components/SearchResults';
-import SongTableTitles from '../../../components/SongTableTitles';
-import MainSec from '../../../components/MainSec';
-import SongSearchBar from '../../../components/SongSearchBar';
+import PageNumScreen from '../../components/PageNumScreen';
+import InfoBtn from '../../components/InfoBtn';
+import TitleBar from '../../components/TitleBar';
+import SearchResults from '../../components/SearchResults';
+import SongTableTitles from '../../components/SongTableTitles';
+import MainSec from '../../components/MainSec';
+import SongSearchBar from '../../components/SongSearchBar';
 import { useMediaQuery } from 'react-responsive';
 
-const App_add = ({ lastfm }) => {
+export default function AppAdd({ lastfm }) {
   const [searchResults, setSearchResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
   const [pageNum, setPageNum] = useState(1);
@@ -112,6 +111,4 @@ const App_add = ({ lastfm }) => {
       )}
     </>
   );
-};
-
-export default App_add;
+}

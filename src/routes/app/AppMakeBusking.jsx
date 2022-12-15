@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
-import TitleBar from '../../../components/TitleBar';
-import MainSec from '../../../components/MainSec';
-import MainRow from '../../../components/MainRow';
+import TitleBar from '../../components/TitleBar';
+import MainSec from '../../components/MainSec';
+import MainRow from '../../components/MainRow';
 
-const App_makebusking = ({ buskingRepository }) => {
+export default function AppMakeBusking({ buskingRepository }) {
   const [playlistArr, setPlaylistArr] = useState(null);
   const [maxNum, setMaxNum] = useState(10);
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
@@ -133,6 +133,4 @@ const App_makebusking = ({ buskingRepository }) => {
       )}
     </>
   );
-};
-
-export default App_makebusking;
+}
