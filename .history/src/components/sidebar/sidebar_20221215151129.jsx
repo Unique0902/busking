@@ -20,20 +20,29 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   let navigate = useNavigate();
   let location = useLocation();
   const wrapperRef = useRef();
-  const checkSelectedBtn = () => {
-    const pathArr = location.pathname.split('/');
-    if (pathArr[3] === 'busking') {
-      setSelectedBtn('makeBusking');
-    } else {
-      setSelectedBtn(pathArr[3]);
-    }
-  };
   useEffect(() => {
-    checkSelectedBtn();
+    if (location.pathname === '/busking/app/add') {
+      setSelectedBtn('add');
+    } else if (location.pathname === '/busking/app/playlist') {
+      setSelectedBtn('playlist');
+    } else if (location.pathname === '/busking/app/home') {
+      setSelectedBtn('home');
+    } else if (location.pathname === '/busking/app/inform') {
+      setSelectedBtn('inform');
+    } else if (location.pathname === '/busking/app/makebusking') {
+      setSelectedBtn('makebusking');
+    } else if (location.pathname === '/busking/app/busking') {
+      setSelectedBtn('makebusking');
+    }
   }, [location]);
   const isLgMediaQuery = useMediaQuery({
     query: '(max-width:1024px)',
   });
+  const btnStyle =
+    'text-white pl-5 py-4 font-sans w-full text-left font-medium text-lg hover:bg-zinc-600 ';
+  const hideBtnStyle =
+    'text-white py-4 font-sans w-full font-medium text-lg hover:bg-zinc-600';
+  const iconStyle = 'mr-4';
   const onBtnClick = (name) => {
     navigate(name);
     if (isLgMediaQuery) {

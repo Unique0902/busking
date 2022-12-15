@@ -21,14 +21,22 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   let location = useLocation();
   const wrapperRef = useRef();
   const checkSelectedBtn = () => {
-    const pathArr = location.pathname.split('/');
-    if (pathArr[3] === 'busking') {
-      setSelectedBtn('makeBusking');
-    } else {
-      setSelectedBtn(pathArr[3]);
+    if (location.pathname === '/busking/app/add') {
+      setSelectedBtn('add');
+    } else if (location.pathname === '/busking/app/playlist') {
+      setSelectedBtn('playlist');
+    } else if (location.pathname === '/busking/app/home') {
+      setSelectedBtn('home');
+    } else if (location.pathname === '/busking/app/inform') {
+      setSelectedBtn('inform');
+    } else if (location.pathname === '/busking/app/makebusking') {
+      setSelectedBtn('makebusking');
+    } else if (location.pathname === '/busking/app/busking') {
+      setSelectedBtn('makebusking');
     }
   };
   useEffect(() => {
+    console.log(location);
     checkSelectedBtn();
   }, [location]);
   const isLgMediaQuery = useMediaQuery({

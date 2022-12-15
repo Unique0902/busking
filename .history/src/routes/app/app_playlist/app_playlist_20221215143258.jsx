@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const App_playlist = (props) => {
   const [results, setResults] = useState(null);
-  // const [nowPageResults, setNowPageResults] = useState([]);
+  const [nowPageResults, setNowPageResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
   const [pageNum, setPageNum] = useState(1);
   const [searchWord, setSearchWord] = useState('');
@@ -77,13 +77,13 @@ const App_playlist = (props) => {
   const plusPage = () => {
     if (pageNum < resultNum / 6) {
       setPageNum(pageNum + 1);
-      // setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
+      setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
     }
   };
   const minusPage = () => {
     if (pageNum !== 1) {
       setPageNum(pageNum - 1);
-      // setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
+      setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
     }
   };
   const onSearchBarChange = () => {

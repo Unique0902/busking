@@ -20,20 +20,29 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   let navigate = useNavigate();
   let location = useLocation();
   const wrapperRef = useRef();
-  const checkSelectedBtn = () => {
-    const pathArr = location.pathname.split('/');
-    if (pathArr[3] === 'busking') {
-      setSelectedBtn('makeBusking');
-    } else {
-      setSelectedBtn(pathArr[3]);
-    }
-  };
   useEffect(() => {
-    checkSelectedBtn();
+    if (location.pathname === '/busking/app/add') {
+      setSelectedBtn('add');
+    } else if (location.pathname === '/busking/app/playlist') {
+      setSelectedBtn('playlist');
+    } else if (location.pathname === '/busking/app/home') {
+      setSelectedBtn('home');
+    } else if (location.pathname === '/busking/app/inform') {
+      setSelectedBtn('inform');
+    } else if (location.pathname === '/busking/app/makebusking') {
+      setSelectedBtn('makebusking');
+    } else if (location.pathname === '/busking/app/busking') {
+      setSelectedBtn('makebusking');
+    }
   }, [location]);
   const isLgMediaQuery = useMediaQuery({
     query: '(max-width:1024px)',
   });
+  const btnStyle =
+    'text-white pl-5 py-4 font-sans w-full text-left font-medium text-lg hover:bg-zinc-600 ';
+  const hideBtnStyle =
+    'text-white py-4 font-sans w-full font-medium text-lg hover:bg-zinc-600';
+  const iconStyle = 'mr-4';
   const onBtnClick = (name) => {
     navigate(name);
     if (isLgMediaQuery) {
@@ -66,7 +75,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
           <div className='flex items-center py-3 px-5  border-solid text-white border-gray-600 border-b'>
             <FontAwesomeIcon
               icon={faBookOpen}
-              className={`mr-4 text-2xl text-blue-400`}
+              className={`${iconStyle} text-2xl text-blue-400`}
             />
             <p className=' font-sans text-2xl font-semibold '>노래책</p>
           </div>
@@ -93,6 +102,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
               </p>
             </li>
           )}
+
           <SideBarBtn
             name={'add'}
             onClick={onBtnClick}
@@ -100,7 +110,9 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
             isHide={isHide}
             text={'노래 추가'}
             icon={faPlus}
-          />
+          >
+            <FontAwesomeIcon icon={faPlus} className={iconStyle} />
+          </SideBarBtn>
           <SideBarBtn
             name={'playlist'}
             onClick={onBtnClick}
@@ -108,7 +120,9 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
             isHide={isHide}
             text={'Playlist 관리'}
             icon={faMusic}
-          />
+          >
+            <FontAwesomeIcon icon={faMusic} className={iconStyle} />
+          </SideBarBtn>
           <SideBarBtn
             name={'inform'}
             onClick={onBtnClick}
@@ -116,7 +130,9 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
             isHide={isHide}
             text={'내 정보'}
             icon={faUser}
-          />
+          >
+            <FontAwesomeIcon icon={faUser} className={iconStyle} />
+          </SideBarBtn>
           <SideBarBtn
             name={'makebusking'}
             onClick={onBtnClick}
@@ -124,7 +140,9 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
             isHide={isHide}
             text={'버스킹하기'}
             icon={faGuitar}
-          />
+          >
+            <FontAwesomeIcon icon={faGuitar} className={iconStyle} />
+          </SideBarBtn>
 
           <li>
             {isHide ? (

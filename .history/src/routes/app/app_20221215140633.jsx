@@ -34,13 +34,13 @@ function App({
   }, [isLgMediaQuery]);
 
   const addSongToPlaylist = (title, artist) => {
-    if (nowPlaylist.length === 0) {
+    if (nowPlaylist.length == 0) {
       alert('플레이리스트가 존재하지않습니다! 추가해주세요!');
       return;
     }
     const songArr = nowPlaylist.songs ? Object.values(nowPlaylist.songs) : [];
     const sameSong = songArr.find(
-      (song) => song.title === title && song.artist === artist
+      (song) => song.title == title && song.artist == artist
     );
     if (sameSong) {
       alert('이미 추가된 노래입니다!');
@@ -153,7 +153,7 @@ function App({
     );
   });
   return (
-    <section className='flex h-screen text-black bg-gradient-to-b from-blue-500 to-mainBlue '>
+    <section className='flex h-screen text-black bg-gradient-to-b from-blue-800 to-mainBlue '>
       {(isLgMediaQuery || isShowSideBar) && (
         <Sidebar
           isShowSideBar={isShowSideBar}
@@ -177,7 +177,7 @@ function App({
             setIsShowSideBar={setIsShowSideBar}
           />
         )}
-        {url === '/busking/app/busking' && !isLgMediaQuery && (
+        {url == '/busking/app/busking' && !isLgMediaQuery && (
           <App_header
             logout={logout}
             userData={userData}
