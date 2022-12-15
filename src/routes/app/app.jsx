@@ -1,6 +1,6 @@
-import Sidebar from '../../components/sidebar/sidebar';
+import Sidebar from '../../components/Sidebar';
 import { Outlet } from 'react-router-dom';
-import App_header from '../../components/app_header/app_header';
+import AppHeader from '../../components/AppHeader';
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
@@ -162,7 +162,7 @@ function App({
       )}
       <main className=' grow py-6 px-8 overflow-y-auto'>
         {url != '/busking/app/busking' && (
-          <App_header
+          <AppHeader
             logout={logout}
             userData={userData}
             playlists={playlists}
@@ -178,7 +178,7 @@ function App({
           />
         )}
         {url === '/busking/app/busking' && !isLgMediaQuery && (
-          <App_header
+          <AppHeader
             logout={logout}
             userData={userData}
             playlists={playlists}

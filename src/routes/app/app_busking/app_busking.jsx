@@ -10,13 +10,12 @@ import {
   faPause,
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
-import SearchResult from '../../../components/searchResult/searchResult';
-import Page_num_screen from '../../../components/page_num_screen/page_num_screen';
-import ArrangeMenu from '../../../components/arrangeMenu/arrangeMenu';
-import HoverTextBtn from '../../../components/hoverTextBtn/hoverTextBtn';
-import SearchResults from '../../../components/searchResults/searchResults';
-import SongTableTitles from '../../../components/songTableTitles/songTableTitles';
-import MainSec from '../../../components/mainSec/mainSec';
+import PageNumScreen from '../../../components/PageNumScreen';
+import ArrangeMenu from '../../../components/ArrangeMenu';
+import HoverTextBtn from '../../../components/HoverTextBtn';
+import SearchResults from '../../../components/SearchResults';
+import SongTableTitles from '../../../components/SongTableTitles';
+import MainSec from '../../../components/MainSec';
 import { useMediaQuery } from 'react-responsive';
 
 const App_busking = ({ buskingRepository }) => {
@@ -271,7 +270,7 @@ const App_busking = ({ buskingRepository }) => {
               }}
             />
           </ul>
-          <Page_num_screen
+          <PageNumScreen
             resultNum={resultNum}
             pageNum={pageNum}
             onPagePlus={plusPage}

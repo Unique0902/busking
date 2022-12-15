@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ArrangeMenu from '../arrangeMenu/arrangeMenu';
+import ArrangeMenu from './ArrangeMenu';
 
 const ArrangeMenuBtn = ({ results, setResults, isBusking }) => {
   const [isShowArrangeMenu, setIsShowArrangeMenu] = useState(false);

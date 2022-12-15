@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import SearchResult from '../../../components/searchResult/searchResult';
-import Page_num_screen from '../../../components/page_num_screen/page_num_screen';
-import InfoBtn from '../../../components/infoBtn/infoBtn';
-import TitleBar from '../../../components/titleBar/titleBar';
-import SearchResults from '../../../components/searchResults/searchResults';
-import SongTableTitles from '../../../components/songTableTitles/songTableTitles';
-import MainSec from '../../../components/mainSec/mainSec';
-import SongSearchBar from '../../../components/songSearchBar/songSearchBar';
+import SearchResult from '../../../components/SearchResult';
+import PageNumScreen from '../../../components/PageNumScreen';
+import InfoBtn from '../../../components/InfoBtn';
+import TitleBar from '../../../components/TitleBar';
+import SearchResults from '../../../components/SearchResults';
+import SongTableTitles from '../../../components/SongTableTitles';
+import MainSec from '../../../components/MainSec';
+import SongSearchBar from '../../../components/SongSearchBar';
 import { useMediaQuery } from 'react-responsive';
 
 const App_add = ({ lastfm }) => {
@@ -101,7 +101,7 @@ const App_add = ({ lastfm }) => {
                 onSongClick={addSongToPlaylist}
               />
             </ul>
-            <Page_num_screen
+            <PageNumScreen
               resultNum={resultNum}
               pageNum={pageNum}
               onPagePlus={plusPage}

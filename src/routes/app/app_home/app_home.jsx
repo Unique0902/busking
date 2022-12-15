@@ -1,6 +1,6 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
-import MainSec from '../../../components/mainSec/mainSec';
+import MainSec from '../../../components/MainSec';
 
 const App_home = (props) => {
   const [

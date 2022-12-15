@@ -5,7 +5,12 @@ import {
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-const Page_num_screen = ({ resultNum, pageNum, onPagePlus, onPageMinus }) => {
+export default function PageNumScreen({
+  resultNum,
+  pageNum,
+  onPagePlus,
+  onPageMinus,
+}) {
   const btnStyle =
     'mx-2 bg-black text-white rounded-full hover:scale-110 text-center text-lg w-8 h-8';
   return (
@@ -24,6 +29,4 @@ const Page_num_screen = ({ resultNum, pageNum, onPagePlus, onPageMinus }) => {
       </button>
     </div>
   );
-};
-
-export default Page_num_screen;
+}

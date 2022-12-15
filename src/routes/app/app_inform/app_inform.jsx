@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import TitleBar from '../../../components/titleBar/titleBar';
-import MainSec from '../../../components/mainSec/mainSec';
-import InformRow from '../../../components/informRow/informRow';
+import TitleBar from '../../../components/TitleBar';
+import MainSec from '../../../components/MainSec';
+import InformRow from '../../../components/InformRow';
 const App_inform = ({
   authService,
   userRepository,

@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import AdditionalMenu from '../additionalMenu/additionalMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faBars } from '@fortawesome/free-solid-svg-icons';
-import PlaylistMenu from '../playlistMenu/playlistMenu';
-import LoginMenu from '../loginMenu/loginMenu';
+import PlaylistMenu from './PlaylistMenu';
+import LoginMenu from './LoginMenu';
 import { useMediaQuery } from 'react-responsive';
 
-const App_header = ({
+export default function AppHeader({
   logout,
   userData,
   playlists,
@@ -21,9 +20,8 @@ const App_header = ({
   setNowPlaylistId,
   isShowSideBar,
   setIsShowSideBar,
-}) => {
+}) {
   const valueRef = useRef();
-  const [isShowAdditionalMenu, setIsShowAdditionalMenu] = useState(false);
   const [isShowPlaylistMenu, setIsShowPlaylistMenu] = useState(false);
   const [isShowLoginMenu, setIsShowLoginMenu] = useState(false);
   const changeNowPlaylist = (id) => {
@@ -101,6 +99,4 @@ const App_header = ({
       </header>
     </>
   );
-};
-
-export default App_header;
+}

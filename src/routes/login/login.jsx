@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginNav from '../../components/loginNav/loginNav';
+import LoginNav from '../../components/LoginNav';
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 

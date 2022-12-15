@@ -12,7 +12,7 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
-import SideBarBtn from '../SideBarBtn';
+import SideBarBtn from './SideBarBtn';
 
 const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   const [isHide, setIsHide] = useState(false);

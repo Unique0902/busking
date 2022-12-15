@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
-import TitleBar from '../../../components/titleBar/titleBar';
-import MainSec from '../../../components/mainSec/mainSec';
-import MainRow from '../../../components/mainRow/mainRow';
+import TitleBar from '../../../components/TitleBar';
+import MainSec from '../../../components/MainSec';
+import MainRow from '../../../components/MainRow';
 
 const App_makebusking = ({ buskingRepository }) => {
   const [playlistArr, setPlaylistArr] = useState(null);

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import Page_num_screen from '../../../components/page_num_screen/page_num_screen';
+import PageNumScreen from '../../../components/PageNumScreen';
 import { useEffect } from 'react';
-import TitleBar from '../../../components/titleBar/titleBar';
-import SearchResults from '../../../components/searchResults/searchResults';
-import SongTableTitles from '../../../components/songTableTitles/songTableTitles';
-import MainSec from '../../../components/mainSec/mainSec';
-import SongSearchBar from '../../../components/songSearchBar/songSearchBar';
-import ArrangeMenuBtn from '../../../components/arrangeMenuBtn/arrangeMenuBtn';
+import TitleBar from '../../../components/TitleBar';
+import SearchResults from '../../../components/SearchResults';
+import SongTableTitles from '../../../components/SongTableTitles';
+import MainSec from '../../../components/MainSec';
+import SongSearchBar from '../../../components/SongSearchBar';
+import ArrangeMenuBtn from '../../../components/ArrangeMenuBtn';
 import { useMediaQuery } from 'react-responsive';
 
 const App_playlist = (props) => {
@@ -136,7 +136,7 @@ const App_playlist = (props) => {
                 onSongClick={removeSongInPlaylist}
               />
             </ul>
-            <Page_num_screen
+            <PageNumScreen
               resultNum={resultNum}
               pageNum={pageNum}
               onPagePlus={plusPage}
