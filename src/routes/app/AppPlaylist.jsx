@@ -9,6 +9,7 @@ import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import ArrangeMenuBtn from '../../components/ArrangeMenuBtn';
 import { useMediaQuery } from 'react-responsive';
+import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppPlaylist(props) {
   const [results, setResults] = useState(null);
@@ -17,14 +18,8 @@ export default function AppPlaylist(props) {
   const [pageNum, setPageNum] = useState(1);
   const [searchWord, setSearchWord] = useState('');
   const [searchCategory, setSearchCategory] = useState('제목');
-  const [
-    addSongToPlaylist,
-    removeNowPlaylist,
-    removeSongInPlaylist,
-    nowPlaylist,
-    playlists,
-    addBasicPlaylist,
-  ] = useOutletContext();
+  const { nowPlaylist, addBasicPlaylist, removeSongInPlaylist } =
+    usePlaylistContext();
   useEffect(() => {
     if (nowPlaylist) {
       nowPlaylist.songs

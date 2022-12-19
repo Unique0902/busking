@@ -6,31 +6,36 @@ import PlaylistMenu from './PlaylistMenu';
 import LoginMenu from './LoginMenu';
 import { useMediaQuery } from 'react-responsive';
 import { useUserDataContext } from '../context/UserDataContext';
+import { useLocation } from 'react-router-dom';
+import { usePlaylistContext } from '../context/PlaylistContext';
 
-export default function AppHeader({
-  playlists,
-  nowPlaylist,
-  addBasicPlaylist,
-  setNowPlaylist,
-  removeNowPlaylist,
-  addPlaylist,
-  updateNowPlaylistName,
-  setNowPlaylistId,
-  isShowSideBar,
-  setIsShowSideBar,
-}) {
+export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
   const { userData } = useUserDataContext();
+  const {
+    playlists,
+    nowPlaylist,
+    addBasicPlaylist,
+    setNowPlaylist,
+    removeNowPlaylist,
+    addPlaylist,
+    updateNowPlaylistName,
+    setNowPlaylistId,
+  } = usePlaylistContext();
   const valueRef = useRef();
   const [isShowPlaylistMenu, setIsShowPlaylistMenu] = useState(false);
   const [isShowLoginMenu, setIsShowLoginMenu] = useState(false);
+  const isLgMediaQuery = useMediaQuery({
+    query: '(max-width:1024px)',
+  });
+  let location = useLocation();
+  if (location.pathname === '/busking/app/busking' && !isLgMediaQuery) {
+    return <></>;
+  }
   const changeNowPlaylist = (id) => {
     if (playlists[id]) {
       setNowPlaylist(playlists[id]);
     }
   };
-  const isLgMediaQuery = useMediaQuery({
-    query: '(max-width:1024px)',
-  });
 
   return (
     <>

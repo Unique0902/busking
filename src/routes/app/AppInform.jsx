@@ -14,13 +14,6 @@ export default function AppInform({
   playlistRepository,
   buskingRepository,
 }) {
-  const [
-    addSongToPlaylist,
-    removeNowPlaylist,
-    removeSongInPlaylist,
-    nowPlaylist,
-    playlists,
-  ] = useOutletContext();
   const { userData } = useUserDataContext();
   const { uid, logout } = useAuthContext();
   const [time, setTime] = useState(null);

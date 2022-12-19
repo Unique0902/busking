@@ -8,6 +8,7 @@ import SongTableTitles from '../../components/SongTableTitles';
 import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import { useMediaQuery } from 'react-responsive';
+import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppAdd({ lastfm }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -15,14 +16,8 @@ export default function AppAdd({ lastfm }) {
   const [pageNum, setPageNum] = useState(1);
   const [searchWord, setSearchWord] = useState('');
   const [searchCategory, setSearchCategory] = useState('제목');
-  const [
-    addSongToPlaylist,
-    removeNowPlaylist,
-    removeSongInPlaylist,
-    nowPlaylist,
-    playlists,
-    addBasicPlaylist,
-  ] = useOutletContext();
+  const { nowPlaylist, addBasicPlaylist, addSongToPlaylist } =
+    usePlaylistContext();
   const isPc = useMediaQuery({
     query: '(min-width:1024px)',
   });

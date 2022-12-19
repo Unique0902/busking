@@ -21,6 +21,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 import { UserDataContextProvider } from './context/UserDataContext';
 import UserDataProtectedRoute from './routes/UserDataProtectedRoute';
+import { PlaylistContextProvider } from './context/PlaylistContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const httpClient = axios.create({
@@ -37,69 +38,70 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider authService={authService}>
       <UserDataContextProvider userRepository={userRepository}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='busking'>
-              <Route
-                path=''
-                element={<Login userRepository={userRepository} />}
-              />
-              <Route
-                path='makeUser'
-                element={
-                  <ProtectedRoute>
-                    <MakeUser userRepository={userRepository} />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path='app'
-                element={
-                  <ProtectedRoute>
-                    <UserDataProtectedRoute>
-                      <App
+        <PlaylistContextProvider playlistRepository={playlistRepository}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='busking'>
+                <Route
+                  path=''
+                  element={<Login userRepository={userRepository} />}
+                />
+                <Route
+                  path='makeUser'
+                  element={
+                    <ProtectedRoute>
+                      <MakeUser userRepository={userRepository} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path='app'
+                  element={
+                    <ProtectedRoute>
+                      <UserDataProtectedRoute>
+                        <App />
+                      </UserDataProtectedRoute>
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path='home' element={<AppHome />} />
+                  <Route
+                    path='add'
+                    element={
+                      <AppAdd
+                        playlistRepository={playlistRepository}
+                        lastfm={lastfm}
+                      />
+                    }
+                  />
+                  <Route
+                    path='makebusking'
+                    element={
+                      <AppMakeBusking buskingRepository={buskingRepository} />
+                    }
+                  />
+                  <Route
+                    path='inform'
+                    element={
+                      <AppInform
+                        userRepository={userRepository}
                         playlistRepository={playlistRepository}
                         buskingRepository={buskingRepository}
                       />
-                    </UserDataProtectedRoute>
-                  </ProtectedRoute>
-                }
-              >
-                <Route path='home' element={<AppHome />} />
-                <Route
-                  path='add'
-                  element={
-                    <AppAdd
-                      playlistRepository={playlistRepository}
-                      lastfm={lastfm}
-                    />
-                  }
-                />
-                <Route
-                  path='makebusking'
-                  element={
-                    <AppMakeBusking buskingRepository={buskingRepository} />
-                  }
-                />
-                <Route
-                  path='inform'
-                  element={
-                    <AppInform
-                      userRepository={userRepository}
-                      playlistRepository={playlistRepository}
-                      buskingRepository={buskingRepository}
-                    />
-                  }
-                />
-                <Route path='playlist' element={<AppPlaylist />} />
-                <Route
-                  path='busking'
-                  element={<AppBusking buskingRepository={buskingRepository} />}
-                />{' '}
+                    }
+                  />
+                  <Route path='playlist' element={<AppPlaylist />} />
+                  <Route
+                    path='busking'
+                    element={
+                      <AppBusking buskingRepository={buskingRepository} />
+                    }
+                  />{' '}
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </PlaylistContextProvider>
       </UserDataContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

@@ -5,20 +5,14 @@ import MainSec from '../../components/MainSec';
 import MainRow from '../../components/MainRow';
 import { useAuthContext } from '../../context/AuthContext';
 import { useUserDataContext } from '../../context/UserDataContext';
+import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppMakeBusking({ buskingRepository }) {
   const [playlistArr, setPlaylistArr] = useState(null);
   const [maxNum, setMaxNum] = useState(10);
   const [selectedPlaylist, setSelectedPlaylist] = useState('');
   let navigate = useNavigate();
-  const [
-    addSongToPlaylist,
-    removeNowPlaylist,
-    removeSongInPlaylist,
-    nowPlaylist,
-    playlists,
-    addBasicPlaylist,
-  ] = useOutletContext();
+  const { playlists, nowPlaylist, addBasicPlaylist } = usePlaylistContext();
   const { uid } = useAuthContext();
   const { userData } = useUserDataContext();
   const [roomTitle, setRoomTitle] = useState('');

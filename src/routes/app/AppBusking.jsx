@@ -19,15 +19,10 @@ import MainSec from '../../components/MainSec';
 import { useMediaQuery } from 'react-responsive';
 import { useAuthContext } from '../../context/AuthContext';
 import { useUserDataContext } from '../../context/UserDataContext';
+import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppBusking({ buskingRepository }) {
-  const [
-    addSongToPlaylist,
-    removeNowPlaylist,
-    removeSongInPlaylist,
-    nowPlaylist,
-    playlists,
-  ] = useOutletContext();
+  const { playlists } = usePlaylistContext();
   const { userData } = useUserDataContext();
   const [url, setUrl] = useState('');
   let navigate = useNavigate();
@@ -235,6 +230,7 @@ export default function AppBusking({ buskingRepository }) {
           <h1 className=' text-center font-sans text-zinc-500 font-semibold text-xl'>
             {buskingData &&
               playlists &&
+              playlists[buskingData.playlistId] &&
               `현재 플레이리스트: ${playlists[buskingData.playlistId].name}`}
           </h1>
           <h2 className='font-sans font-semibold text-xl text-zinc-500'>
