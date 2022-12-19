@@ -22,9 +22,7 @@ export default function AppPlaylist(props) {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
     addBasicPlaylist,
   ] = useOutletContext();
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { database } from './firebase';
 import { onValue, ref, remove, set } from 'firebase/database';
+import { async } from '@firebase/util';
 
 class UserRepository {
   syncUserData(userId, onUpdate) {
@@ -16,7 +17,7 @@ class UserRepository {
       onUpdate(!!value);
     });
   }
-  makeUser(userId, name, onUpdate) {
+  makeUser = (userId, name, onUpdate) => {
     this.checkUser(userId, (userData) => {
       if (!userData) {
         const listRef = ref(database, `users/${userId}/`);
@@ -25,12 +26,12 @@ class UserRepository {
         onUpdate();
       }
     });
-  }
-  removeUser(userId, onUpdate) {
+  };
+  removeUser = async (userId, onUpdate) => {
     const listRef = ref(database, `users/${userId}`);
-    remove(listRef);
+    await remove(listRef);
     onUpdate();
-  }
+  };
 }
 
 export default UserRepository;

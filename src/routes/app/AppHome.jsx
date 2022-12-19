@@ -1,6 +1,7 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import MainSec from '../../components/MainSec';
+import { useUserDataContext } from '../../context/UserDataContext';
 
 export default function AppHome(props) {
   const [
@@ -8,10 +9,9 @@ export default function AppHome(props) {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
   ] = useOutletContext();
+  const { userData } = useUserDataContext();
   return (
     <>
       <MainSec>

@@ -2,24 +2,23 @@ import React from 'react';
 import LoginNav from '../../components/LoginNav';
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../context/AuthContext';
 
-const Login = ({ authService, userRepository }) => {
+const Login = ({ userRepository }) => {
   let navigate = useNavigate();
   const tutorialRef = useRef(null);
+  const { user, login, logout } = useAuthContext();
   const scrollToTutorial = () => tutorialRef.current.scrollIntoView();
   useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (user) {
-        userRepository.checkUser(user.uid, (userData) => {
-          if (userData) {
-            navigate('/busking/app/home');
-          } else {
-            navigate('/busking/makeUser');
-          }
-        });
-      } else {
-      }
-    });
+    if (user) {
+      userRepository.checkUser(user.uid, (userData) => {
+        if (userData) {
+          navigate('/busking/app/home');
+        } else {
+          navigate('/busking/makeUser');
+        }
+      });
+    }
   });
   return (
     <section className='w-screen h-screen'>
@@ -42,16 +41,13 @@ const Login = ({ authService, userRepository }) => {
             <li>
               <button
                 onClick={() => {
-                  authService.login('Google');
+                  login('Google');
                 }}
                 className='text-white hover:scale-105 py-4 px-8 font-sans text-xl bg-slate-900 rounded-3xl'
               >
                 Google로 로그인하기
               </button>
             </li>
-            {/* <li>
-              <button className={styles.loginBtn}>네이버로 로그인</button>
-            </li> */}
           </ul>
         </main>
       </section>
@@ -148,7 +144,7 @@ const Login = ({ authService, userRepository }) => {
         </h2>
         <button
           onClick={() => {
-            authService.login('Google');
+            login('Google');
           }}
           className='text-white hover:scale-105 py-4 px-8 font-sans text-xl bg-slate-900 rounded-3xl mt-6'
         >

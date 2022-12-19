@@ -20,9 +20,7 @@ export default function AppAdd({ lastfm }) {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
     addBasicPlaylist,
   ] = useOutletContext();
   const isPc = useMediaQuery({

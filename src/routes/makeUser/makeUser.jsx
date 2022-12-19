@@ -1,11 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../context/AuthContext';
 
-const MakeUser = ({ authService, userRepository }) => {
+const MakeUser = ({ userRepository }) => {
   const nameRef = useRef();
   let navigate = useNavigate();
   const [name, setName] = useState('');
   const [isCanApply, setIsCanApply] = useState(false);
+  const { user, uid, login, logout } = useAuthContext();
   useEffect(() => {
     if (name.length > 1 && name.length < 9) {
       setIsCanApply(true);
@@ -40,8 +42,7 @@ const MakeUser = ({ authService, userRepository }) => {
         onClick={() => {
           if (isCanApply) {
             const name = nameRef.current.value;
-            const userId = authService.auth.currentUser.uid;
-            userRepository.makeUser(userId, name, () => {
+            userRepository.makeUser(uid, name, () => {
               navigate('/busking/app/home');
             });
           }

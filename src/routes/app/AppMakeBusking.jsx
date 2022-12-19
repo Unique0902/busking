@@ -3,6 +3,8 @@ import { useOutletContext, useNavigate } from 'react-router-dom';
 import TitleBar from '../../components/TitleBar';
 import MainSec from '../../components/MainSec';
 import MainRow from '../../components/MainRow';
+import { useAuthContext } from '../../context/AuthContext';
+import { useUserDataContext } from '../../context/UserDataContext';
 
 export default function AppMakeBusking({ buskingRepository }) {
   const [playlistArr, setPlaylistArr] = useState(null);
@@ -14,11 +16,11 @@ export default function AppMakeBusking({ buskingRepository }) {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
     addBasicPlaylist,
   ] = useOutletContext();
+  const { uid } = useAuthContext();
+  const { userData } = useUserDataContext();
   const [roomTitle, setRoomTitle] = useState('');
   useEffect(() => {
     if (userData) {
@@ -37,7 +39,7 @@ export default function AppMakeBusking({ buskingRepository }) {
   }, [playlistArr]);
 
   useEffect(() => {
-    buskingRepository.syncBuskingData(userId, (buskingData) => {
+    buskingRepository.syncBuskingData(uid, (buskingData) => {
       if (buskingData) {
         navigate('/busking/app/busking');
       }
@@ -47,7 +49,7 @@ export default function AppMakeBusking({ buskingRepository }) {
   const startBusking = () => {
     if (selectedPlaylist && maxNum && roomTitle) {
       buskingRepository.makeBusking(
-        userId,
+        uid,
         selectedPlaylist,
         maxNum,
         roomTitle,

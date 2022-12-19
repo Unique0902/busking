@@ -1,15 +1,13 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faBars } from '@fortawesome/free-solid-svg-icons';
 import PlaylistMenu from './PlaylistMenu';
 import LoginMenu from './LoginMenu';
 import { useMediaQuery } from 'react-responsive';
+import { useUserDataContext } from '../context/UserDataContext';
 
 export default function AppHeader({
-  logout,
-  userData,
   playlists,
   nowPlaylist,
   addBasicPlaylist,
@@ -21,6 +19,7 @@ export default function AppHeader({
   isShowSideBar,
   setIsShowSideBar,
 }) {
+  const { userData } = useUserDataContext();
   const valueRef = useRef();
   const [isShowPlaylistMenu, setIsShowPlaylistMenu] = useState(false);
   const [isShowLoginMenu, setIsShowLoginMenu] = useState(false);
@@ -84,18 +83,9 @@ export default function AppHeader({
         {isShowLoginMenu && (
           <LoginMenu
             userData={userData}
-            logout={logout}
             setIsShowLoginMenu={setIsShowLoginMenu}
           />
         )}
-        {/* <button
-          onClick={() => {
-            logout();
-          }}
-          className={styles.logout}
-        >
-          로그아웃
-        </button> */}
       </header>
     </>
   );

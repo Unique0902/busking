@@ -1,8 +1,10 @@
 import React from 'react';
 import { useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 
-const LoginMenu = ({ userData, logout, setIsShowLoginMenu }) => {
+const LoginMenu = ({ userData, setIsShowLoginMenu }) => {
+  const { user, login, logout } = useAuthContext();
   const wrapperRef = useRef();
   let navigate = useNavigate();
   const btnStyle =

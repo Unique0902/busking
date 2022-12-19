@@ -4,25 +4,17 @@ import AppHeader from '../../components/AppHeader';
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { useAuthContext } from '../../context/AuthContext';
+import { useUserDataContext } from '../../context/UserDataContext';
 
-function App({
-  authService,
-  userRepository,
-  playlistRepository,
-  buskingRepository,
-}) {
+function App({ playlistRepository }) {
   const [playlists, setPlaylists] = useState(null);
-  const [userId, setUserId] = useState('');
   const [nowPlaylist, setNowPlaylist] = useState(null);
   const [nowPlaylistId, setNowPlaylistId] = useState(null);
-  const [userData, setUserData] = useState(null);
   const [isShowSideBar, setIsShowSideBar] = useState(false);
   const [url, setUrl] = useState('');
+  const { uid } = useAuthContext();
   let location = useLocation();
-  let navigate = useNavigate();
-  const logout = () => {
-    authService.logout();
-  };
   const isLgMediaQuery = useMediaQuery({
     query: '(min-width:1024px)',
   });
@@ -50,7 +42,7 @@ function App({
         title: title,
         artist: artist,
       };
-      playlistRepository.saveSong(userId, nowPlaylist, song, () => {
+      playlistRepository.saveSong(uid, nowPlaylist, song, () => {
         alert(`${artist}의 ${title}가 추가되었습니다.`);
       });
     }
@@ -63,7 +55,7 @@ function App({
   }, [location]);
 
   const removeNowPlaylist = () => {
-    playlistRepository.removePlaylist(userId, nowPlaylist, () => {
+    playlistRepository.removePlaylist(uid, nowPlaylist, () => {
       alert('제거되었습니다.');
     });
   };
@@ -78,7 +70,7 @@ function App({
       );
       if (song) {
         setNowPlaylistId(null);
-        playlistRepository.removeSong(userId, nowPlaylist, song, () => {
+        playlistRepository.removeSong(uid, nowPlaylist, song, () => {
           window.alert('제거되었습니다.');
         });
       } else {
@@ -93,10 +85,10 @@ function App({
       name: 'playlist',
     };
     setNowPlaylistId(playlist.id);
-    playlistRepository.makePlaylist(userId, playlist);
+    playlistRepository.makePlaylist(uid, playlist);
   };
   const updateNowPlaylistName = (name) => {
-    playlistRepository.updatePlaylistName(userId, nowPlaylist, name);
+    playlistRepository.updatePlaylistName(uid, nowPlaylist, name);
   };
 
   const addPlaylist = (name) => {
@@ -105,29 +97,19 @@ function App({
       name,
     };
     setNowPlaylistId(playlist.id);
-    playlistRepository.makePlaylist(userId, playlist);
+    playlistRepository.makePlaylist(uid, playlist);
   };
 
   useEffect(() => {
-    if (!userId) {
+    if (!uid) {
       return;
     }
-    userRepository.checkUser(userId, (isUserData) => {
-      if (!isUserData) {
-        navigate('/busking/makeUser');
-        return;
-      }
-    });
-    userRepository.syncUserData(userId, (data) => {
-      setUserData(data);
-    });
-
-    playlistRepository.syncPlaylist(userId, (playlists) => {
+    playlistRepository.syncPlaylist(uid, (playlists) => {
       if (playlists) {
         setPlaylists(playlists);
       }
     });
-  }, [userId]);
+  }, [uid]);
 
   useEffect(() => {
     if (playlists) {
@@ -140,18 +122,6 @@ function App({
     }
   }, [playlists]);
 
-  useEffect(() => {
-    authService.onAuthChange(
-      (user) => {
-        if (user) {
-          setUserId(user.uid);
-        } else {
-          navigate('/busking/');
-        }
-      },
-      [authService, userId]
-    );
-  });
   return (
     <section className='flex h-screen text-black bg-gradient-to-b from-blue-500 to-mainBlue '>
       {(isLgMediaQuery || isShowSideBar) && (
@@ -163,8 +133,6 @@ function App({
       <main className=' grow py-6 px-8 overflow-y-auto'>
         {url != '/busking/app/busking' && (
           <AppHeader
-            logout={logout}
-            userData={userData}
             playlists={playlists}
             addBasicPlaylist={addBasicPlaylist}
             setNowPlaylist={setNowPlaylist}
@@ -179,8 +147,6 @@ function App({
         )}
         {url === '/busking/app/busking' && !isLgMediaQuery && (
           <AppHeader
-            logout={logout}
-            userData={userData}
             playlists={playlists}
             addBasicPlaylist={addBasicPlaylist}
             setNowPlaylist={setNowPlaylist}
@@ -199,9 +165,7 @@ function App({
             removeNowPlaylist,
             removeSongInPlaylist,
             nowPlaylist,
-            userData,
             playlists,
-            userId,
             addBasicPlaylist,
           ]}
         />

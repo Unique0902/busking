@@ -7,8 +7,9 @@ import { useState } from 'react';
 import TitleBar from '../../components/TitleBar';
 import MainSec from '../../components/MainSec';
 import InformRow from '../../components/InformRow';
+import { useAuthContext } from '../../context/AuthContext';
+import { useUserDataContext } from '../../context/UserDataContext';
 export default function AppInform({
-  authService,
   userRepository,
   playlistRepository,
   buskingRepository,
@@ -18,10 +19,10 @@ export default function AppInform({
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
   ] = useOutletContext();
+  const { userData } = useUserDataContext();
+  const { uid, logout } = useAuthContext();
   const [time, setTime] = useState(null);
   useEffect(() => {
     if (userData) {
@@ -50,10 +51,10 @@ export default function AppInform({
           titleColor={'red'}
           onClick={() => {
             if (window.confirm('정말 탈퇴하시겠습니까?')) {
-              userRepository.removeUser(userId, () => {
-                playlistRepository.removeUserPlaylists(userId);
-                buskingRepository.removeBusking(userId, () => {});
-                authService.logout();
+              userRepository.removeUser(uid, () => {
+                playlistRepository.removeUserPlaylists(uid);
+                buskingRepository.removeBusking(uid, () => {});
+                logout();
               });
             }
           }}

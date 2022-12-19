@@ -17,6 +17,8 @@ import SearchResults from '../../components/SearchResults';
 import SongTableTitles from '../../components/SongTableTitles';
 import MainSec from '../../components/MainSec';
 import { useMediaQuery } from 'react-responsive';
+import { useAuthContext } from '../../context/AuthContext';
+import { useUserDataContext } from '../../context/UserDataContext';
 
 export default function AppBusking({ buskingRepository }) {
   const [
@@ -24,12 +26,12 @@ export default function AppBusking({ buskingRepository }) {
     removeNowPlaylist,
     removeSongInPlaylist,
     nowPlaylist,
-    userData,
     playlists,
-    userId,
   ] = useOutletContext();
+  const { userData } = useUserDataContext();
   const [url, setUrl] = useState('');
   let navigate = useNavigate();
+  const { uid } = useAuthContext();
   const [isBusking, setIsBusking] = useState(false);
   const [buskingData, setBuskingData] = useState(null);
   const [appliance, setAppliance] = useState(null);
@@ -46,8 +48,8 @@ export default function AppBusking({ buskingRepository }) {
     query: '(max-width:1024px)',
   });
   useEffect(() => {
-    if (userId && !isBusking) {
-      buskingRepository.syncBuskingData(userId, (data) => {
+    if (uid && !isBusking) {
+      buskingRepository.syncBuskingData(uid, (data) => {
         if (data) {
           setIsBusking(true);
         } else {
@@ -55,10 +57,10 @@ export default function AppBusking({ buskingRepository }) {
         }
       });
     }
-  }, [userId]);
+  }, [uid]);
   useEffect(() => {
     if (isBusking) {
-      buskingRepository.syncBuskingData(userId, (data) => {
+      buskingRepository.syncBuskingData(uid, (data) => {
         if (data) {
           setBuskingData(data);
           setAppliance(data.appliance);
@@ -67,10 +69,10 @@ export default function AppBusking({ buskingRepository }) {
     }
   }, [isBusking]);
   useEffect(() => {
-    if (userId) {
-      setUrl(`https://unique0902.github.io/BuskingApply?uid=${userId}`);
+    if (uid) {
+      setUrl(`https://unique0902.github.io/BuskingApply?uid=${uid}`);
     }
-  }, [userId]);
+  }, [uid]);
   const plusPage = () => {
     if (pageNum < resultNum / 6) {
       setPageNum(pageNum + 1);
@@ -164,7 +166,7 @@ export default function AppBusking({ buskingRepository }) {
               if (isSinging) {
                 if (beforeSong) {
                   buskingRepository.applyBuskingSongAgain(
-                    userId,
+                    uid,
                     nowSong,
                     nowSong.sid,
                     () => {}
@@ -194,7 +196,7 @@ export default function AppBusking({ buskingRepository }) {
                   setIsSinging(true);
                   setNowSong({ ...results[0] });
                   buskingRepository.removeBuskingSong(
-                    userId,
+                    uid,
                     results[0].sid,
                     () => {}
                   );
@@ -216,7 +218,7 @@ export default function AppBusking({ buskingRepository }) {
                   }
                   setNowSong({ ...results[0] });
                   buskingRepository.removeBuskingSong(
-                    userId,
+                    uid,
                     results[0].sid,
                     () => {}
                   );
@@ -266,7 +268,7 @@ export default function AppBusking({ buskingRepository }) {
               pageNum={pageNum}
               btnText={'제거'}
               onSongClick={(sid) => {
-                buskingRepository.removeBuskingSong(userId, sid, () => {});
+                buskingRepository.removeBuskingSong(uid, sid, () => {});
               }}
             />
           </ul>
@@ -282,7 +284,7 @@ export default function AppBusking({ buskingRepository }) {
             className='ml-4 bg-red-600 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'
             onClick={() => {
               if (window.confirm('버스킹을 종료하시겠습니까?')) {
-                buskingRepository.removeBusking(userId, () => {
+                buskingRepository.removeBusking(uid, () => {
                   navigate('/busking/app/makebusking');
                 });
               }
