@@ -11,16 +11,7 @@ import { usePlaylistContext } from '../context/PlaylistContext';
 
 export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
   const { userData } = useUserDataContext();
-  const {
-    playlists,
-    nowPlaylist,
-    addBasicPlaylist,
-    setNowPlaylist,
-    removeNowPlaylist,
-    addPlaylist,
-    updateNowPlaylistName,
-    setNowPlaylistId,
-  } = usePlaylistContext();
+  const { nowPlaylist } = usePlaylistContext();
   const valueRef = useRef();
   const [isShowPlaylistMenu, setIsShowPlaylistMenu] = useState(false);
   const [isShowLoginMenu, setIsShowLoginMenu] = useState(false);
@@ -31,44 +22,28 @@ export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
   if (location.pathname === '/busking/app/busking' && !isLgMediaQuery) {
     return <></>;
   }
-  const changeNowPlaylist = (id) => {
-    if (playlists[id]) {
-      setNowPlaylist(playlists[id]);
-    }
-  };
 
   return (
     <>
       <header className='flex justify-between mb-10 '>
-        <div>
-          {isLgMediaQuery && (
-            <button
-              onClick={() => {
-                setIsShowSideBar(!isShowSideBar);
-              }}
-            >
-              <FontAwesomeIcon
-                icon={faBars}
-                className='font-sans text-white text-2xl mr-6'
-              />
-            </button>
-          )}
-          {isShowPlaylistMenu && (
-            <PlaylistMenu
-              setIsShowPlaylistMenu={setIsShowPlaylistMenu}
-              playlists={playlists}
-              changeNowPlaylist={changeNowPlaylist}
-              nowPlaylist={nowPlaylist}
-              addBasicPlaylist={addBasicPlaylist}
-              removeNowPlaylist={removeNowPlaylist}
-              addPlaylist={addPlaylist}
-              updateNowPlaylistName={updateNowPlaylistName}
-              setNowPlaylistId={setNowPlaylistId}
+        <div className='flex items-center relative'>
+          <button
+            onClick={() => {
+              setIsShowSideBar(!isShowSideBar);
+            }}
+            className='hidden max-lg:flex'
+          >
+            <FontAwesomeIcon
+              icon={faBars}
+              className='font-sans text-white text-2xl mr-6'
             />
+          </button>
+          {isShowPlaylistMenu && (
+            <PlaylistMenu setIsShowPlaylistMenu={setIsShowPlaylistMenu} />
           )}
           <button
             ref={valueRef}
-            className='text-white font-sans text-xl hover:scale-110'
+            className='text-white font-sans text-xl hover:scale-110 flex items-center'
             onClick={() => {
               setIsShowPlaylistMenu(true);
             }}

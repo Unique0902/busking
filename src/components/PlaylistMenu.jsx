@@ -1,20 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRef, useEffect } from 'react';
+import { usePlaylistContext } from '../context/PlaylistContext';
 
-const PlaylistMenu = ({
-  setIsShowPlaylistMenu,
-  playlists,
-  changeNowPlaylist,
-  nowPlaylist,
-  addBasicPlaylist,
-  removeNowPlaylist,
-  addPlaylist,
-  updateNowPlaylistName,
-  setNowPlaylistId,
-}) => {
+const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
   const wrapperRef = useRef();
   const inputRef = useRef();
+  const {
+    playlists,
+    nowPlaylist,
+    removeNowPlaylist,
+    addPlaylist,
+    updateNowPlaylistName,
+    setNowPlaylistId,
+    changeNowPlaylist,
+  } = usePlaylistContext();
   const amendInputRef = useRef();
   const [isShowInput, setIsShowInput] = useState(false);
   const [isShowAmendInput, setIsShowAmendInput] = useState(false);
@@ -67,7 +67,7 @@ const PlaylistMenu = ({
   return (
     <div
       ref={wrapperRef}
-      className=' w-80 border-gray-600 border bg-white text-black absolute rounded-xl z-50'
+      className=' w-80 border-gray-600 border bg-white text-black absolute rounded-xl z-50 top-0'
     >
       <section className=' border-b border-gray-600 border-solid flex flex-col pt-2 pb-2'>
         {nowPlaylist ? (
@@ -206,7 +206,6 @@ const PlaylistMenu = ({
                 key={playlist.id}
                 onClick={(e) => {
                   changeNowPlaylist(e.currentTarget.dataset.id);
-                  setNowPlaylistId(parseInt(e.currentTarget.dataset.id));
                   setIsShowPlaylistMenu(false);
                 }}
               >

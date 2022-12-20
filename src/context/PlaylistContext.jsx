@@ -100,6 +100,13 @@ export function PlaylistContextProvider({ playlistRepository, children }) {
     playlistRepository.makePlaylist(uid, playlist);
   };
 
+  const changeNowPlaylist = (id) => {
+    if (playlists[id]) {
+      setNowPlaylist(playlists[id]);
+      setNowPlaylistId(parseInt(id));
+    }
+  };
+
   return (
     <PlaylistContext.Provider
       value={{
@@ -112,6 +119,7 @@ export function PlaylistContextProvider({ playlistRepository, children }) {
         addBasicPlaylist,
         updateNowPlaylistName,
         addPlaylist,
+        changeNowPlaylist,
       }}
     >
       {children}
