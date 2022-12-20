@@ -38,7 +38,7 @@ const ArrangeMenu = ({
     }
     setResults([...results]);
   };
-  const onArrangeBtnClick = (type) => {
+  const handleClick = (type) => {
     arrangeResults(type);
     setIsShowArrangeMenu(false);
   };
@@ -60,23 +60,19 @@ const ArrangeMenu = ({
     >
       <section className=' border-b border-gray-600 border-solid flex flex-col pt-2 pb-2'>
         <ArrangeBtn
-          onClick={onArrangeBtnClick}
+          onClick={handleClick}
           type={'title'}
           text={'제목 문자순 정렬'}
         />
         <ArrangeBtn
-          onClick={onArrangeBtnClick}
+          onClick={handleClick}
           type={'artist'}
           text={'가수 문자순 정렬'}
         />
-        <ArrangeBtn
-          onClick={onArrangeBtnClick}
-          type={'time'}
-          text={'시간순 정렬'}
-        />
+        <ArrangeBtn onClick={handleClick} type={'time'} text={'시간순 정렬'} />
         {isBusking && (
           <ArrangeBtn
-            onClick={onArrangeBtnClick}
+            onClick={handleClick}
             type={'cnt'}
             text={'신청자순 정렬'}
           />

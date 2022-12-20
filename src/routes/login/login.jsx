@@ -7,7 +7,7 @@ import { useAuthContext } from '../../context/AuthContext';
 const Login = ({ userRepository }) => {
   let navigate = useNavigate();
   const tutorialRef = useRef(null);
-  const { user, login, logout } = useAuthContext();
+  const { user, login } = useAuthContext();
   const scrollToTutorial = () => tutorialRef.current.scrollIntoView();
   useEffect(() => {
     if (user) {

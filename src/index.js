@@ -22,8 +22,10 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import { UserDataContextProvider } from './context/UserDataContext';
 import UserDataProtectedRoute from './routes/UserDataProtectedRoute';
 import { PlaylistContextProvider } from './context/PlaylistContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient();
 const httpClient = axios.create({
   baseURL: 'https://ws.audioscrobbler.com/2.0',
   params: { api_key: process.env.REACT_APP_LASTFM_API_KEY },
@@ -36,73 +38,67 @@ const buskingRepository = new BuskingRepository();
 
 root.render(
   <React.StrictMode>
-    <AuthContextProvider authService={authService}>
-      <UserDataContextProvider userRepository={userRepository}>
-        <PlaylistContextProvider playlistRepository={playlistRepository}>
-          <BrowserRouter>
-            <Routes>
-              <Route path='busking'>
-                <Route
-                  path=''
-                  element={<Login userRepository={userRepository} />}
-                />
-                <Route
-                  path='makeUser'
-                  element={
-                    <ProtectedRoute>
-                      <MakeUser userRepository={userRepository} />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path='app'
-                  element={
-                    <ProtectedRoute>
-                      <UserDataProtectedRoute>
-                        <App />
-                      </UserDataProtectedRoute>
-                    </ProtectedRoute>
-                  }
-                >
-                  <Route path='home' element={<AppHome />} />
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvider authService={authService}>
+        <UserDataContextProvider userRepository={userRepository}>
+          <PlaylistContextProvider playlistRepository={playlistRepository}>
+            <BrowserRouter>
+              <Routes>
+                <Route path='busking'>
                   <Route
-                    path='add'
+                    path=''
+                    element={<Login userRepository={userRepository} />}
+                  />
+                  <Route
+                    path='makeUser'
                     element={
-                      <AppAdd
-                        playlistRepository={playlistRepository}
-                        lastfm={lastfm}
-                      />
+                      <ProtectedRoute>
+                        <MakeUser userRepository={userRepository} />
+                      </ProtectedRoute>
                     }
                   />
                   <Route
-                    path='makebusking'
+                    path='app'
                     element={
-                      <AppMakeBusking buskingRepository={buskingRepository} />
+                      <ProtectedRoute>
+                        <UserDataProtectedRoute>
+                          <App />
+                        </UserDataProtectedRoute>
+                      </ProtectedRoute>
                     }
-                  />
-                  <Route
-                    path='inform'
-                    element={
-                      <AppInform
-                        userRepository={userRepository}
-                        playlistRepository={playlistRepository}
-                        buskingRepository={buskingRepository}
-                      />
-                    }
-                  />
-                  <Route path='playlist' element={<AppPlaylist />} />
-                  <Route
-                    path='busking'
-                    element={
-                      <AppBusking buskingRepository={buskingRepository} />
-                    }
-                  />{' '}
+                  >
+                    <Route path='home' element={<AppHome />} />
+                    <Route path='add' element={<AppAdd lastfm={lastfm} />} />
+                    <Route
+                      path='makebusking'
+                      element={
+                        <AppMakeBusking buskingRepository={buskingRepository} />
+                      }
+                    />
+                    <Route
+                      path='inform'
+                      element={
+                        <AppInform
+                          userRepository={userRepository}
+                          playlistRepository={playlistRepository}
+                          buskingRepository={buskingRepository}
+                        />
+                      }
+                    />
+                    <Route path='playlist' element={<AppPlaylist />} />
+                    <Route
+                      path='busking'
+                      element={
+                        <AppBusking buskingRepository={buskingRepository} />
+                      }
+                    />{' '}
+                  </Route>
                 </Route>
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </PlaylistContextProvider>
-      </UserDataContextProvider>
-    </AuthContextProvider>
+              </Routes>
+            </BrowserRouter>
+          </PlaylistContextProvider>
+        </UserDataContextProvider>
+      </AuthContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

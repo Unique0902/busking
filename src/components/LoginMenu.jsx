@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 
 const LoginMenu = ({ userData, setIsShowLoginMenu }) => {
-  const { user, login, logout } = useAuthContext();
+  const { logout } = useAuthContext();
   const wrapperRef = useRef();
   let navigate = useNavigate();
   const btnStyle =

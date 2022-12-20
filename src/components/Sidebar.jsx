@@ -34,7 +34,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   const isLgMediaQuery = useMediaQuery({
     query: '(max-width:1024px)',
   });
-  const onBtnClick = (name) => {
+  const handelClick = (name) => {
     navigate(name);
     if (isLgMediaQuery) {
       setIsShowSideBar(false);
@@ -80,7 +80,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
         <ul>
           <SideBarBtn
             name={'home'}
-            onClick={onBtnClick}
+            onClick={handelClick}
             selectedBtn={selectedBtn}
             isHide={isHide}
             text={'Home'}
@@ -95,7 +95,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
           )}
           <SideBarBtn
             name={'add'}
-            onClick={onBtnClick}
+            onClick={handelClick}
             selectedBtn={selectedBtn}
             isHide={isHide}
             text={'노래 추가'}
@@ -103,7 +103,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
           />
           <SideBarBtn
             name={'playlist'}
-            onClick={onBtnClick}
+            onClick={handelClick}
             selectedBtn={selectedBtn}
             isHide={isHide}
             text={'Playlist 관리'}
@@ -111,7 +111,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
           />
           <SideBarBtn
             name={'inform'}
-            onClick={onBtnClick}
+            onClick={handelClick}
             selectedBtn={selectedBtn}
             isHide={isHide}
             text={'내 정보'}
@@ -119,7 +119,7 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
           />
           <SideBarBtn
             name={'makebusking'}
-            onClick={onBtnClick}
+            onClick={handelClick}
             selectedBtn={selectedBtn}
             isHide={isHide}
             text={'버스킹하기'}

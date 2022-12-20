@@ -16,11 +16,11 @@ class BuskingRepository {
     await set(listRef, buskingData);
     onUpdate();
   };
-  removeBusking(userId, onUpdate) {
+  removeBusking = async (userId, onUpdate) => {
     const listRef = ref(database, `buskings/${userId}/`);
-    remove(listRef);
+    await remove(listRef);
     onUpdate();
-  }
+  };
   removeBuskingSong(userId, sid, onUpdate) {
     const listRef = ref(database, `buskings/${userId}/appliance/${sid}`);
     remove(listRef);

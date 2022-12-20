@@ -7,7 +7,7 @@ const MakeUser = ({ userRepository }) => {
   let navigate = useNavigate();
   const [name, setName] = useState('');
   const [isCanApply, setIsCanApply] = useState(false);
-  const { user, uid, login, logout } = useAuthContext();
+  const { uid } = useAuthContext();
   useEffect(() => {
     if (name.length > 1 && name.length < 9) {
       setIsCanApply(true);

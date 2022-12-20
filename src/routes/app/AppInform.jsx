@@ -1,7 +1,4 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import TitleBar from '../../components/TitleBar';

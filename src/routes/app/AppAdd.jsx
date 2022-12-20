@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import PageNumScreen from '../../components/PageNumScreen';
 import InfoBtn from '../../components/InfoBtn';
 import TitleBar from '../../components/TitleBar';
@@ -36,17 +35,17 @@ export default function AppAdd({ lastfm }) {
       }
     }
   };
-  const plusPage = () => {
+  const handelPlus = () => {
     search(pageNum + 1);
     setPageNum(pageNum + 1);
   };
-  const minusPage = () => {
+  const handelMinus = () => {
     if (pageNum !== 1) {
       search(pageNum - 1);
       setPageNum(pageNum - 1);
     }
   };
-  const onSearchBarChange = () => {
+  const handelChange = () => {
     setPageNum(1);
     search(1);
   };
@@ -74,7 +73,7 @@ export default function AppAdd({ lastfm }) {
             setSearchWord={setSearchWord}
             searchCategory={searchCategory}
             setSearchCategory={setSearchCategory}
-            onSearchBarChange={onSearchBarChange}
+            onSearchBarChange={handelChange}
           >
             <InfoBtn
               text={
@@ -96,8 +95,8 @@ export default function AppAdd({ lastfm }) {
             <PageNumScreen
               resultNum={resultNum}
               pageNum={pageNum}
-              onPagePlus={plusPage}
-              onPageMinus={minusPage}
+              onPagePlus={handelPlus}
+              onPageMinus={handelMinus}
             />
           </section>
         </MainSec>

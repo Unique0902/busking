@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import PageNumScreen from '../../components/PageNumScreen';
 import { useEffect } from 'react';
 import TitleBar from '../../components/TitleBar';
@@ -11,9 +10,8 @@ import ArrangeMenuBtn from '../../components/ArrangeMenuBtn';
 import { useMediaQuery } from 'react-responsive';
 import { usePlaylistContext } from '../../context/PlaylistContext';
 
-export default function AppPlaylist(props) {
+export default function AppPlaylist() {
   const [results, setResults] = useState(null);
-  // const [nowPageResults, setNowPageResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
   const [pageNum, setPageNum] = useState(1);
   const [searchWord, setSearchWord] = useState('');
@@ -67,19 +65,17 @@ export default function AppPlaylist(props) {
       }
     }
   };
-  const plusPage = () => {
+  const handelPlus = () => {
     if (pageNum < resultNum / 6) {
       setPageNum(pageNum + 1);
-      // setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
     }
   };
-  const minusPage = () => {
+  const handelMinus = () => {
     if (pageNum !== 1) {
       setPageNum(pageNum - 1);
-      // setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
     }
   };
-  const onSearchBarChange = () => {
+  const handelChange = () => {
     setPageNum(1);
     search();
   };
@@ -107,7 +103,7 @@ export default function AppPlaylist(props) {
             setSearchWord={setSearchWord}
             searchCategory={searchCategory}
             setSearchCategory={setSearchCategory}
-            onSearchBarChange={onSearchBarChange}
+            onSearchBarChange={handelChange}
           >
             <ArrangeMenuBtn
               results={results}
@@ -132,8 +128,8 @@ export default function AppPlaylist(props) {
             <PageNumScreen
               resultNum={resultNum}
               pageNum={pageNum}
-              onPagePlus={plusPage}
-              onPageMinus={minusPage}
+              onPagePlus={handelPlus}
+              onPageMinus={handelMinus}
             />
           </section>
         </MainSec>

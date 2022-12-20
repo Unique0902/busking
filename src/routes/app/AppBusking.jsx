@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useOutletContext } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faForwardStep,
@@ -68,13 +67,13 @@ export default function AppBusking({ buskingRepository }) {
       setUrl(`https://unique0902.github.io/BuskingApply?uid=${uid}`);
     }
   }, [uid]);
-  const plusPage = () => {
+  const handelPlus = () => {
     if (pageNum < resultNum / 6) {
       setPageNum(pageNum + 1);
       setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
     }
   };
-  const minusPage = () => {
+  const handelMinus = () => {
     if (pageNum !== 1) {
       setPageNum(pageNum - 1);
       setNowPageResults(results.slice((pageNum - 1) * 6, pageNum * 6));
@@ -271,8 +270,8 @@ export default function AppBusking({ buskingRepository }) {
           <PageNumScreen
             resultNum={resultNum}
             pageNum={pageNum}
-            onPagePlus={plusPage}
-            onPageMinus={minusPage}
+            onPagePlus={handelPlus}
+            onPageMinus={handelMinus}
           />
         </section>
         <section className='flex flex-row pt-4 justify-end'>

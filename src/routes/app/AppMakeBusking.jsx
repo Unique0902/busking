@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useOutletContext, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TitleBar from '../../components/TitleBar';
 import MainSec from '../../components/MainSec';
 import MainRow from '../../components/MainRow';
