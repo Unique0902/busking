@@ -2,11 +2,11 @@ import React from 'react';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const InformRow = ({ title, titleColor, onClick, children }) => {
+const InformRow = ({ title, titleColor, handleClick, children }) => {
   return (
     <button
       onClick={() => {
-        onClick();
+        handleClick();
       }}
       className={`flex w-full text-left flex-row ${
         titleColor == 'red' && 'hover:bg-gray-200'

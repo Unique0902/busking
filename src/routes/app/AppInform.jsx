@@ -23,12 +23,16 @@ export default function AppInform({
     <>
       <TitleBar text={'내 정보'} />
       <MainSec>
-        <InformRow title={'닉네임'} titleColor={'gray'} onClick={() => {}}>
+        <InformRow title={'닉네임'} titleColor={'gray'} handleClick={() => {}}>
           <p className='font-sans text-lg text-black font-normal'>
             {userData && userData.name}
           </p>
         </InformRow>
-        <InformRow title={'가입일자'} titleColor={'gray'} onClick={() => {}}>
+        <InformRow
+          title={'가입일자'}
+          titleColor={'gray'}
+          handleClick={() => {}}
+        >
           <p className='font-sans text-lg text-black font-normal'>
             {time &&
               `${time.getFullYear()}년 ${
@@ -39,7 +43,7 @@ export default function AppInform({
         <InformRow
           title={'회원 탈퇴'}
           titleColor={'red'}
-          onClick={() => {
+          handleClick={() => {
             if (window.confirm('정말 탈퇴하시겠습니까?')) {
               userRepository.removeUser(uid, () => {
                 playlistRepository.removeUserPlaylists(uid);

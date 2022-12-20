@@ -22,7 +22,6 @@ export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
   if (location.pathname === '/busking/app/busking' && !isLgMediaQuery) {
     return <></>;
   }
-
   return (
     <>
       <header className='flex justify-between mb-10 '>
@@ -52,20 +51,22 @@ export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
             <FontAwesomeIcon icon={faCaretDown} className='ml-2' />
           </button>
         </div>
-        <button
-          className='font-sans text-white text-xl hover:scale-110'
-          onClick={() => {
-            setIsShowLoginMenu(true);
-          }}
-        >
-          {userData && userData.name}
-        </button>
-        {isShowLoginMenu && (
-          <LoginMenu
-            userData={userData}
-            setIsShowLoginMenu={setIsShowLoginMenu}
-          />
-        )}
+        <div className='relative'>
+          <button
+            className='font-sans text-white text-xl hover:scale-110'
+            onClick={() => {
+              setIsShowLoginMenu(true);
+            }}
+          >
+            {userData && userData.name}
+          </button>
+          {isShowLoginMenu && (
+            <LoginMenu
+              userData={userData}
+              setIsShowLoginMenu={setIsShowLoginMenu}
+            />
+          )}
+        </div>
       </header>
     </>
   );

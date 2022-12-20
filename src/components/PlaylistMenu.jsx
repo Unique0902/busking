@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useRef, useEffect } from 'react';
 import { usePlaylistContext } from '../context/PlaylistContext';
+import PopupWrapper from './PopupWrapper';
 
 const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
-  const wrapperRef = useRef();
   const inputRef = useRef();
   const {
     playlists,
@@ -12,7 +12,6 @@ const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
     removeNowPlaylist,
     addPlaylist,
     updateNowPlaylistName,
-    setNowPlaylistId,
     changeNowPlaylist,
   } = usePlaylistContext();
   const amendInputRef = useRef();
@@ -29,17 +28,6 @@ const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
   }, [nowPlaylist]);
   const btnStyle =
     'font-sans text-black text-lg text-left py-1 px-4 hover:bg-gray-200';
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsShowPlaylistMenu(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [wrapperRef]);
   useEffect(() => {
     if (isShowInput && inputRef.current) {
       inputRef.current.focus();
@@ -65,9 +53,11 @@ const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
     }
   }, [playlistAmendName]);
   return (
-    <div
-      ref={wrapperRef}
-      className=' w-80 border-gray-600 border bg-white text-black absolute rounded-xl z-50 top-0'
+    <PopupWrapper
+      handleClickOther={() => {
+        setIsShowPlaylistMenu(false);
+      }}
+      isLeft={true}
     >
       <section className=' border-b border-gray-600 border-solid flex flex-col pt-2 pb-2'>
         {nowPlaylist ? (
@@ -86,8 +76,6 @@ const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
             onClick={() => {
               setIsShowAmendInput(false);
               setIsShowInput(true);
-              // addBasicPlaylist();
-              // setIsShowPlaylistMenu(false);
             }}
           >
             플레이리스트 추가
@@ -214,7 +202,7 @@ const PlaylistMenu = ({ setIsShowPlaylistMenu }) => {
             );
           })}
       </section>
-    </div>
+    </PopupWrapper>
   );
 };
 
