@@ -256,7 +256,7 @@ export default function AppBusking({ buskingRepository }) {
         </section>
         <section className='w-full'>
           <ul>
-            {!isLgMediaQuery && <SongTableTitles isApply={true} />}
+            <SongTableTitles isApply={true} />
             <SearchResults
               isSearch={false}
               results={results}

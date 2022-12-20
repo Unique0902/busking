@@ -6,29 +6,24 @@ import SearchResults from '../../components/SearchResults';
 import SongTableTitles from '../../components/SongTableTitles';
 import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
-import { useMediaQuery } from 'react-responsive';
 import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppAdd({ lastfm }) {
   const [searchResults, setSearchResults] = useState([]);
   const [resultNum, setResultNum] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-  const [searchWord, setSearchWord] = useState('');
-  const [searchCategory, setSearchCategory] = useState('제목');
+  const [searchWord, setSearchWord] = useState({ name: '', category: '제목' });
   const { nowPlaylist, addBasicPlaylist, addSongToPlaylist } =
     usePlaylistContext();
-  const isPc = useMediaQuery({
-    query: '(min-width:1024px)',
-  });
-  const search = (pageNum2) => {
-    if (searchWord) {
-      if (searchCategory === '제목') {
-        lastfm.searchSongByName(searchWord, pageNum2).then((result) => {
+  const search = (pageNum) => {
+    if (searchWord.name) {
+      if (searchWord.category === '제목') {
+        lastfm.searchSongByName(searchWord.name, pageNum).then((result) => {
           setSearchResults(result.trackmatches.track);
           setResultNum(parseInt(result['opensearch:totalResults']));
         });
-      } else if (searchCategory === '가수') {
-        lastfm.searchSongByArtist(searchWord, pageNum2).then((result) => {
+      } else if (searchWord.category === '가수') {
+        lastfm.searchSongByArtist(searchWord.name, pageNum).then((result) => {
           setSearchResults(result.trackmatches.track);
           setResultNum(parseInt(result['opensearch:totalResults']));
         });
@@ -71,8 +66,6 @@ export default function AppAdd({ lastfm }) {
           <SongSearchBar
             searchWord={searchWord}
             setSearchWord={setSearchWord}
-            searchCategory={searchCategory}
-            setSearchCategory={setSearchCategory}
             onSearchBarChange={handelChange}
           >
             <InfoBtn
@@ -83,7 +76,7 @@ export default function AppAdd({ lastfm }) {
           </SongSearchBar>
           <section className='w-full'>
             <ul>
-              {isPc && <SongTableTitles isApply={false} />}
+              <SongTableTitles isApply={false} />
               <SearchResults
                 isSearch={true}
                 results={searchResults}

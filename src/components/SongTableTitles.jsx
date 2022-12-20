@@ -2,7 +2,7 @@ import React from 'react';
 
 const SongTableTitles = ({ isApply }) => {
   return (
-    <li className='flex flex-row justify-between text-center px-2 py-1'>
+    <li className='justify-between hidden lg:flex lg:flex-row text-center px-2 py-1'>
       <div className=' basis-1/12'>index</div>
       {isApply ? (
         <div className='basis-1/2 '>이름</div>

@@ -7,15 +7,13 @@ import SongTableTitles from '../../components/SongTableTitles';
 import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import ArrangeMenuBtn from '../../components/ArrangeMenuBtn';
-import { useMediaQuery } from 'react-responsive';
 import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppPlaylist() {
   const [results, setResults] = useState(null);
   const [resultNum, setResultNum] = useState(0);
   const [pageNum, setPageNum] = useState(1);
-  const [searchWord, setSearchWord] = useState('');
-  const [searchCategory, setSearchCategory] = useState('제목');
+  const [searchWord, setSearchWord] = useState({ name: '', category: '제목' });
   const { nowPlaylist, addBasicPlaylist, removeSongInPlaylist } =
     usePlaylistContext();
   useEffect(() => {
@@ -30,9 +28,7 @@ export default function AppPlaylist() {
   useEffect(() => {
     results && setResultNum(results.length);
   }, [results]);
-  const isPc = useMediaQuery({
-    query: '(min-width:1024px)',
-  });
+
   useEffect(() => {
     if ((pageNum - 1) * 6 + 1 > resultNum) {
       if (resultNum == 0) {
@@ -44,18 +40,18 @@ export default function AppPlaylist() {
 
   const search = () => {
     if (nowPlaylist && nowPlaylist.songs) {
-      if (searchWord) {
-        if (searchCategory === '제목') {
+      if (searchWord.name) {
+        if (searchWord.category === '제목') {
           setResults(
             Object.values(nowPlaylist.songs).filter((song) =>
-              song.title.toLowerCase().includes(searchWord)
+              song.title.toLowerCase().includes(searchWord.name)
             )
           );
           setResultNum(results.length);
-        } else if (searchCategory === '가수') {
+        } else if (searchWord.category === '가수') {
           setResults(
             Object.values(nowPlaylist.songs).filter((song) =>
-              song.artist.toLowerCase().includes(searchWord)
+              song.artist.toLowerCase().includes(searchWord.name)
             )
           );
           setResultNum(results.length);
@@ -101,8 +97,6 @@ export default function AppPlaylist() {
           <SongSearchBar
             searchWord={searchWord}
             setSearchWord={setSearchWord}
-            searchCategory={searchCategory}
-            setSearchCategory={setSearchCategory}
             onSearchBarChange={handelChange}
           >
             <ArrangeMenuBtn
@@ -116,7 +110,7 @@ export default function AppPlaylist() {
           </h2>
           <section className='w-full'>
             <ul>
-              {isPc && <SongTableTitles isApply={false} />}
+              <SongTableTitles isApply={false} />
               <SearchResults
                 isSearch={false}
                 results={results}
