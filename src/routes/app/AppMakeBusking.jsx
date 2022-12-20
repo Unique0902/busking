@@ -9,16 +9,21 @@ import { usePlaylistContext } from '../../context/PlaylistContext';
 
 export default function AppMakeBusking({ buskingRepository }) {
   const [playlistArr, setPlaylistArr] = useState(null);
-  const [maxNum, setMaxNum] = useState(10);
-  const [selectedPlaylist, setSelectedPlaylist] = useState('');
+  const [buskingInform, setBuskingInform] = useState({
+    playlistId: '',
+    maxNum: 10,
+    name: '',
+  });
   let navigate = useNavigate();
   const { playlists, nowPlaylist, addBasicPlaylist } = usePlaylistContext();
   const { uid } = useAuthContext();
   const { userData } = useUserDataContext();
-  const [roomTitle, setRoomTitle] = useState('');
   useEffect(() => {
     if (userData) {
-      setRoomTitle(`${userData.name}님의 버스킹`);
+      setBuskingInform({
+        ...buskingInform,
+        name: `${userData.name}님의 버스킹`,
+      });
     }
   }, [userData]);
   useEffect(() => {
@@ -28,7 +33,10 @@ export default function AppMakeBusking({ buskingRepository }) {
   }, [playlists]);
   useEffect(() => {
     if (playlistArr) {
-      setSelectedPlaylist(playlistArr[0].id);
+      setBuskingInform({
+        ...buskingInform,
+        playlistId: playlistArr[0].id,
+      });
     }
   }, [playlistArr]);
 
@@ -41,22 +49,18 @@ export default function AppMakeBusking({ buskingRepository }) {
   }, []);
 
   const startBusking = () => {
-    if (selectedPlaylist && maxNum && roomTitle) {
-      buskingRepository.makeBusking(
-        uid,
-        selectedPlaylist,
-        maxNum,
-        roomTitle,
-        () => {
-          console.log('safh');
-        }
-      );
+    if (
+      buskingInform.playlistId &&
+      buskingInform.maxNum &&
+      buskingInform.name
+    ) {
+      buskingRepository.makeBusking(uid, buskingInform, () => {});
     } else {
-      if (!selectedPlaylist) {
+      if (!buskingInform.playlistId) {
         alert('플레이 리스트를 등록해주세요!');
-      } else if (!maxNum) {
+      } else if (!buskingInform.maxNum) {
         alert('최대 곡수를 등록해주세요!');
-      } else if (!roomTitle) {
+      } else if (!buskingInform.name) {
         alert('방이름을 등록해주세요!');
       }
     }
@@ -83,9 +87,12 @@ export default function AppMakeBusking({ buskingRepository }) {
           <MainRow title={'플레이리스트 선택'}>
             <select
               name='playlists'
-              value={selectedPlaylist}
+              value={buskingInform.playlistId}
               onChange={(e) => {
-                setSelectedPlaylist(e.target.value);
+                setBuskingInform({
+                  ...buskingInform,
+                  playlistId: e.target.value,
+                });
               }}
               className='border-2 border-black rounded-lg px-3 font-sans font-normal text-xl py-2'
             >
@@ -100,9 +107,12 @@ export default function AppMakeBusking({ buskingRepository }) {
           <MainRow title={'최대 곡수 제한'}>
             <input
               type='number'
-              value={maxNum}
+              value={buskingInform.maxNum}
               onChange={(e) => {
-                setMaxNum(e.target.value);
+                setBuskingInform({
+                  ...buskingInform,
+                  maxNum: e.target.value,
+                });
               }}
               className='border-black border-2 p-2 rounded-xl w-2/12 max-md:w-5/6 font-sans text-lg'
             />
@@ -110,9 +120,12 @@ export default function AppMakeBusking({ buskingRepository }) {
           <MainRow title={'방 제목 설정'}>
             <input
               type='text'
-              value={roomTitle}
+              value={buskingInform.name}
               onChange={(e) => {
-                setRoomTitle(e.target.value);
+                setBuskingInform({
+                  ...buskingInform,
+                  name: e.target.value,
+                });
               }}
               className='border-black border-2 p-2 rounded-xl w-1/3 max-md:w-5/6 font-sans text-lg'
             />

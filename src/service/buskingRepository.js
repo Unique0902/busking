@@ -10,9 +10,9 @@ class BuskingRepository {
     });
   };
 
-  makeBusking = async (userId, playlistId, num, name, onUpdate) => {
+  makeBusking = async (userId, buskingInform, onUpdate) => {
     const listRef = ref(database, `buskings/${userId}/`);
-    const buskingData = { id: Date.now(), playlistId, maxNum: num, name };
+    const buskingData = { id: Date.now(), ...buskingInform };
     await set(listRef, buskingData);
     onUpdate();
   };
