@@ -1,6 +1,6 @@
 import React from 'react';
-import { useRef, useEffect } from 'react';
 import ArrangeBtn from './ArrangeBtn';
+import PopupWrapper from './PopupWrapper';
 
 const ArrangeMenu = ({
   setIsShowArrangeMenu,
@@ -8,7 +8,6 @@ const ArrangeMenu = ({
   setResults,
   isBusking,
 }) => {
-  const wrapperRef = useRef();
   const arrangeResults = (type) => {
     switch (type) {
       case 'title':
@@ -42,21 +41,12 @@ const ArrangeMenu = ({
     arrangeResults(type);
     setIsShowArrangeMenu(false);
   };
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsShowArrangeMenu(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [wrapperRef]);
   return (
-    <div
-      ref={wrapperRef}
-      className=' w-60 border-gray-600 border bg-white text-black absolute top-0 left-0 rounded-xl z-50'
+    <PopupWrapper
+      handleClickOther={() => {
+        setIsShowArrangeMenu(false);
+      }}
+      isLeft={false}
     >
       <section className=' border-b border-gray-600 border-solid flex flex-col pt-2 pb-2'>
         <ArrangeBtn
@@ -78,7 +68,7 @@ const ArrangeMenu = ({
           />
         )}
       </section>
-    </div>
+    </PopupWrapper>
   );
 };
 

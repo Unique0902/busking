@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import PopupWrapper from './PopupWrapper';
