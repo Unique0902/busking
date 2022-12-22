@@ -43,7 +43,7 @@ export default function AppMakeBusking({ buskingRepository }) {
   useEffect(() => {
     buskingRepository.syncBuskingData(uid, (buskingData) => {
       if (buskingData) {
-        navigate('/busking/app/busking');
+        navigate('/app/busking');
       }
     });
   }, []);

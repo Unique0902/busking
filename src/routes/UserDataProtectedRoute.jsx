@@ -5,7 +5,7 @@ import { useUserDataContext } from '../context/UserDataContext';
 export default function UserDataProtectedRoute({ children }) {
   const { userData } = useUserDataContext();
   if (!userData) {
-    return <Navigate to={'/busking/makeUser/'} replace />;
+    return <Navigate to={'/makeUser/'} replace />;
   }
   return children;
 }

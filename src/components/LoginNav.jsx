@@ -8,7 +8,7 @@ export default function LoginNav({ scrollToTutorial }) {
       <button
         className='flex items-center'
         onClick={() => {
-          navigate('/busking');
+          navigate('/');
         }}
       >
         <img

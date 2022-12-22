@@ -44,55 +44,53 @@ root.render(
           <PlaylistContextProvider playlistRepository={playlistRepository}>
             <BrowserRouter>
               <Routes>
-                <Route path='busking'>
+                <Route
+                  path=''
+                  element={<Login userRepository={userRepository} />}
+                />
+                <Route
+                  path='makeUser'
+                  element={
+                    <ProtectedRoute>
+                      <MakeUser userRepository={userRepository} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path='app'
+                  element={
+                    <ProtectedRoute>
+                      <UserDataProtectedRoute>
+                        <App />
+                      </UserDataProtectedRoute>
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path='home' element={<AppHome />} />
+                  <Route path='add' element={<AppAdd lastfm={lastfm} />} />
                   <Route
-                    path=''
-                    element={<Login userRepository={userRepository} />}
-                  />
-                  <Route
-                    path='makeUser'
+                    path='makebusking'
                     element={
-                      <ProtectedRoute>
-                        <MakeUser userRepository={userRepository} />
-                      </ProtectedRoute>
+                      <AppMakeBusking buskingRepository={buskingRepository} />
                     }
                   />
                   <Route
-                    path='app'
+                    path='inform'
                     element={
-                      <ProtectedRoute>
-                        <UserDataProtectedRoute>
-                          <App />
-                        </UserDataProtectedRoute>
-                      </ProtectedRoute>
+                      <AppInform
+                        userRepository={userRepository}
+                        playlistRepository={playlistRepository}
+                        buskingRepository={buskingRepository}
+                      />
                     }
-                  >
-                    <Route path='home' element={<AppHome />} />
-                    <Route path='add' element={<AppAdd lastfm={lastfm} />} />
-                    <Route
-                      path='makebusking'
-                      element={
-                        <AppMakeBusking buskingRepository={buskingRepository} />
-                      }
-                    />
-                    <Route
-                      path='inform'
-                      element={
-                        <AppInform
-                          userRepository={userRepository}
-                          playlistRepository={playlistRepository}
-                          buskingRepository={buskingRepository}
-                        />
-                      }
-                    />
-                    <Route path='playlist' element={<AppPlaylist />} />
-                    <Route
-                      path='busking'
-                      element={
-                        <AppBusking buskingRepository={buskingRepository} />
-                      }
-                    />{' '}
-                  </Route>
+                  />
+                  <Route path='playlist' element={<AppPlaylist />} />
+                  <Route
+                    path='busking'
+                    element={
+                      <AppBusking buskingRepository={buskingRepository} />
+                    }
+                  />{' '}
                 </Route>
               </Routes>
             </BrowserRouter>

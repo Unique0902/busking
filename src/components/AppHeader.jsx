@@ -19,7 +19,7 @@ export default function AppHeader({ isShowSideBar, setIsShowSideBar }) {
     query: '(max-width:1024px)',
   });
   let location = useLocation();
-  if (location.pathname === '/busking/app/busking' && !isLgMediaQuery) {
+  if (location.pathname === '/app/busking' && !isLgMediaQuery) {
     return <></>;
   }
   return (

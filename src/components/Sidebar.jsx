@@ -22,10 +22,10 @@ const Sidebar = ({ isShowSideBar, setIsShowSideBar }) => {
   const wrapperRef = useRef();
   const checkSelectedBtn = () => {
     const pathArr = location.pathname.split('/');
-    if (pathArr[3] === 'busking') {
+    if (pathArr[2] === 'busking') {
       setSelectedBtn('makeBusking');
     } else {
-      setSelectedBtn(pathArr[3]);
+      setSelectedBtn(pathArr[2]);
     }
   };
   useEffect(() => {

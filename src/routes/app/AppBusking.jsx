@@ -47,7 +47,7 @@ export default function AppBusking({ buskingRepository }) {
         if (data) {
           setIsBusking(true);
         } else {
-          navigate('/busking/app/makebusking');
+          navigate('/app/makebusking');
         }
       });
     }
@@ -280,7 +280,7 @@ export default function AppBusking({ buskingRepository }) {
             onClick={() => {
               if (window.confirm('버스킹을 종료하시겠습니까?')) {
                 buskingRepository.removeBusking(uid, () => {
-                  navigate('/busking/app/makebusking');
+                  navigate('/app/makebusking');
                 });
               }
             }}

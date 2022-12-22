@@ -43,7 +43,7 @@ const MakeUser = ({ userRepository }) => {
           if (isCanApply) {
             const name = nameRef.current.value;
             userRepository.makeUser(uid, name, () => {
-              navigate('/busking/app/home');
+              navigate('/app/home');
             });
           }
         }}
