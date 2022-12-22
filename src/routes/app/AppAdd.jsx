@@ -84,13 +84,13 @@ export default function AppAdd({ lastfm }) {
                 btnText={'추가'}
                 onSongClick={addSongToPlaylist}
               />
+              <PageNumScreen
+                resultNum={resultNum}
+                pageNum={pageNum}
+                onPagePlus={handelPlus}
+                onPageMinus={handelMinus}
+              />
             </ul>
-            <PageNumScreen
-              resultNum={resultNum}
-              pageNum={pageNum}
-              onPagePlus={handelPlus}
-              onPageMinus={handelMinus}
-            />
           </section>
         </MainSec>
       )}
