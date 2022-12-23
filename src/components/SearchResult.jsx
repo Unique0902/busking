@@ -1,6 +1,13 @@
-import React, { useRef } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCaretDown,
+  faBars,
+  faPlus,
+  faMinus,
+  faMinusCircle,
+  faMinusSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
 const SearchResult = ({ index, result, onSongClick, btnText }) => {
   const nameRef = useRef();
@@ -61,7 +68,12 @@ const SearchResult = ({ index, result, onSongClick, btnText }) => {
         }}
         className='basis-1/12 hover:scale-110'
       >
-        {btnText}
+        {btnText == '추가' && (
+          <FontAwesomeIcon icon={faPlus} className='text-mainPurple' />
+        )}
+        {btnText == '제거' && (
+          <FontAwesomeIcon icon={faMinusSquare} className=' text-mainRed' />
+        )}
       </button>
     </li>
   );
