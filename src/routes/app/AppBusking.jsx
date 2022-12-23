@@ -19,6 +19,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useAuthContext } from '../../context/AuthContext';
 import { useUserDataContext } from '../../context/UserDataContext';
 import { usePlaylistContext } from '../../context/PlaylistContext';
+import SongTable from '../../components/SongTable';
 
 export default function AppBusking({ buskingRepository }) {
   const { playlists } = usePlaylistContext();
@@ -254,26 +255,18 @@ export default function AppBusking({ buskingRepository }) {
             )}
           </div>
         </section>
-        <section className='w-full'>
-          <ul>
-            <SongTableTitles isApply={true} />
-            <SearchResults
-              isSearch={false}
-              results={results}
-              pageNum={pageNum}
-              btnText={'제거'}
-              onSongClick={(sid) => {
-                buskingRepository.removeBuskingSong(uid, sid, () => {});
-              }}
-            />
-          </ul>
-          <PageNumScreen
-            resultNum={resultNum}
-            pageNum={pageNum}
-            onPagePlus={handelPlus}
-            onPageMinus={handelMinus}
-          />
-        </section>
+        <SongTable
+          isSearch={false}
+          results={results}
+          pageNum={pageNum}
+          btnText={'제거'}
+          onSongClick={(sid) => {
+            buskingRepository.removeBuskingSong(uid, sid, () => {});
+          }}
+          resultNum={resultNum}
+          onPagePlus={handelPlus}
+          onPageMinus={handelMinus}
+        />
         <section className='flex flex-row pt-4 justify-end'>
           <button
             className='ml-4 bg-red-600 py-2 px-3 text-lg rounded-lg text-white hover:scale-110'

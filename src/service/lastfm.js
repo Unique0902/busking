@@ -47,6 +47,17 @@ class Lastfm {
     });
     return response.data.results;
   }
+  async getTopTracks(pageNum) {
+    const response = await this.lastfm.get('', {
+      params: {
+        method: 'chart.gettoptracks',
+        format: 'json',
+        page: pageNum,
+        limit: '5',
+      },
+    });
+    return response.data.tracks;
+  }
 }
 
 export default Lastfm;

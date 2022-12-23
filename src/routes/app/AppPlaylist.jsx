@@ -8,6 +8,7 @@ import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import ArrangeMenuBtn from '../../components/ArrangeMenuBtn';
 import { usePlaylistContext } from '../../context/PlaylistContext';
+import SongTable from '../../components/SongTable';
 
 export default function AppPlaylist() {
   const [results, setResults] = useState(null);
@@ -108,24 +109,16 @@ export default function AppPlaylist() {
           <h2 className='font-sans font-semibold mb-2 text-xl text-zinc-500'>
             총 노래 수 {results && results.length}
           </h2>
-          <section className='w-full'>
-            <ul>
-              <SongTableTitles isApply={false} />
-              <SearchResults
-                isSearch={false}
-                results={results}
-                pageNum={pageNum}
-                btnText={'제거'}
-                onSongClick={removeSongInPlaylist}
-              />
-            </ul>
-            <PageNumScreen
-              resultNum={resultNum}
-              pageNum={pageNum}
-              onPagePlus={handelPlus}
-              onPageMinus={handelMinus}
-            />
-          </section>
+          <SongTable
+            isSearch={false}
+            results={results}
+            pageNum={pageNum}
+            btnText={'제거'}
+            onSongClick={removeSongInPlaylist}
+            resultNum={resultNum}
+            onPagePlus={handelPlus}
+            onPageMinus={handelMinus}
+          />
         </MainSec>
       )}
     </>

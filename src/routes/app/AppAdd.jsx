@@ -7,6 +7,7 @@ import SongTableTitles from '../../components/SongTableTitles';
 import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import { usePlaylistContext } from '../../context/PlaylistContext';
+import SongTable from '../../components/SongTable';
 
 export default function AppAdd({ lastfm }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -28,6 +29,11 @@ export default function AppAdd({ lastfm }) {
           setResultNum(parseInt(result['opensearch:totalResults']));
         });
       }
+    } else {
+      lastfm.getTopTracks(pageNum).then((result) => {
+        setSearchResults(result.track);
+        setResultNum(parseInt(result['@attr'].total));
+      });
     }
   };
   const handelPlus = () => {
@@ -74,24 +80,16 @@ export default function AppAdd({ lastfm }) {
               }
             />
           </SongSearchBar>
-          <section className='w-full'>
-            <ul>
-              <SongTableTitles isApply={false} />
-              <SearchResults
-                isSearch={true}
-                results={searchResults}
-                pageNum={pageNum}
-                btnText={'추가'}
-                onSongClick={addSongToPlaylist}
-              />
-              <PageNumScreen
-                resultNum={resultNum}
-                pageNum={pageNum}
-                onPagePlus={handelPlus}
-                onPageMinus={handelMinus}
-              />
-            </ul>
-          </section>
+          <SongTable
+            isSearch={true}
+            results={searchResults}
+            pageNum={pageNum}
+            btnText={'추가'}
+            onSongClick={addSongToPlaylist}
+            resultNum={resultNum}
+            onPagePlus={handelPlus}
+            onPageMinus={handelMinus}
+          />
         </MainSec>
       )}
     </>

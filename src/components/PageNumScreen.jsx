@@ -12,16 +12,16 @@ export default function PageNumScreen({
   onPageMinus,
 }) {
   const btnStyle =
-    'mx-2 bg-black text-white rounded-full hover:scale-110 text-center text-lg w-8 h-8';
+    'mx-2 text-white rounded-full hover:scale-110 text-center text-lg w-8 h-8';
   return (
     <div className='flex justify-center mt-3'>
       <button className={btnStyle} onClick={() => onPageMinus()}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
-      <p className='ml-2 text-black font-sans font-normal text-xl'>
+      <p className='ml-2 text-white font-sans font-normal text-xl'>
         {pageNum} /
       </p>
-      <p className='ml-2 text-black font-sans font-normal text-xl'>
+      <p className='ml-2 text-white font-sans font-normal text-xl'>
         {parseInt((resultNum - 1) / 6) + 1}
       </p>
       <button className={btnStyle} onClick={() => onPagePlus()}>
