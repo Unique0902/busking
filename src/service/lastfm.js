@@ -53,7 +53,7 @@ class Lastfm {
         method: 'chart.gettoptracks',
         format: 'json',
         page: pageNum,
-        limit: '5',
+        limit: '6',
       },
     });
     return response.data.tracks;

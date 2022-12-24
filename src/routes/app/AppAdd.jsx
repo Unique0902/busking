@@ -8,6 +8,7 @@ import MainSec from '../../components/MainSec';
 import SongSearchBar from '../../components/SongSearchBar';
 import { usePlaylistContext } from '../../context/PlaylistContext';
 import SongTable from '../../components/SongTable';
+import { useEffect } from 'react';
 
 export default function AppAdd({ lastfm }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -36,6 +37,13 @@ export default function AppAdd({ lastfm }) {
       });
     }
   };
+  useEffect(() => {
+    if (searchResults) {
+      if (searchResults.length > 6) {
+        setSearchResults(searchResults.slice(-6));
+      }
+    }
+  }, [searchResults]);
   const handelPlus = () => {
     search(pageNum + 1);
     setPageNum(pageNum + 1);
