@@ -24,7 +24,7 @@ function App({}) {
           setIsShowSideBar={setIsShowSideBar}
         />
       )}
-      <main className=' grow py-6 px-8 overflow-y-auto'>
+      <main className=' grow py-6 px-8 max-lg:px-4 overflow-y-auto'>
         <AppHeader
           isShowSideBar={isShowSideBar}
           setIsShowSideBar={setIsShowSideBar}
