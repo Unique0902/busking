@@ -18,7 +18,7 @@ export default function LoginNav({ scrollToTutorial }) {
         />
         <p className='font-sans text-3xl font-semibold text-black '>노래책</p>
       </button>
-      <ul className='w-2/5 justify-around font-sans  text-xl text-black font-semibold flex'>
+      <ul className='w-2/5 justify-around font-sans  text-xl text-black font-semibold hidden lg:flex'>
         <li>
           <button className='hover:scale-110'>소개</button>
         </li>
