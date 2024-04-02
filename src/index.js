@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './routes/app/app';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './routes/login/login';
-import AppHome from './routes/app/AppHome';
-import AppAdd from './routes/app/AppAdd';
-import AppMakeBusking from './routes/app/AppMakeBusking';
-import AppInform from './routes/app/AppInform';
-import AppPlaylist from './routes/app/AppPlaylist';
 import axios from 'axios';
 import Lastfm from './service/lastfm';
 import AuthService from './service/auth_service';
 import PlaylistRepository from './service/playlist_repository';
 import UserRepository from './service/userRepository';
-import MakeUser from './routes/makeUser/makeUser';
-import AppBusking from './routes/app/AppBusking';
 import BuskingRepository from './service/buskingRepository';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -23,6 +15,14 @@ import { UserDataContextProvider } from './context/UserDataContext';
 import UserDataProtectedRoute from './routes/UserDataProtectedRoute';
 import { PlaylistContextProvider } from './context/PlaylistContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const App = React.lazy(() => import('./routes/app/app'));
+const AppHome = React.lazy(() => import('./routes/app/AppHome'));
+const AppAdd = React.lazy(() => import('./routes/app/AppAdd'));
+const AppMakeBusking = React.lazy(() => import('./routes/app/AppMakeBusking'));
+const AppInform = React.lazy(() => import('./routes/app/AppInform'));
+const AppPlaylist = React.lazy(() => import('./routes/app/AppPlaylist'));
+const AppBusking = React.lazy(() => import('./routes/app/AppBusking'));
+const MakeUser = React.lazy(() => import('./routes/makeUser/makeUser'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
@@ -51,44 +51,75 @@ root.render(
                 <Route
                   path='makeUser'
                   element={
-                    <ProtectedRoute>
-                      <MakeUser userRepository={userRepository} />
-                    </ProtectedRoute>
+                    <React.Suspense fallback={<p>로딩...</p>}>
+                      <ProtectedRoute>
+                        <MakeUser userRepository={userRepository} />
+                      </ProtectedRoute>
+                    </React.Suspense>
                   }
                 />
                 <Route
                   path='app'
                   element={
-                    <ProtectedRoute>
-                      <UserDataProtectedRoute>
-                        <App />
-                      </UserDataProtectedRoute>
-                    </ProtectedRoute>
+                    <React.Suspense fallback={<p>로딩...</p>}>
+                      <ProtectedRoute>
+                        <UserDataProtectedRoute>
+                          <App />
+                        </UserDataProtectedRoute>
+                      </ProtectedRoute>
+                    </React.Suspense>
                   }
                 >
-                  <Route path='home' element={<AppHome />} />
-                  <Route path='add' element={<AppAdd lastfm={lastfm} />} />
+                  <Route
+                    path='home'
+                    element={
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppHome />
+                      </React.Suspense>
+                    }
+                  />
+                  <Route
+                    path='add'
+                    element={
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppAdd lastfm={lastfm} />
+                      </React.Suspense>
+                    }
+                  />
                   <Route
                     path='makebusking'
                     element={
-                      <AppMakeBusking buskingRepository={buskingRepository} />
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppMakeBusking buskingRepository={buskingRepository} />
+                      </React.Suspense>
                     }
                   />
                   <Route
                     path='inform'
                     element={
-                      <AppInform
-                        userRepository={userRepository}
-                        playlistRepository={playlistRepository}
-                        buskingRepository={buskingRepository}
-                      />
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppInform
+                          userRepository={userRepository}
+                          playlistRepository={playlistRepository}
+                          buskingRepository={buskingRepository}
+                        />
+                      </React.Suspense>
                     }
                   />
-                  <Route path='playlist' element={<AppPlaylist />} />
+                  <Route
+                    path='playlist'
+                    element={
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppPlaylist />
+                      </React.Suspense>
+                    }
+                  />
                   <Route
                     path='busking'
                     element={
-                      <AppBusking buskingRepository={buskingRepository} />
+                      <React.Suspense fallback={<p>로딩...</p>}>
+                        <AppBusking buskingRepository={buskingRepository} />
+                      </React.Suspense>
                     }
                   />{' '}
                 </Route>
